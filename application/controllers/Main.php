@@ -6,13 +6,14 @@ if (!defined('BASEPATH'))
 class Main extends CI_Controller {
 
     public function index() {
-        $this->load->view('Menu');
+        $this->vista($this->load->view('Menu', '', TRUE), 'home', TRUE);
     }
 
-    public function vista($contenido, $seccionActiva) {
+    public function vista($contenido, $seccionActiva, $menu = FALSE) {
         $parametros = [
             'contenido' => $contenido,
-            'activo' => $seccionActiva
+            'activo' => $seccionActiva,
+			'menu' => $menu
         ];
 
         $this->load->view('Plantilla', $parametros);

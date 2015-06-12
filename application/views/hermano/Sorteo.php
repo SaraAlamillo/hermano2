@@ -10,7 +10,9 @@
                 <?php foreach ($listado as $l): ?>
                     <?php $contador++; ?>
                     <td>
-                        <input type="checkbox" name="hermanos[]" value="<?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>" checked="checked" /><?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>
+                        <label for="<?= $l->idHermano ?>">
+                            <input type="checkbox" id="<?= $l->idHermano ?>" name="hermanos[]" value="<?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>" checked="checked" /><?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>                
+                        </label>
                     </td>
                     <?php if ($contador % 3 == 0): ?>
                     </tr>

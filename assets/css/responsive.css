@@ -36,6 +36,7 @@
 
 @media (max-width: 1199px) {
     header {
+        position: fixed;
         max-width: 250px;
     }
 
@@ -96,6 +97,7 @@
 
 @media (max-width: 767px) {
     header {
+        position: static;
         float: none;
         text-align: center;
         width: 100%;
@@ -117,6 +119,17 @@
 
     #content {
         padding-left: 0px;
+        margin: 0px;
+    }
+    
+    .about-page {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+    }
+    .contact-box {
+        margin: 0px;
     }
 
     a.elemadded {

@@ -59,14 +59,14 @@ header {
 }
 
 .logo-box {
-    padding: 30px 30px;
+    //padding: 30px 30px;
     background: #fff;
     text-align: center;
 }
 
 a.logo {
     display: inline-block;
-    margin-bottom: 10px;
+    //margin-bottom: 10px;
 }
 
 p.slogan {
@@ -315,9 +315,11 @@ html{
 }
 
 body {
-    background: #fff;
+    //background: #fff;
     height: 100%;
     opacity: 0;
+    background-image: url('../images/PatFondo.png');
+    background-repeat: repeat;
 }
 
 body.active {
@@ -347,6 +349,7 @@ ul li {
 }
 
 .preloader {
+    background: #fff;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1519,4 +1522,15 @@ ul.depth li:before {
 #contact-form .message.success,
 .comment-form .message.success {
     color:#1e9397;
+}
+/*
+.fijo {
+position: fixed;
+}
+*/
+
+label {
+    height: 100%;
+    width: 100%;
+    font-weight: normal;
 }

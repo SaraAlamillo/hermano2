@@ -1,7 +1,7 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Menú principal</title>
+        <title>San Telmo</title>
         <meta charset="UTF-8">
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -19,10 +19,13 @@
     <body>
         <div id="container">
             <header>
+                <div class="logo-box">
+                    <?= anchor(site_url('main'), "<img src='" . base_url() . "assets/images/logo.png' />", ['class' => 'logo']) ?>
+                </div>
                 <a class="elemadded responsive-link" href="#">Menu</a>
                 <div class="menu-box">
                     <ul class="menu">
-                        <!-- class="active" -->
+                        <li><?= anchor(site_url('main'), '<span>Inicio</span>', ['class' => $activo == 'home' ? 'active' : '']) ?></li>
                         <li><?= anchor(site_url('vivienda'), '<span>Viviendas</span>', ['class' => $activo == 'vivienda' ? 'active' : '']) ?></li>
                         <li><?= anchor(site_url('hermano'), '<span>Hermanos</span>', ['class' => $activo == 'hermano' ? 'active' : '']) ?></li>
                         <li><?= anchor(site_url('remesa'), '<span>Remesas</span>', ['class' => $activo == 'remesa' ? 'active' : '']) ?></li>
@@ -35,10 +38,16 @@
             </header>
 
             <div id="content">
-                <div class="inner-content about-page">
-                    <div class="contact-box">
+                <div class="inner-content">
+                    <?php if ($menu): ?>
                         <?= $contenido ?>
-                    </div>
+                    <?php else: ?>
+                        <div class="about-page">
+                            <div class="contact-box">
+                                <?= $contenido ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 

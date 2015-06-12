@@ -82,7 +82,7 @@ $db['default'] = array(
     'save_queries' => TRUE
 );
 
-define("SERVIDOR", FALSE);
+define("SERVIDOR", TRUE);
 
 if (SERVIDOR) {
     $db['default']['username'] = '2daw1415_sara';
