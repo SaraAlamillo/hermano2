@@ -315,11 +315,9 @@ html{
 }
 
 body {
-    //background: #fff;
+    background: #fff;
     height: 100%;
     opacity: 0;
-    background-image: url('../images/PatFondo.png');
-    background-repeat: repeat;
 }
 
 body.active {

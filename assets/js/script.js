@@ -91,6 +91,8 @@ $(document).ready(function($) {
 			preloader.fadeOut(400, function(){
 				mainDiv.delay(400).addClass('active');
 				//body.delay(400).css('background', '#b4b7b8');
+				body.delay(400).css('background-image', "url('http://iessansebastian.com/alumnos/2daw1415/sara/assets/images/PatFondo.png')");
+				body.delay(400).css('background-repeat', "repeat");
 			});
 	});
 
