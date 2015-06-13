@@ -131,7 +131,7 @@ ul.menu li a {
         left bottom,
         color-stop(0, #333B3F),
         color-stop(1, #2E363A)
-    );
+        );
     background-image: -o-linear-gradient(bottom, #333B3F 0%, #2E363A 100%);
     background-image: -moz-linear-gradient(bottom, #333B3F 0%, #2E363A 100%);
     background-image: -webkit-linear-gradient(bottom, #333B3F 0%, #2E363A 100%);
@@ -1531,4 +1531,18 @@ label {
     height: 100%;
     width: 100%;
     font-weight: normal;
+}
+
+.bs-glyphicons{margin:0 -10px 20px;overflow:hidden}
+.bs-glyphicons-list{padding-left:0;list-style:none}
+.bs-glyphicons li{float:left;width:25%;height:90px;padding:10px;line-height:1.4;text-align:center;background-color:#f9f9f9;border:1px solid #fff; font-size: 16px; font-weight: bolder;}
+.bs-glyphicons .glyphicon{margin-top:5px;margin-bottom:10px;font-size:26px}
+.bs-glyphicons .glyphicon-class{display:block;text-align:center;word-wrap:break-word}
+.bs-glyphicons li:hover{color:#fff;background-color:#1ab5b3}
+@media (min-width:768px){
+    .bs-glyphicons{margin-right:0;margin-left:0}
+    .bs-glyphicons li{width:25%}
+}
+@media (max-width: 767px) {
+    .bs-glyphicons li{width: 50%;}
 }
