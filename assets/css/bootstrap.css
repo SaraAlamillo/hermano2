@@ -1987,6 +1987,7 @@ textarea.input-lg {
 }
 
 .btn {
+    float: left;
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -2004,6 +2005,7 @@ textarea.input-lg {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+    width: 50%;
 }
 
 .btn:focus {
@@ -3375,6 +3377,7 @@ input[type="button"].btn-block {
     position: relative;
     display: inline-block;
     vertical-align: middle;
+   width: 100%;
 }
 
 .btn-group > .btn,
@@ -4808,6 +4811,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25em;
+    float: left;
 }
 
 .label[href]:hover,

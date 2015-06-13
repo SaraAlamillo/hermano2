@@ -1448,7 +1448,8 @@ ul.depth li:before {
 
 #contact-form input[type="text"],
 .comment-form input[type="text"],
-#contact-form select{
+#contact-form select,
+.radioButton {
     color: #848484;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -1470,6 +1471,10 @@ ul.depth li:before {
     -moz-transition: all 0.2s ease-in-out;
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;  
+}
+.radioButton {
+    padding-top: 11px;
+    padding-bottom: 11px;
 }
 #contact-form textarea,
 .comment-form textarea {
@@ -1593,7 +1598,7 @@ label {
 .bs-glyphicons li span {font-weight: 800;}
 .bs-glyphicons .glyphicon{margin-top:5px;margin-bottom:10px;font-size:26px}
 .bs-glyphicons .glyphicon-class{display:block;text-align:center;word-wrap:break-word}
-.bs-glyphicons li:hover{color:#fff;background-color:#1ab5b3}
+.bs-glyphicons li:hover{color:#fff;background-color:#242b2e; }
 @media (min-width:768px){
     .bs-glyphicons{margin-right:0;margin-left:0}
     .bs-glyphicons li{width:25%}

@@ -38,15 +38,17 @@ if (!function_exists('crearDesplegable')) {
 if (!function_exists('crearListaRadio')) {
 
     function crearListaRadio($nombre, array $valores, $porDefecto = NULL, $camposDatos = ['desc' => 'nombre', 'valor' => 'id']) {
-        $html = "";
+        $html = '<div class="btn-group" data-toggle="buttons">';
 
         foreach ($valores as $v) {
             if ($porDefecto == $v[$camposDatos['valor']]) {
-                $html .= "<input type='radio' name='$nombre' value='{$v[$camposDatos['valor']]}' checked=checked />{$v[$camposDatos['desc']]} \n";
+                $html .= '<label class="btn btn-primary active"><input type="radio" name="' . $nombre . '" id="' . $v[$camposDatos['valor']] . '" value="' . $v[$camposDatos['valor']] . '" autocomplete="off" checked="checked">' . $v[$camposDatos['desc']] . '</label>';
             } else {
-                $html .= "<input type='radio' name='$nombre' value='{$v[$camposDatos['valor']]}' />{$v[$camposDatos['desc']]} \n";
+                $html .= '<label class = "btn btn-primary"><input type = "radio" name = "' . $nombre . '" id = "' . $v[$camposDatos['valor']] . '" value="' . $v[$camposDatos['valor']] . '" autocomplete = "off">' . $v[$camposDatos['desc']] . '</label>';
             }
         }
+
+        $html .= '</div>';
 
         return $html;
     }
