@@ -49,6 +49,7 @@ class Remesa_model extends CI_Model {
 
     public function tieneCuotas($idRemesa) {
         $this->db->where('idRemesa', $idRemesa);
+        $this->db->where('cuota1 is not null or cuota2 is not null');
         $this->db->from('pago');
 
         if ($this->db->count_all_results() > 0) {
@@ -59,6 +60,7 @@ class Remesa_model extends CI_Model {
     }
 
     public function elimina($idRemesa) {
+        $this->db->delete('pago', ['idRemesa' => $idRemesa]);
         $this->db->delete('remesa', ['idRemesa' => $idRemesa]);
     }
 

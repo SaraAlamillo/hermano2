@@ -120,8 +120,12 @@ class Hermano extends Main {
             }
         } else {
             $parametros = [
-                'datos' => $this->Hermano_model->listaUno($idHermano)
+                'datos' => $this->Hermano_model->listaUno($idHermano),
+                'baja' => 'un hermano'
             ];
+            
+            $this->load->helper('bd');
+            
             $this->vista($this->load->view('Confirmar_eliminacion', $parametros, TRUE), 'hermano');
         }
     }

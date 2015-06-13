@@ -96,8 +96,12 @@ class Contacto extends Main {
             }
         } else {
             $parametros = [
-                'datos' => $this->Contacto_model->listarUno($idContacto)
+                'datos' => $this->Contacto_model->listarUno($idContacto),
+                'baja' => 'un contacto de la agenda'
             ];
+            
+            $this->load->helper('bd');
+            
             $this->vista($this->load->view('Confirmar_eliminacion', $parametros, TRUE), 'contacto');
         }
     }

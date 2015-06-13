@@ -51,7 +51,10 @@ if (!function_exists('nombresCampos')) {
             'cuota2' => 'Segundo plazo',
             'idRemesa' => 'Número de remesa',
             'anio' => 'Año',
-            'descripcion' => 'Descripción'
+            'descripcion' => 'Descripción',
+            'cif' => 'CIF',
+            'nombre_empresa' => 'Nombre de la empresa',
+            'idContacto' => 'Número de contacto'
         ];
 
         return $campos[$campo];

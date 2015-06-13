@@ -63,8 +63,12 @@ class Remesa extends Main {
                 }
             } else {
                 $parametros = [
-                    'datos' => $this->remesa_model->listaUno($idRemesa)
+                    'datos' => $this->Remesa_model->listaUno($idRemesa),
+                    'baja' => 'una remesa'
                 ];
+            
+            $this->load->helper('bd');
+            
                 $this->vista($this->load->view('Confirmar_eliminacion', $parametros, TRUE), 'remesa');
             }
         }
