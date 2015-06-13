@@ -1,5 +1,4 @@
 ﻿<?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 // Incluimos el archivo fpdf
@@ -7,7 +6,7 @@ require_once APPPATH . "/third_party/fpdf/fpdf.php";
 
 //Extendemos la clase Pdf de la clase fpdf para que herede todas sus variables y funciones
 class Factura extends FPDF {
-    
+
     private $pedido;
 
     public function __construct($datosPedido = NULL) {
@@ -26,9 +25,9 @@ class Factura extends FPDF {
     }
 
     function Header() {
-        
+
         $fecha_pedido = new DateTime($this->pedido->fecha_pedido);
-        
+
         $this->SetLeftMargin(15);
         $this->SetRightMargin(15);
         $this->SetFillColor(200, 200, 200);
@@ -59,7 +58,7 @@ class Factura extends FPDF {
         }
         $this->SetFont('Arial', 'I', 8);
         $this->Cell(15, 7, "Referencia: {$this->pedido->id}", '', 0, 'L', 0);
-            $this->SetX(-115);
+        $this->SetX(-115);
         $this->Cell(100, 7, "Fecha: " . $fecha_pedido->format("d-m-Y") . "   Hora: " . $fecha_pedido->format("H:i:s"), '', 1, 'R', 0);
         $this->Cell(15, 7, utf8_decode('Número'), 'TBL', 0, 'C', '1');
         $this->Cell(85, 7, 'Producto', 'TB', 0, 'C', '1');
@@ -69,12 +68,12 @@ class Factura extends FPDF {
         $this->Cell(20, 7, 'Total', 'TBR', 0, 'C', '1');
         $this->Ln(7);
     }
-    
+
     public function generar($id_pedido, $para_email = FALSE) {
         ob_clean();
-        
-        $CI =& get_instance();
-        
+
+        $CI = & get_instance();
+
         $pedido = $CI->pedidos_model->listar_pedido($id_pedido);
         $lineas_pedido = $CI->pedidos_model->listar_productos_pedido($id_pedido);
 

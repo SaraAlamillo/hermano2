@@ -3,19 +3,19 @@
     <table border="1">
         <tr>
             <td>Nombre completo</td>
-            <td><?=$usuario->nombre ?> <?=$usuario->apellidos ?></td>
+            <td><?= $usuario->nombre ?> <?= $usuario->apellidos ?></td>
         </tr>
         <tr>
             <td>Dirección</td>
-            <td><?=$usuario->direccion ?></td>
+            <td><?= $usuario->direccion ?></td>
         </tr>
         <tr>
             <td>Código Postal</td>
-            <td><?=$usuario->cp ?></td>
+            <td><?= $usuario->cp ?></td>
         </tr>
         <tr>
             <td>Provincia</td>
-            <td><?=$usuario->provincia ?></td>
+            <td><?= $usuario->provincia ?></td>
         </tr>
     </table>
     <br />

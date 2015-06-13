@@ -1,4 +1,4 @@
-    <h1>Modificar una remesa</h1>
+<h1>Modificar una remesa</h1>
 <form action="" method="POST" id="contact-form">
     <div class="text-fields">
         <textarea name="descripcion" title="Descripción"><?= $remesa->descripcion ?></textarea>

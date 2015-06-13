@@ -1,4 +1,4 @@
-    <fieldset>
+<fieldset>
     <legend>Hermano</legend>
     <?= crearDesplegable('hermano', $hermanos, $seleccionado['hermano'], ['nombre' => '', 'id' => '']) ?>
 </fieldset>

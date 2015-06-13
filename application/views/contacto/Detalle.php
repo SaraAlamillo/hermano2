@@ -1,4 +1,4 @@
-    <?= anchor(site_url('contacto'), 'Volver al listado') ?>
+<?= anchor(site_url('contacto'), 'Volver al listado') ?>
 <h1>Detalles de contacto</h1>
 <p>Empresa: <?= $contacto->nombre_empresa ?></p>
 <p>Tratamiento: <?= $contacto->tratamiento ?></p>

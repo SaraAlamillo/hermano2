@@ -307,12 +307,12 @@ abstract class JSON_WebServer_Controller extends CI_Controller {
                 <p>Están registradas las siguientes funciones:</p>
                 <table border="1">
                     <tr><td>Método</td><td>Descripción</td></tr>
-        <?php foreach ($this->documentacionFunciones as $doc) : ?>
+                    <?php foreach ($this->documentacionFunciones as $doc) : ?>
                         <tr>
                             <td><pre><?= $doc['signature'] ?></pre></td>
                             <td><?= $doc['help'] ?></td>
                         </tr>
-        <?php endforeach; ?>
+                    <?php endforeach; ?>
                 </table>
                 <p>Enviar parametros en formato JSON mediante POST utilizando libreria JSON_WebClient</p>    
             </body>

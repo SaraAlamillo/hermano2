@@ -24,7 +24,7 @@ class Compra extends Sara {
         }
         redirect($this->input->post('url'));
     }
-    
+
     public function consultar_carrito() {
         $carrito = $this->carrito->get_contenido();
 
@@ -42,6 +42,7 @@ class Compra extends Sara {
 
         $this->vista("carrito", $vista);
     }
+
     public function vaciar_carrito() {
         foreach ($this->carrito->get_contenido() as $c) {
             $cantidad = $this->carrito->quitar_producto($c['id']);
@@ -49,6 +50,7 @@ class Compra extends Sara {
         }
         redirect(site_url("compra/consultar_carrito"));
     }
+
     public function eliminar_producto_carrito($producto) {
         $cantidad = $this->carrito->quitar_producto($producto);
         $this->productos_model->modificar_stock($producto, "+", $cantidad);

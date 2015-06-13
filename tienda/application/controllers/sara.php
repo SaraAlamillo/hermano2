@@ -18,19 +18,19 @@ class Sara extends CI_Controller {
 
         $this->load->view("home", $parametros);
     }
-    
+
     private function cabecera() {
         $parametros = [
             "logueado" => $this->logueado(),
             "login" => $this->session->flashdata("login")
-                ];
+        ];
         return $this->load->view("cabecera", $parametros, TRUE);
     }
-    
+
     private function menu() {
         return $this->load->view("menu", ["categorias" => $this->productos_model->listar_categorias()], TRUE);
     }
-    
+
     private function contenido($vista, $parametros) {
         return $this->load->view($vista, $parametros, TRUE);
     }

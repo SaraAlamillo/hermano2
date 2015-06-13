@@ -20,9 +20,9 @@ if (!function_exists('generarVistaProducto')) {
                 <?php if ($version_extendida): ?>
                     <p>Categoria: <?= $producto->categoria_nombre ?> </p>
                     <p>IVA(<?= $producto->iva ?>%): <?= round($producto->iva / 100 * ($producto->precio - ($producto->precio * ($producto->descuento / 100))), 2) ?> €</p>
-                <?php if ($producto->descuento != 0): ?>
-                    <p>Precio real: <?= $producto->precio ?> €</p>
-                    <p>Descuento: <?= $producto->descuento ?>%</p>
+                    <?php if ($producto->descuento != 0): ?>
+                        <p>Precio real: <?= $producto->precio ?> €</p>
+                        <p>Descuento: <?= $producto->descuento ?>%</p>
                     <?php endif; ?>
                     <p>Descripcion:</p>
                     <p><?= $producto->descripcion ?> </p>

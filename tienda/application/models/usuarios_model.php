@@ -18,7 +18,7 @@ class Usuarios_model extends CI_Model {
         $resultado = $this->db->get("provincia");
         return $resultado->result();
     }
-    
+
     public function nombre_provincia($id) {
         $this->db->select("nombre");
         $this->db->where("id", $id);

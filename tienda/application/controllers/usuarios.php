@@ -22,7 +22,7 @@ class Usuarios extends Sara {
         $this->form_validation->set_rules('cp', 'código postal', 'callback_cp_check');
         $this->form_validation->set_rules('provincia', 'provincia', 'callback_provincia_check');
     }
-    
+
     public function acceder() {
         if ($this->usuarios_model->existe_usuario($this->input->post('usuario'), $this->input->post('clave'))) {
             $id = $this->usuarios_model->conseguir_id("usuario", $this->input->post('usuario'));

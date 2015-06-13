@@ -13,7 +13,7 @@ class Main extends CI_Controller {
         $parametros = [
             'contenido' => $contenido,
             'activo' => $seccionActiva,
-			'menu' => $menu
+            'menu' => $menu
         ];
 
         $this->load->view('Plantilla', $parametros);

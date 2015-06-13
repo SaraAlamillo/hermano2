@@ -52,7 +52,7 @@ class Xml extends Sara {
         $config['allowed_types'] = 'xml';
         $this->load->library('upload', $config);
         $vista = [
-            "subido" => $this->session->flashdata("subido") != ""? $this->session->flashdata("subido") : NULL
+            "subido" => $this->session->flashdata("subido") != "" ? $this->session->flashdata("subido") : NULL
         ];
         if ($this->upload->do_upload()) {
             $fichero = $this->upload->data()["file_name"];
@@ -69,18 +69,18 @@ class Xml extends Sara {
 
         foreach ($categorias['categoria'] as &$c) {
             if (empty($c['anuncio'])) {
-                        $c['anuncio'] = NULL;
-                    } else {
-                        $c['anuncio'] = htmlentities($c['anuncio']);
-                    }
-                    $c['nombre'] = htmlentities($c['nombre']);
-                    $c['descripcion'] = htmlentities($c['descripcion']);
+                $c['anuncio'] = NULL;
+            } else {
+                $c['anuncio'] = htmlentities($c['anuncio']);
+            }
+            $c['nombre'] = htmlentities($c['nombre']);
+            $c['descripcion'] = htmlentities($c['descripcion']);
             $productos = $c['productos'];
             unset($c['productos']);
             unset($c['id']);
-            
+
             $categoria = $this->productos_model->insertar_categoria($c);
-            
+
             if (!empty($productos)) {
                 foreach ($productos['producto'] as &$p) {
                     unset($p['id']);
@@ -93,7 +93,7 @@ class Xml extends Sara {
                     $p['descripcion'] = htmlentities($p['descripcion']);
 
                     $p['categoria'] = $categoria;
-                   
+
                     $this->productos_model->insertar_productos($p);
                 }
             }

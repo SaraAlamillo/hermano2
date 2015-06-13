@@ -10,7 +10,7 @@ class Carrito {
 
     public function __construct() {
         $this->session = & get_instance()->session;
-        
+
         if ($this->session->userdata('carrito')) {
             $this->contenido = $this->session->userdata('carrito');
         } else {

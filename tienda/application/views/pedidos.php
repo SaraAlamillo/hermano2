@@ -1,6 +1,6 @@
 <div id="pedidos">
     <?php if (!is_null($mensaje)): ?>
-    <small><?=$mensaje ?></small>
+        <small><?= $mensaje ?></small>
     <?php endif; ?>
     <table border="1">
         <tr>
@@ -19,8 +19,8 @@
                 <td><?= $p->total ?></td>
                 <td><?= anchor("pedido/ver_pedido/$p->id", "Más detalles") ?></td>        
                 <?php if ($p->estado != 'Cancelado'): ?>     
-                <td><?= anchor("pedido/factura/$p->id", "Generar factura") ?></td>    
-                <td><?= anchor("pedido/cancelar/$p->id/$p->estado", "Cancelar pedido") ?></td>
+                    <td><?= anchor("pedido/factura/$p->id", "Generar factura") ?></td>    
+                    <td><?= anchor("pedido/cancelar/$p->id/$p->estado", "Cancelar pedido") ?></td>
                 <?php endif; ?>
 
             </tr>

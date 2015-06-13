@@ -29,6 +29,7 @@ class Pedido extends Sara {
 
         $this->vista("contenido_pedido", $vista);
     }
+
     public function factura($pedido) {
         $this->factura->generar($pedido);
     }

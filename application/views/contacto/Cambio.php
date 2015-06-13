@@ -1,4 +1,4 @@
-    <?= anchor(site_url('contacto'), 'Volver al listado') ?>
+<?= anchor(site_url('contacto'), 'Volver al listado') ?>
 <form action="" method="POST" id="contact-form">
     <div class="text-fields">
         <fieldset>

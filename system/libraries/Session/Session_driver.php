@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -48,101 +49,90 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 abstract class CI_Session_driver implements SessionHandlerInterface {
 
-	protected $_config;
+    protected $_config;
 
-	/**
-	 * Data fingerprint
-	 *
-	 * @var	bool
-	 */
-	protected $_fingerprint;
+    /**
+     * Data fingerprint
+     *
+     * @var	bool
+     */
+    protected $_fingerprint;
 
-	/**
-	 * Lock placeholder
-	 *
-	 * @var	mixed
-	 */
-	protected $_lock = FALSE;
+    /**
+     * Lock placeholder
+     *
+     * @var	mixed
+     */
+    protected $_lock = FALSE;
 
-	/**
-	 * Read session ID
-	 *
-	 * Used to detect session_regenerate_id() calls because PHP only calls
-	 * write() after regenerating the ID.
-	 *
-	 * @var	string
-	 */
-	protected $_session_id;
+    /**
+     * Read session ID
+     *
+     * Used to detect session_regenerate_id() calls because PHP only calls
+     * write() after regenerating the ID.
+     *
+     * @var	string
+     */
+    protected $_session_id;
 
-	// ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
-	/**
-	 * Class constructor
-	 *
-	 * @param	array	$params	Configuration parameters
-	 * @return	void
-	 */
-	public function __construct(&$params)
-	{
-		$this->_config =& $params;
-	}
+    /**
+     * Class constructor
+     *
+     * @param	array	$params	Configuration parameters
+     * @return	void
+     */
+    public function __construct(&$params) {
+        $this->_config = & $params;
+    }
 
-	// ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
-	/**
-	 * Cookie destroy
-	 *
-	 * Internal method to force removal of a cookie by the client
-	 * when session_destroy() is called.
-	 *
-	 * @return	bool
-	 */
-	protected function _cookie_destroy()
-	{
-		return setcookie(
-			$this->_config['cookie_name'],
-			NULL,
-			1,
-			$this->_config['cookie_path'],
-			$this->_config['cookie_domain'],
-			$this->_config['cookie_secure'],
-			TRUE
-		);
-	}
+    /**
+     * Cookie destroy
+     *
+     * Internal method to force removal of a cookie by the client
+     * when session_destroy() is called.
+     *
+     * @return	bool
+     */
+    protected function _cookie_destroy() {
+        return setcookie(
+                $this->_config['cookie_name'], NULL, 1, $this->_config['cookie_path'], $this->_config['cookie_domain'], $this->_config['cookie_secure'], TRUE
+        );
+    }
 
-	// ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
-	/**
-	 * Get lock
-	 *
-	 * A dummy method allowing drivers with no locking functionality
-	 * (databases other than PostgreSQL and MySQL) to act as if they
-	 * do acquire a lock.
-	 *
-	 * @param	string	$session_id
-	 * @return	bool
-	 */
-	protected function _get_lock($session_id)
-	{
-		$this->_lock = TRUE;
-		return TRUE;
-	}
+    /**
+     * Get lock
+     *
+     * A dummy method allowing drivers with no locking functionality
+     * (databases other than PostgreSQL and MySQL) to act as if they
+     * do acquire a lock.
+     *
+     * @param	string	$session_id
+     * @return	bool
+     */
+    protected function _get_lock($session_id) {
+        $this->_lock = TRUE;
+        return TRUE;
+    }
 
-	// ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 
-	/**
-	 * Release lock
-	 *
-	 * @return	bool
-	 */
-	protected function _release_lock()
-	{
-		if ($this->_lock)
-		{
-			$this->_lock = FALSE;
-		}
+    /**
+     * Release lock
+     *
+     * @return	bool
+     */
+    protected function _release_lock() {
+        if ($this->_lock) {
+            $this->_lock = FALSE;
+        }
 
-		return TRUE;
-	}
+        return TRUE;
+    }
 
 }
