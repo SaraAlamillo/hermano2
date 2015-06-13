@@ -16,7 +16,7 @@
     </div>
     <div class="submit-area">
         <textarea name="Observaciones"><?= $vivienda->Observaciones ?></textarea>
-        <input type="submit" id="submit_contact" class="main-button" value="Modificar" />
+        <input type="submit" value="Modificar" />
     </div>
     <input type="hidden" value="<?= $vivienda->idVivienda ?>" name="idVivienda" />
 </form>

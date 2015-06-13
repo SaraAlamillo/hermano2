@@ -16,7 +16,7 @@
     </div>
     <div class="submit-area">
         <textarea name="Observaciones" placeholder="Observaciones"></textarea>
-        <input type="submit" id="submit_contact" class="main-button" value="Añadir" />
+        <input type="submit" value="Añadir" />
     </div>
 </form>
 <?= anchor(site_url('vivienda'), '<img title="Volver al listado" alt="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png"') ?>

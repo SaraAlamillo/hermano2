@@ -19,7 +19,7 @@ class Hermano extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Hermano_model->lista(),
-            "mensaje" => $this->session->flashdata("mensaje")
+            "alerta" => $this->session->flashdata("alerta")
         ];
 
         $this->vista($this->load->view('hermano/Lista', $parametros, TRUE), 'hermano');
@@ -42,7 +42,7 @@ class Hermano extends Main {
             $this->load->helper('Datos');
 
             $this->Hermano_model->cambia($idHermano, quitaDatoVacio($this->input->post()));
-            $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
             redirect(site_url("Hermano"));
         } else {
             $this->load->model('Vivienda_model');
@@ -78,7 +78,7 @@ class Hermano extends Main {
             $this->load->helper('Datos');
 
             $this->Hermano_model->agrega(quitaDatoVacio($this->input->post()));
-            $this->session->set_flashdata("mensaje", 'Se ha añadido el hermano correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido el hermano correctamente', 'tipo' => 'success']);
             redirect(site_url("Hermano"));
         } else {
             $this->load->model('Vivienda_model');
@@ -113,7 +113,7 @@ class Hermano extends Main {
         if ($this->input->post()) {
             if ($this->input->post('eliminar') == 'Si') {
                 echo $this->Hermano_model->elimina($idHermano);
-                $this->session->set_flashdata("mensaje", 'Se ha eliminado el hermano correctamente');
+                $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha eliminado el hermano correctamente', 'tipo' => 'success']);
                 redirect(site_url("Hermano"));
             } else {
                 redirect(site_url("Hermano"));

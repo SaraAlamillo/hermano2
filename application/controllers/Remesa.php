@@ -19,7 +19,7 @@ class Remesa extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Remesa_model->listar(),
-            "mensaje" => $this->session->flashdata("mensaje")
+            "alerta" => $this->session->flashdata("alerta")
         ];
 
         $this->vista($this->load->view('remesa/Lista', $parametros, TRUE), 'remesa');
@@ -28,7 +28,7 @@ class Remesa extends Main {
     public function insertar() {
         if ($this->input->post()) {
             $this->Remesa_model->alta($this->input->post());
-            $this->session->set_flashdata("mensaje", 'Se ha añadido la remesa correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la remesa correctamente', 'tipo' => 'success']);
             redirect(site_url("Remesa"));
         } else {
             $this->vista($this->load->view('remesa/Nueva', NULL, TRUE), 'remesa');
@@ -38,7 +38,7 @@ class Remesa extends Main {
     public function cambiar($id) {
         if ($this->input->post()) {
             $this->Remesa_model->cambio($this->input->post(), $id);
-            $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo'=> 'success']);
             redirect(site_url("Remesa"));
         } else {
             $parametros = [
@@ -50,13 +50,13 @@ class Remesa extends Main {
 
     public function elimina($idRemesa) {
         if ($this->Remesa_model->tieneCuotas($idRemesa)) {
-            $this->session->set_flashdata("mensaje", 'No se puede eliminar una remesa con cuotas asociadas');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'No se puede eliminar una remesa con cuotas asociadas', 'tipo' => 'warning']);
             redirect(site_url("Remesa"));
         } else {
             if ($this->input->post()) {
                 if ($this->input->post('eliminar') == 'Si') {
                     $this->Remesa_model->elimina($idRemesa);
-                    $this->session->set_flashdata("mensaje", 'Se ha eliminado la remesa correctamente');
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha eliminado la remesa correctamente','tipo' => 'success']);
                     redirect(site_url("Remesa"));
                 } else {
                     redirect(site_url("Remesa"));

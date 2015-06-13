@@ -1,6 +1,10 @@
-<?php if (!is_null($mensaje)): ?>
-    <p><?= $mensaje ?></p>
+<?php if (!is_null($alerta)): ?>
+    <div class="alert alert-<?= $alerta['tipo'] ?> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?= $alerta['mensaje'] ?>
+    </div>
 <?php endif; ?>
+
 <?= anchor(site_url('hermano/nuevo'), 'Añadir un hermano') ?>
 <table class="table table-striped table-hover">
     <thead>

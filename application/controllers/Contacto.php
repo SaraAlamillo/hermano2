@@ -19,7 +19,7 @@ class Contacto extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Contacto_model->listarTodo(),
-            "mensaje" => $this->session->flashdata("mensaje")
+            "alerta" => $this->session->flashdata("alerta")
         ];
 
         $this->vista($this->load->view('contacto/Lista', $parametros, TRUE), 'contacto');
@@ -30,7 +30,7 @@ class Contacto extends Main {
             $this->load->helper('Datos');
 
             $this->Contacto_model->cambio($idContacto, quitaDatoVacio($this->input->post()));
-            $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
             redirect(site_url("Contacto"));
         } else {
             $this->load->model('Provincia_model');
@@ -54,7 +54,7 @@ class Contacto extends Main {
             $this->load->helper('Datos');
 
             $this->contacto_model->alta(quitaDatoVacio($this->input->post()));
-            $this->session->set_flashdata("mensaje", 'Se ha añadido la vivienda correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
             redirect(site_url("Contacto"));
         } else {
             $this->load->model('Provincia_model');
@@ -89,7 +89,7 @@ class Contacto extends Main {
         if ($this->input->post()) {
             if ($this->input->post('eliminar') == 'Si') {
                 $this->Contacto_model->eliminar($idContacto);
-                $this->session->set_flashdata("mensaje", 'Se ha eliminado el contacto correctamente');
+                $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha eliminado el contacto correctamente', 'tipo' => 'success']);
                 redirect(site_url("Contacto"));
             } else {
                 redirect(site_url("Contacto"));

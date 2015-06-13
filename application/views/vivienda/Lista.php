@@ -1,6 +1,10 @@
-<?php if (!is_null($mensaje)): ?>
-    <p><?= $mensaje ?></p>
+<?php if (!is_null($alerta)): ?>
+    <div class="alert alert-<?= $alerta['tipo'] ?> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?= $alerta['mensaje'] ?>
+    </div>
 <?php endif; ?>
+
 <h1>Listado de viviendas</h1>
 <?= anchor(site_url('vivienda/nueva'), '<img alt="Añadir una vivienda" title="Añadir una vivienda" src="' . base_url() . 'assets/images/icons/btnAddVivienda.png" />') ?>
 <table class="table table-striped table-hover">

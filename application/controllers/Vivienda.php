@@ -19,7 +19,7 @@ class Vivienda extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Vivienda_model->listarTodo(),
-            "mensaje" => $this->session->flashdata("mensaje")
+            "alerta" => $this->session->flashdata("alerta")
         ];
 
         $this->vista($this->load->view('vivienda/Lista', $parametros, TRUE), 'vivienda');
@@ -28,7 +28,7 @@ class Vivienda extends Main {
     public function cambio($idVivienda) {
         if ($this->input->post()) {
             $this->Vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
-            $this->session->set_flashdata("mensaje", 'Se han realizado las cambios correctamente');
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
             redirect(site_url("Vivienda"));
         } else {
             $parametros = [
@@ -41,8 +41,8 @@ class Vivienda extends Main {
 
     public function nueva() {
         if ($this->input->post()) {
-            $this->vivienda_model->alta($this->input->post());
-            $this->session->set_flashdata("mensaje", 'Se ha añadido la vivienda correctamente');
+            $this->Vivienda_model->alta($this->input->post());
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
             redirect(site_url("Vivienda"));
         } else {
             $this->load->helper('Form');
