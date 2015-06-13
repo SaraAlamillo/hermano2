@@ -21,6 +21,7 @@ class Constructor_model extends CI_Model {
         $this->db->from('remesa');
         $this->db->join('pago', 'remesa.idRemesa = pago.idRemesa', 'full');
         $this->db->join('hermano', 'hermano.idHermano = pago.idHermano', 'full');
+        $this->db->order_by('1', 'asc');
         $consulta = $this->db->get();
 
         return $consulta->result();
