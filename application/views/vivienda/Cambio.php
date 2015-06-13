@@ -1,34 +1,23 @@
-<?= anchor(site_url('vivienda'), 'Volver al listado') ?>
+<h1>Modificar una vivienda</h1>
 <form action="" method="POST" id="contact-form">
     <div class="text-fields">
-        <fieldset>
-            <legend>Barriada</legend> 
-            <div class="float-input">
-                <input type="text" value="<?= $vivienda->Barriada ?>" readonly="readonly" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Línea</legend> 
-            <div class="float-input">
-                <input type="text" value="<?= $vivienda->Linea ?>" readonly="readonly" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Número</legend> 
-            <div class="float-input">
-                <input type="text" value="<?= $vivienda->Numero ?>" readonly="readonly" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
+        <div class="float-input">
+            <input type="text" value="<?= $vivienda->Barriada ?>" readonly="readonly" />
+            <span>Barriada</span>
+        </div>
+        <div class="float-input">
+            <input type="text" value="<?= $vivienda->Linea ?>" readonly="readonly" />
+            <span>Línea</span>
+        </div>
+        <div class="float-input">
+            <input type="text" value="<?= $vivienda->Numero ?>" readonly="readonly" />
+            <span>Número</span>
+        </div>
     </div>
     <div class="submit-area">
-        <fieldset>
-            <legend>Observaciones</legend> 
-            <textarea name="Observaciones"><?= $vivienda->Observaciones ?></textarea>
-        </fieldset>
+        <textarea name="Observaciones"><?= $vivienda->Observaciones ?></textarea>
+        <input type="submit" id="submit_contact" class="main-button" value="Modificar" />
     </div>
     <input type="hidden" value="<?= $vivienda->idVivienda ?>" name="idVivienda" />
-    <input type="submit" id="submit_contact" class="main-button" value="Modificar" />
 </form>
+<?= anchor(site_url('vivienda'), '<img alt="Volver al listado" title="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png" />') ?>

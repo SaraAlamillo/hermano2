@@ -1408,18 +1408,22 @@ ul.depth li:before {
 
 .float-input {
     position: relative;
-    padding-left: 58px;
+    //padding-left: 58px;
 }
 
 .float-input span {
+    background-color: #242b2e;
+    color: white;
     position: absolute;
-    width: 58px;
+    width: 150px;
     height: 58px;
     border: 1px solid #eaeaea;
     top: 0px;
     left: 0px;
     z-index: 2;
     text-align: center;
+    vertical-align: middle;
+    line-height: 58px;
 }
 
 .float-input span i {
@@ -1427,7 +1431,7 @@ ul.depth li:before {
     font-size: 12px;
     color: #1ab5b3;
     display: inline-block;
-    width: 32px;
+    width: 100%;
     height: 32px;
     text-align: center;
     border-radius: 50%;
@@ -1443,10 +1447,32 @@ ul.depth li:before {
 }
 
 #contact-form input[type="text"],
-#contact-form textarea,
 .comment-form input[type="text"],
-.comment-form textarea,
 #contact-form select{
+    color: #848484;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #eaeaea;
+    border-left: none;
+    font-weight: 300;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    outline: none;
+    width: 60%;
+    margin-left: 150px;
+    padding-left: 0px;
+    padding: 18px;
+    display: block;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;  
+}
+#contact-form textarea,
+.comment-form textarea {
     color: #848484;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -1468,8 +1494,10 @@ ul.depth li:before {
     -o-transition: all 0.2s ease-in-out;  
 }
 
-#contact-form input[type="text"]:focus + span i,
-.comment-form input[type="text"]:focus + span i {
+#contact-form input:focus + span,
+.comment-form input:focus + span,
+#contact-form select:focus + span,
+.comment-form select:focus + span  {
     color: #fff;
     background: #1ab5b3;
 }

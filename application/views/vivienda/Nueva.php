@@ -1,21 +1,22 @@
-<?= anchor(site_url('vivienda'), 'Volver al listado') ?>
+<h1>Dar de alta una vivienda</h1>
 <form action="" method="POST" id="contact-form">
     <div class="text-fields">
         <div class="float-input">
             <?= crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => 'Barriada', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE) ?>
-            <span><i class="fa fa-user"></i></span>
+            <span>Barriada</span>
         </div>
         <div class="float-input">
             <?= crearDesplegable('Linea', $lisLinea, '', ['nombre' => 'Línea', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
-            <span><i class="fa fa-user"></i></span>
+            <span>Línea</span>
         </div>
         <div class="float-input">
             <?= crearDesplegable('Numero', $lisNumero, '', ['nombre' => 'Número', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
-            <span><i class="fa fa-user"></i></span>
+            <span>Número</span>
         </div>
     </div>
     <div class="submit-area">
-        <textarea name="Observaciones">Observaciones</textarea>
+        <textarea name="Observaciones" placeholder="Observaciones"></textarea>
+        <input type="submit" id="submit_contact" class="main-button" value="Añadir" />
     </div>
-    <input type="submit" id="submit_contact" class="main-button" value="Añadir" />
 </form>
+<?= anchor(site_url('vivienda'), '<img title="Volver al listado" alt="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png"') ?>
