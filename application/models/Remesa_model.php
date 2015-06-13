@@ -50,7 +50,6 @@ class Remesa_model extends CI_Model {
     public function tieneCuotas($idRemesa) {
         $this->db->where('idRemesa', $idRemesa);
         $this->db->from('pago');
-        $this->db->join('cuota', 'pago.idCuota = cuota.idCuota');
 
         if ($this->db->count_all_results() > 0) {
             return TRUE;

@@ -60,7 +60,7 @@ class Contacto_model extends CI_Model {
 
     public function nombreTipo($id) {
         $this->db->where('idTipo_Contacto', $id);
-        $consulta = $this->db->get('Tipo_Contacto');
+        $consulta = $this->db->get('tipo_contacto');
         $resultado = $consulta->row();
         return $resultado->tipo;
     }
