@@ -10,14 +10,14 @@
             <tr>
     <?php foreach ($listado as $l): ?>
         <?php $contador++; ?>
-                            <td>
-                                <label for="<?= $l->idHermano ?>">
-                                    <input type="checkbox" id="<?= $l->idHermano ?>" name="hermanos[]" value="<?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>" checked="checked" /><?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>                
-                                </label>
-                            </td>
+                                <td>
+                                    <label for="<?= $l->idHermano ?>">
+                                        <input type="checkbox" id="<?= $l->idHermano ?>" name="hermanos[]" value="<?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>" checked="checked" /><?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>                
+                                    </label>
+                                </td>
         <?php if ($contador % 3 == 0): ?>
-                                    </tr>
-                                    <tr>
+                                            </tr>
+                                            <tr>
         <?php endif; ?>
     <?php endforeach; ?>
             </tr>
@@ -31,8 +31,7 @@
                 <li>
                     <label for="<?= $l->idHermano ?>">
                         <input type="checkbox" id="<?= $l->idHermano ?>" name="hermanos[]" value="<?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>" checked="checked" /> <br />
-                    <?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?>                
-                    </label>
+                        <span><?= $l->idHermano . '. ' . $l->nombre . ' ' . $l->apellido1 . ' ' . $l->apellido2 ?></span>                    </label>
                 </li>
             <?php endforeach; ?>
         </ul>
