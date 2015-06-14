@@ -10,13 +10,13 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>Empresa</td>
-            <td>Nombre</td>
-            <td>Primer apellido</td>
-            <td>Segundo apellido</td>
-            <td>Teléfono móvil</td>
-            <td>Teléfono fijo</td>
-            <td>Acciones</td>
+            <th>Empresa</th>
+            <th>Nombre</th>
+            <th>Primer apellido</th>
+            <th>Segundo apellido</th>
+            <th>Teléfono móvil</th>
+            <th>Teléfono fijo</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>

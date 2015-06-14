@@ -8,10 +8,10 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>Año</td>
-            <td>Descripción</td>
-            <td>Primer pago</td>
-            <td>Segundo pago</td>
+            <th>Año</th>
+            <th>Descripción</th>
+            <th>Primer pago</th>
+            <th>Segundo pago</th>
         </tr>
     </thead>
     <tbody>

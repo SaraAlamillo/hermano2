@@ -10,8 +10,8 @@
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-            <td>Año</td>
-            <td>Descripción</td>
+            <th>Año</th>
+            <th>Descripción</th>
         </tr>
     </thead>
     <tbody>
