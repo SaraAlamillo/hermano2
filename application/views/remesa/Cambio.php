@@ -6,9 +6,9 @@
     <div class="submit-area">
         <div class="float-input">
             <input type="text" name="anio" value="<?= $remesa->anio ?>" title="Año" />
-            <span><i class="fa fa-user"></i></span>
+            <span>Año</span>
         </div>
         <input type="submit" value="Modificar" />
     </div>
 </form>
-<?= anchor(site_url('remesa'), 'Volver al listado') ?>
+<?= anchor(site_url('remesa'), '<img alt="Volver al listado" title="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png" />') ?>
