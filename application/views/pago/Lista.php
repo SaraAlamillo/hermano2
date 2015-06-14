@@ -16,22 +16,22 @@
     </thead>
     <tbody>
         <?php foreach ($listado as $l): ?>
-            <?php if (empty($l->plazo1) || empty($l->plazo2)): ?>
+            <?php if (empty($l->cuota1) || empty($l->cuota2)): ?>
                 <tr class="danger">
                 <?php else: ?>
                 <tr class="success">
                 <?php endif; ?>
                 <td><?= $l->anio ?></td>
                 <td><?= $l->descripcion ?></td>
-                <?php if (empty($l->plazo1)): ?>
+                <?php if (empty($l->cuota1)): ?>
                     <td>NO PAGADO</td>
                 <?php else: ?>
-                    <td><?= $l->plazo1 ?></td>
+                    <td><?= $l->cuota1 ?></td>
                 <?php endif; ?>
-                <?php if (empty($l->plazo2)): ?>
+                <?php if (empty($l->cuota2)): ?>
                     <td>NO PAGADO</td>
                 <?php else: ?>
-                    <td><?= $l->plazo2 ?></td>
+                    <td><?= $l->cuota2 ?></td>
                 <?php endif; ?>
                 </td>
             </tr>
