@@ -45,7 +45,7 @@ class Pago extends Main {
                 'descripciones' => $this->Remesa_model->descripciones(is_null($anio) ? date('Y') : $anio),
                 'seleccionado' => [
                     'hermano' => $hermano,
-                    'anio' => $anio == ''? 'Año' : $anio,
+                    'anio' => $anio == '' ? 'Año' : $anio,
                     'descripcion' => $descripcion
                 ]
             ];
@@ -57,16 +57,12 @@ class Pago extends Main {
 
                 $parametros['seleccionado']['cuota1'] = $plazos->cuota1;
                 $parametros['seleccionado']['cuota2'] = $plazos->cuota2;
-            } else {
-                $parametros['seleccionado']['cuota1'] = date('d/m/Y');
-                $parametros['seleccionado']['cuota2'] = date('d/m/Y');
             }
-
 
             $this->load->helper('Form');
 
             $this->vista($this->load->view('pago/Registro', $parametros, TRUE), 'registro');
-        } 
+        }
     }
 
 }

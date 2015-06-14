@@ -1449,7 +1449,8 @@ ul.depth li:before {
 #contact-form input[type="text"],
 .comment-form input[type="text"],
 #contact-form select,
-.radioButton {
+.radioButton,
+#contact-form input[type ="date"]{
     color: #848484;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
