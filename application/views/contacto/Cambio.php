@@ -1,153 +1,105 @@
-<?= anchor(site_url('contacto'), 'Volver al listado') ?>
+<h1>Modificar un contacto de la agenda</h1>
 <form action="" method="POST" id="contact-form">
-    <div class="text-fields">
+     <div class="text-fields">
+        <div class="float-input">
+            <?= crearDesplegable('tipo', $lisTipo, $contacto->tipo, ['tipo' => 'Tipo de contacto', 'idTipo_Contacto' => ''], ['desc' => 'tipo', 'valor' => 'idTipo_Contacto'], TRUE) ?>
+            <span>Tipo de contacto</span>
+        </div>
         <fieldset>
-            <legend>Empresa</legend> 
-            <div class="float-input"><input type="text" name="nombre_empresa" value="<?= $contacto->nombre_empresa ?>" />
-                <span><i class="fa fa-user"></i></span>
+            <legend>Datos personales</legend>
+            <div class="float-input">
+                <input type="text" name="nombre_empresa" placeholder="Empresa" value="<?= $contacto->nombre_empresa ?>" />
+                <span>Empresa</span>
+            </div>
+            <div class="float-input">
+                <?= crearDesplegable('tratamiento', $lisTratamiento, $contacto->tratamiento, ['nombre' => 'Tratamiento', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+                <span>Tratamiento</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="nombre" placeholder="Nombre" value="<?= $contacto->nombre ?>" />
+                <span>Nombre</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="apellido1" placeholder="Primer apellido" value="<?= $contacto->apellido1 ?>" />
+                <span>Primer apellido</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="apellido2" placeholder="Segundo apellido" value="<?= $contacto->apellido2 ?>" />
+                <span>Segundo apellido</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="cif" placeholder="CIF" value="<?= $contacto->cif ?>" />
+                <span>CIF</span>
             </div>
         </fieldset>
         <fieldset>
-            <legend>Tratamiento</legend> 
+            <legend>Contacto</legend>
             <div class="float-input">
-                <?= crearDesplegable('tratamiento', $lisTratamiento, $contacto->tratamiento, NULL, ['desc' => 'nombre', 'valor' => 'id']) ?>
-                <span><i class="fa fa-user"></i></span>
+                <input type="text" name="movil" placeholder="Teléfono móvil" value="<?= $contacto->movil ?>" />
+                <span>Télefono móvil</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="fijo" placeholder="Teléfono fijo" value="<?= $contacto->fijo ?>" />
+                <span>Teléfono fijo</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="email" placeholder="Correo eléctronico" value="<?= $contacto->email ?>" />
+                <span>Correo electrónico</span>
+            </div>
+        </fieldset>
+    </div>
+    <div class="submit-area">
+        <fieldset>
+            <legend>Domicilio</legend>
+            <div class="float-input">
+                <?= crearDesplegable('tipo_via', $lisTipoVia, $contacto->tipo_via, ['nombre' => 'Tipo de vía', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+                <span>Tipo de vía</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="direccion" placeholder="Dirección" value="<?= $contacto->direccion ?>" />
+                <span>Dirección</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="numero" placeholder="Número" value="<?= $contacto->numero ?>" />
+                <span>Número</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="piso" placeholder="Piso" value="<?= $contacto->piso ?>" />
+                <span>Piso</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="puerta" placeholder="Puerta" value="<?= $contacto->puerta ?>" />
+                <span>Puerta</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="codigo_postal" placeholder="Código postal" value="<?= $contacto->codigo_postal ?>" />
+                <span>Código postal</span>
+            </div>
+            <div class="float-input">
+                <input type="text" name="poblacion" placeholder="Población" value="<?= $contacto->poblacion ?>" />
+                <span>Población</span>
+            </div>
+            <div class="float-input">
+                <?= crearDesplegable('provincia', $lisProvincia, $contacto->provincia, ['nombre' => 'Provincia', 'idProvincia' => ''], ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?>
+                <span>Provincia</span>
             </div>
         </fieldset>
         <fieldset>
-            <legend>Nombre</legend> 
+            <legend>Redes sociales</legend>
             <div class="float-input">
-                <input type="text" name="nombre" value="<?= $contacto->nombre ?>" />
-                <span><i class="fa fa-user"></i></span>
+                <input type="text" name="twitter" placeholder="Twitter" value="<?= $contacto->twitter ?>" />
+                <span>Twitter</span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Primer apellido</legend> 
             <div class="float-input">
-                <input type="text" name="apellido1" value="<?= $contacto->apellido1 ?>" />
-                <span><i class="fa fa-user"></i></span>
+                <input type="text" name="facebook" placeholder="Facebook" value="<?= $contacto->facebook ?>" />
+                <span>Facebook</span>
             </div>
-        </fieldset>
-        <fieldset>
-            <legend>Segundo apellido</legend> 
             <div class="float-input">
-                <input type="text" name="apellido2" value="<?= $contacto->apellido2 ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>CIF</legend> 
-            <div class="float-input">
-                <input type="text" name="cif" value="<?= $contacto->cif ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Tipo de vía</legend> 
-            <div class="float-input">
-                <?= crearDesplegable('tipo_via', $lisTipoVia, $contacto->tipo_via, NULL, ['desc' => 'nombre', 'valor' => 'id']) ?>
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Dirección</legend> 
-            <div class="float-input">
-                <input type="text" name="direccion" value="<?= $contacto->direccion ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Número</legend> 
-            <div class="float-input">
-                <input type="text" name="numero" value="<?= $contacto->numero ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Piso</legend> 
-            <div class="float-input">
-                <input type="text" name="piso" value="<?= $contacto->piso ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Puerta</legend> 
-            <div class="float-input">
-                <input type="text" name="puerta" value="<?= $contacto->puerta ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Código postal</legend> 
-            <div class="float-input">
-                <input type="text" name="codigo_postal" value="<?= $contacto->codigo_postal ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Población</legend> 
-            <div class="float-input">
-                <input type="text" name="poblacion" value="<?= $contacto->poblacion ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Móvil</legend> 
-            <div class="float-input">
-                <input type="text" name="movil" value="<?= $contacto->movil ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Fijo</legend> 
-            <div class="float-input">
-                <input type="text" name="fijo" value="<?= $contacto->fijo ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Email</legend> 
-            <div class="float-input">
-                <input type="text" name="email" value="<?= $contacto->email ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Twitter</legend> 
-            <div class="float-input">
-                <input type="text" name="twitter" value="<?= $contacto->twitter ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Facebook</legend> 
-            <div class="float-input">
-                <input type="text" name="facebook" value="<?= $contacto->facebook ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Instagram</legend> 
-            <div class="float-input">
-                <input type="text" name="instagram" value="<?= $contacto->instagram ?>" />
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Tipo</legend> 
-            <div class="float-input">
-                <?= crearDesplegable('tipo', $lisTipo, $contacto->tipo, NULL, ['desc' => 'tipo', 'valor' => 'idTipo_Contacto'], TRUE) ?>
-                <span><i class="fa fa-user"></i></span>
-            </div>
-        </fieldset>
-        <fieldset>
-            <legend>Provincia</legend> 
-            <div class="float-input">
-                <?= crearDesplegable('provincia', $lisProvincia, $contacto->provincia, NULL, ['desc' => 'nombre', 'valor' => 'idProvincia'], TRUE) ?>
-                <span><i class="fa fa-user"></i></span>
+                <input type="text" name="instagram" placeholder="Instagram" value="<?= $contacto->instagram ?>" />
+                <span>Instagram</span>
             </div>
         </fieldset>
     </div>
     <input type="submit" value="Modificar" />
 </form>
-
+<?= anchor(site_url('contacto'), '<img alt="Volver al listado" title="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png" />') ?>
