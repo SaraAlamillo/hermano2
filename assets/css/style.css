@@ -45,13 +45,13 @@
 /*-------------------------------------------------*/
 
 header {
+    position: fixed;
     display: block;
     width: 300px;
     float: left;
     background: #242b2e;
     text-align: right;
     z-index: 4;
-    position: relative;
     box-shadow: 0 0 50px #000;
     -webkit-box-shadow: 0 0 50px #000;
     -moz-box-shadow: 0 0 50px #000;
