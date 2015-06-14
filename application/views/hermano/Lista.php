@@ -21,7 +21,11 @@
     </thead>
     <tbody>
         <?php foreach ($listado as $l): ?>
-            <tr>
+            <?php if ($morosos[$l->idHermano]): ?>
+                <tr class="danger">
+                <?php else: ?>
+                <tr class="success">
+                <?php endif; ?>
                 <td><?= $l->idHermano ?></td>
                 <td><?= $l->nombre ?></td>
                 <td><?= $l->apellido1 ?></td>

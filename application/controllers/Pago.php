@@ -14,7 +14,8 @@ class Pago extends Main {
 
     public function lista($idHermano) {
         $parametros = [
-            'listado' => $this->Pago_model->lista(['hermano.idHermano = ' => $idHermano])
+            'listado' => $this->Pago_model->lista(['hermano.idHermano = ' => $idHermano]),
+            "alerta" => $this->session->flashdata("alerta")
         ];
 
         $this->vista($this->load->view('pago/Lista', $parametros, TRUE), 'hermano');

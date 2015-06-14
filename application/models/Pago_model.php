@@ -34,5 +34,29 @@ class Pago_model extends CI_Model {
 
         return $consulta->row();
     }
+    
+    public function listaMorosos() {
+        $this->load->model('Hermano_model');
+        
+        $morosos = $this->lista('cuota1 is null or cuota2 is null');
+        $hermanos = $this->lista();
+        
+        $return = [];
+        
+        foreach ($hermanos as $h) {
+            $debe = FALSE;
+            
+            foreach ($morosos as $m) {
+                if ($m->idHermano == $h->idHermano) {
+                    $debe = TRUE;
+                    break;
+                }
+            }
+            
+            $return[$h->idHermano] = $debe;
+        }
+        
+        return $return;
+    }
 
 }

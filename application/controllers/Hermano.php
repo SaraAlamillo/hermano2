@@ -17,9 +17,12 @@ class Hermano extends Main {
     }
 
     public function lista() {
+        $this->load->model('Pago_model');
+        
         $parametros = [
             'listado' => $this->Hermano_model->lista(),
-            "alerta" => $this->session->flashdata("alerta")
+            "alerta" => $this->session->flashdata("alerta"),
+            'morosos' => $this->Pago_model->listaMorosos()
         ];
 
         $this->vista($this->load->view('hermano/Lista', $parametros, TRUE), 'hermano');

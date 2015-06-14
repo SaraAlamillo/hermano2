@@ -4,7 +4,7 @@
         <?= $alerta['mensaje'] ?>
     </div>
 <?php endif; ?>
-<?= anchor(site_url('hermano'), 'Volver al listado') ?>
+<h1>Listado de pagos de <?= $listado[0]->nombre . ' ' . $listado[0]->apellido1 . ' ' . $listado[0]->apellido2 ?></h1>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -16,7 +16,11 @@
     </thead>
     <tbody>
         <?php foreach ($listado as $l): ?>
-            <tr>
+            <?php if (empty($l->plazo1) || empty($l->plazo2)): ?>
+                <tr class="danger">
+                <?php else: ?>
+                <tr class="success">
+                <?php endif; ?>
                 <td><?= $l->anio ?></td>
                 <td><?= $l->descripcion ?></td>
                 <?php if (empty($l->plazo1)): ?>
@@ -34,3 +38,4 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?= anchor(site_url('hermano'), '<img alt="Volver al listado" title="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png" />') ?>
