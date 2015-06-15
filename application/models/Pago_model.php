@@ -26,6 +26,12 @@ class Pago_model extends CI_Model {
         $this->db->insert('pago', $datos);
     }
 
+    public function agregaCuota($idHermano, $idRemesa, $cuota, $fecha) {
+        $this->db->where('idHermano', $idHermano);
+        $this->db->where('idRemesa', $idRemesa);
+        $this->db->update('pago', [$cuota => $fecha]);
+    }
+
     public function plazos($idHermano, $idRemesa) {
         $this->db->select('cuota1, cuota2');
         $this->db->from('pago');
@@ -34,28 +40,28 @@ class Pago_model extends CI_Model {
 
         return $consulta->row();
     }
-    
+
     public function listaMorosos() {
         $this->load->model('Hermano_model');
-        
+
         $morosos = $this->lista('cuota1 is null or cuota2 is null');
         $hermanos = $this->lista();
-        
+
         $return = [];
-        
+
         foreach ($hermanos as $h) {
             $debe = FALSE;
-            
+
             foreach ($morosos as $m) {
                 if ($m->idHermano == $h->idHermano) {
                     $debe = TRUE;
                     break;
                 }
             }
-            
+
             $return[$h->idHermano] = $debe;
         }
-        
+
         return $return;
     }
 

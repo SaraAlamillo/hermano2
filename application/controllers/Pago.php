@@ -22,47 +22,71 @@ class Pago extends Main {
     }
 
     public function registra($hermano = NULL, $anio = NULL, $descripcion = NULL) {
+        $alerta = NULL;
+
         if ($this->input->post()) {
-            
-        } else {
-            $this->load->model('Hermano_model');
-            $hermanos = [];
+            $contador = 0;
 
-            foreach ($this->Hermano_model->lista() as $h) {
-                array_push(
-                        $hermanos, [
-                    'id' => $h->idHermano,
-                    'nombre' => $h->nombre . ' ' . $h->apellido1 . ' ' . $h->apellido2
-                        ]
-                );
+            if ($this->input->post('cuota1')) {
+                $this->Pago_model->agregaCuota($hermano, $descripcion, 'cuota1', $this->input->post('cuota1'));
+                $contador++;
             }
 
-            $this->load->model('Remesa_model');
-
-            $parametros = [
-                'hermanos' => $hermanos,
-                'anios' => $this->Remesa_model->anios(),
-                'descripciones' => $this->Remesa_model->descripciones(is_null($anio) ? date('Y') : $anio),
-                'seleccionado' => [
-                    'hermano' => $hermano,
-                    'anio' => $anio == '' ? 'Año' : $anio,
-                    'descripcion' => $descripcion
-                ]
-            ];
-
-
-            if (!is_null($hermano) and ! is_null($descripcion)) {
-                $this->load->model('Pago_model');
-                $plazos = $this->Pago_model->plazos($hermano, $descripcion);
-
-                $parametros['seleccionado']['cuota1'] = $plazos->cuota1;
-                $parametros['seleccionado']['cuota2'] = $plazos->cuota2;
+            if ($this->input->post('cuota2')) {
+                $this->Pago_model->agregaCuota($hermano, $descripcion, 'cuota2', $this->input->post('cuota2'));
+                $contador++;
             }
 
-            $this->load->helper('Form');
-
-            $this->vista($this->load->view('pago/Registro', $parametros, TRUE), 'registro');
+            if ($contador == 0) {
+                $alerta = [
+                    'tipo' => 'danger',
+                    'mensaje' => 'No se ha registrado ningún pago.'
+                ];
+            } else {
+                $alerta = [
+                    'tipo' => 'success',
+                    'mensaje' => 'Se ha registrado el pago correctamente.'
+                ];
+            }
         }
+        $this->load->model('Hermano_model');
+        $hermanos = [];
+
+        foreach ($this->Hermano_model->lista() as $h) {
+            array_push(
+                    $hermanos, [
+                'id' => $h->idHermano,
+                'nombre' => $h->nombre . ' ' . $h->apellido1 . ' ' . $h->apellido2
+                    ]
+            );
+        }
+
+        $this->load->model('Remesa_model');
+
+        $parametros = [
+            'hermanos' => $hermanos,
+            'anios' => $this->Remesa_model->anios(),
+            'descripciones' => $this->Remesa_model->descripciones(is_null($anio) ? date('Y') : $anio),
+            'seleccionado' => [
+                'hermano' => $hermano,
+                'anio' => $anio == '' ? 'Año' : $anio,
+                'descripcion' => $descripcion
+            ],
+            'alerta' => $alerta
+        ];
+
+
+        if (!is_null($hermano) and !is_null($descripcion)) {
+            $this->load->model('Pago_model');
+            $plazos = $this->Pago_model->plazos($hermano, $descripcion);
+
+            $parametros['seleccionado']['cuota1'] = $plazos->cuota1;
+            $parametros['seleccionado']['cuota2'] = $plazos->cuota2;
+        }
+
+        $this->load->helper('Form');
+
+        $this->vista($this->load->view('pago/Registro', $parametros, TRUE), 'registro');
     }
 
 }

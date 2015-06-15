@@ -1,3 +1,10 @@
+<?php if (!is_null($alerta)): ?>
+    <div class="alert alert-<?= $alerta['tipo'] ?> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <?= $alerta['mensaje'] ?>
+    </div>
+<?php endif; ?>
+
 <h1>Registro de pagos</h1>
 <form action="" method="POST" id="contact-form">
     <div class="float-input">
@@ -18,11 +25,19 @@
                 <fieldset>
                     <legend>Plazos</legend>
                     <div class="float-input">
-                        <input type="date" name="cuota1" value="<?= $seleccionado['cuota1'] ?>" />
+                        <?php if ($seleccionado['cuota1'] == NULL) : ?>
+                            <input type="date" name="cuota1" class="danger" />
+                        <?php else: ?>
+                            <input type="date" readonly="readonly" value="<?= $seleccionado['cuota1'] ?>" class="success" />
+                        <?php endif; ?>
                         <span>Cuota 1</span>
                     </div>
                     <div class="float-input">
-                        <input type="date" name="cuota2" value="<?= $seleccionado['cuota2'] ?>" />
+                        <?php if ($seleccionado['cuota2'] == NULL) : ?>
+                            <input type="date" name="cuota2" class="danger" />
+                        <?php else: ?>
+                            <input type="date" readonly="readonly" value="<?= $seleccionado['cuota2'] ?>" class="success" />
+                        <?php endif; ?>
                         <span>Cuota 2</span>
                     </div>
                 </fieldset>
@@ -67,7 +82,7 @@
         if (selRemesa !== '') {
             urlNueva += selRemesa + '/';
         }
-        
+
         window.location.href = urlNueva;
     }
 </script>

@@ -1515,14 +1515,16 @@ table th[class*="col-"] {
 .table > tfoot > tr.success > td,
 .table > thead > tr.success > th,
 .table > tbody > tr.success > th,
-.table > tfoot > tr.success > th {
+.table > tfoot > tr.success > th,
+input[type="date"].success{
     background-color: #dff0d8;
     border-color: #d6e9c6;
 }
 
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
-.table-hover > tbody > tr.success:hover > td {
+.table-hover > tbody > tr.success:hover > td, 
+input[type="date"].success:hover{
     background-color: #d0e9c6;
     border-color: #c9e2b3;
 }
@@ -1538,14 +1540,16 @@ table th[class*="col-"] {
 .table > tfoot > tr.danger > td,
 .table > thead > tr.danger > th,
 .table > tbody > tr.danger > th,
-.table > tfoot > tr.danger > th {
+.table > tfoot > tr.danger > th,
+input[type="date"].danger {
     background-color: #f2dede;
     border-color: #eed3d7;
 }
 
 .table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover,
-.table-hover > tbody > tr.danger:hover > td {
+.table-hover > tbody > tr.danger:hover > td,
+input[type="date"].danger:hover {
     background-color: #ebcccc;
     border-color: #e6c1c7;
 }
