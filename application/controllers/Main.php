@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Main extends CI_Controller {
-    
+
     public function __construct() {
         parent::__construct();
         if (empty($this->session->userdata('login')) || $this->session->userdata('login') !== TRUE) {
@@ -25,15 +25,15 @@ class Main extends CI_Controller {
 
         $this->load->view('Plantilla', $parametros);
     }
-    
+
     public function login() {
         if ($this->input->post()) {
             $this->load->model('Usuario_model');
-            
+
             if ($this->Usuario_model->usuarioCorrecto($this->input->post())) {
                 $this->session->set_userdata('login', TRUE);
                 $this->session->set_userdata('rol', $this->Usuario_model->getRol($this->input->post()));
-				redirect($this->input->post('url'));
+                redirect($this->input->post('url'));
             } else {
                 $this->session->set_flashdata("alerta", ['mensaje' => 'El usuario o contraseña introducido no es correcto', 'tipo' => 'danger']);
             }
@@ -41,9 +41,14 @@ class Main extends CI_Controller {
             $parametros = [
                 "alerta" => $this->session->flashdata("alerta")
             ];
-            
+
             $this->load->view('login', $parametros);
         }
+    }
+
+    public function salir() {
+        $this->session->set_userdata('login', FALSE);
+        redirect(site_url());
     }
 
 }

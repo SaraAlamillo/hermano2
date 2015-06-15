@@ -20,19 +20,20 @@
         <div id="container">
             <header>
                 <div class="logo-box">
-                    <?= anchor(site_url('main'), "<img src='" . base_url() . "assets/images/logo.png' />", ['class' => 'logo']) ?>
+                    <?= anchor(site_url('main'), "<img src='" . base_url() . "assets/images/logo.png' />", ['class' => 'logo img-responsive']) ?>
                 </div>
                 <a class="elemadded responsive-link" href="#">Menu</a>
                 <div class="menu-box">
                     <ul class="menu">
-                        <li><?= anchor(site_url('main'), '<span>Inicio</span>', ['class' => $activo == 'home' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('vivienda'), '<span>Viviendas</span>', ['class' => $activo == 'vivienda' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('hermano'), '<span>Hermanos</span>', ['class' => $activo == 'hermano' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('remesa'), '<span>Remesas</span>', ['class' => $activo == 'remesa' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('constructor'), '<span>Consultas</span>', ['class' => $activo == 'constructor' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('pago/registra'), '<span>Registro de pagos</span>', ['class' => $activo == 'registro' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('contacto'), '<span>Agenda de contactos</span>', ['class' => $activo == 'contacto' ? 'active' : '']) ?></li>
-                        <li><?= anchor(site_url('hermano/medallas'), '<span>Sorteo de medallas</span>', ['class' => $activo == 'medalla' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Main'), '<span>Inicio</span>', ['class' => $activo == 'home' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Vivienda'), '<span>Viviendas</span>', ['class' => $activo == 'vivienda' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Hermano'), '<span>Hermanos</span>', ['class' => $activo == 'hermano' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Remesa'), '<span>Remesas</span>', ['class' => $activo == 'remesa' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Constructor'), '<span>Consultas</span>', ['class' => $activo == 'constructor' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Pago/registra'), '<span>Registro de pagos</span>', ['class' => $activo == 'registro' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Contacto'), '<span>Agenda de contactos</span>', ['class' => $activo == 'contacto' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Hermano/medallas'), '<span>Sorteo de medallas</span>', ['class' => $activo == 'medalla' ? 'active' : '']) ?></li>
+                        <li><?= anchor(site_url('Main/salir'), '<span>fgdft<img  src="' . base_url() . 'assets/images/imgCerrarSesion.png" class="img-responsive" /></span>', ['class' => $activo == 'medalla' ? 'active' : '']) ?></li>
                     </ul>				
                 </div>
             </header>
