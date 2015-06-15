@@ -1595,7 +1595,7 @@ label {
 
 .bs-glyphicons{margin:0 -10px 20px;overflow:hidden}
 .bs-glyphicons-list{padding-left:0;list-style:none}
-.bs-glyphicons li{float:left;width:25%;height:90px;padding:10px;line-height:1.4;text-align:center;background-color:#f9f9f9;border:1px solid #fff; font-size: 16px; }
+.bs-glyphicons li{float:left;width:25%;height:125px;padding:10px;line-height:1.4;text-align:center;background-color:#f9f9f9;border:1px solid #fff; font-size: 16px; }
 .bs-glyphicons li span {font-weight: 800;}
 .bs-glyphicons .glyphicon{margin-top:5px;margin-bottom:10px;font-size:26px}
 .bs-glyphicons .glyphicon-class{display:block;text-align:center;word-wrap:break-word}
@@ -1606,4 +1606,17 @@ label {
 }
 @media (max-width: 767px) {
     .bs-glyphicons li{width: 50%;}
+}
+
+#login {
+background-color: white;
+	position: absolute;
+		top:50%;
+		left:50%;
+		width:400px;
+		margin-left:-200px;
+		height:316px;
+		margin-top:-158px;
+		border:1px solid #808080;
+		padding:10px;
 }

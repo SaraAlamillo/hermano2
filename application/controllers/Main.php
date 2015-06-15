@@ -33,6 +33,7 @@ class Main extends CI_Controller {
             if ($this->Usuario_model->usuarioCorrecto($this->input->post())) {
                 $this->session->set_userdata('login', TRUE);
                 $this->session->set_userdata('rol', $this->Usuario_model->getRol($this->input->post()));
+				redirect($this->input->post('url'));
             } else {
                 $this->session->set_flashdata("alerta", ['mensaje' => 'El usuario o contraseña introducido no es correcto', 'tipo' => 'danger']);
             }

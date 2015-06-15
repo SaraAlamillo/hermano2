@@ -18,10 +18,8 @@
     </head>
     <body>
         <div id="container">
-            <div id="content">
-                <div class="inner-content">
-                    <div class="about-page">
-                        <div class="contact-box">
+		<div id='login'>
+		<img src='<?= base_url() ?>assets/images/imgLogin.png' />
                             <?php if (!is_null($alerta)): ?>
                                 <div class="alert alert-<?= $alerta['tipo'] ?> alert-dismissible" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -37,13 +35,10 @@
                                     <input type="text" name="clave" placeholder="Contraseña" />
                                     <span>Contraseña</span>
                                 </div>
+								<input type="hidden" name="url" value="<?= current_url() ?>" />
                                 <input type="submit" value="Acceder" />
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+</div>
         </div>
     </div>
 

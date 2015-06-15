@@ -21,8 +21,8 @@ class Usuario_model extends CI_Model {
     }
     
     public function getRol($datos) {
-        $this->db->where('nombre', $datos->usuario);
-        $this->db->where('clave', $datos->clave);
+        $this->db->where('nombre', $datos['usuario']);
+        $this->db->where('clave', $datos['clave']);
         $consulta = $this->db->get('usuario');
         $resultado = $consulta->row();
         
