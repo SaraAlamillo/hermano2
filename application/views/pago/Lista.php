@@ -5,6 +5,9 @@
     </div>
 <?php endif; ?>
 <h1>Listado de pagos de <?= $listado[0]->nombre . ' ' . $listado[0]->apellido1 . ' ' . $listado[0]->apellido2 ?></h1>
+			<?php if ($rolActual == 'Administrador') : ?>
+<?= anchor(site_url('Pago/registra/' . $listado[0]->idHermano), '<img alt="Registrar un pago" title="Registrar un pago" src="'. base_url() . 'assets/images/icons/btnAddPago.png" />') ?>
+			<?php endif; ?>
 <table class="table table-striped table-hover">
     <thead>
         <tr>

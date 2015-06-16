@@ -19,13 +19,15 @@ class Contacto extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Contacto_model->listarTodo(),
-            "alerta" => $this->session->flashdata("alerta")
+            "alerta" => $this->session->flashdata("alerta"),
+			'rolActual' => $this->rolActual
         ];
 
         $this->vista($this->load->view('contacto/Lista', $parametros, TRUE), 'contacto');
     }
 
     public function cambio($idContacto) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->load->helper('Datos');
 
@@ -47,9 +49,14 @@ class Contacto extends Main {
 
             $this->vista($this->load->view('contacto/Cambio', $parametros, TRUE), 'contacto');
         }
+		} else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar un contacto', 'tipo' => 'info']);
+			redirect(site_url('Contacto'));
+		}
     }
 
     public function nuevo() {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->load->helper('Datos');
 
@@ -70,6 +77,10 @@ class Contacto extends Main {
 
             $this->vista($this->load->view('contacto/Nueva', $parametros, TRUE), 'contacto');
         }
+		} else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear un contacto', 'tipo' => 'info']);
+			redirect(site_url('Contacto'));
+		}
     }
 
     public function detalle($idContacto) {
@@ -86,6 +97,7 @@ class Contacto extends Main {
     }
 
     public function eliminar($idContacto) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             if ($this->input->post('eliminar') == 'Si') {
                 $this->Contacto_model->eliminar($idContacto);
@@ -94,7 +106,7 @@ class Contacto extends Main {
             } else {
                 redirect(site_url("Contacto"));
             }
-        } else {
+		}  else {
             $parametros = [
                 'datos' => $this->Contacto_model->listarUno($idContacto),
                 'baja' => 'un contacto de la agenda'
@@ -103,7 +115,10 @@ class Contacto extends Main {
             $this->load->helper('bd');
             
             $this->vista($this->load->view('Confirmar_eliminacion', $parametros, TRUE), 'contacto');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para eliminar un contacto', 'tipo' => 'info']);
+			redirect(site_url('Contacto'));
+		}
     }
 
 }

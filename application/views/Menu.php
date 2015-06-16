@@ -33,18 +33,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="project-post">
-            <img alt="" src="<?= base_url() ?>assets/images/main_menu/Consultas.png">
-            <div class="hover-box">
-                <div class="project-title">
-                    <h2>Consultas</h2>
-                    <span>Constructor de consultas</span>
-                    <div><?= anchor(site_url('constructor'), '<i class="fa fa-arrow-right"></i>') ?></div>
-                </div>
-            </div>
-        </div>
-
+		
+						<?php if ($rolActual == 'Administrador'): ?>
         <div class="project-post">
             <img alt="" src="<?= base_url() ?>assets/images/main_menu/GestPagos.png">
             <div class="hover-box">
@@ -55,6 +45,7 @@
                 </div>
             </div>
         </div>
+		<?php endif; ?>
 
         <div class="project-post">
             <img alt="" src="<?= base_url() ?>assets/images/main_menu/AgContactos.png">

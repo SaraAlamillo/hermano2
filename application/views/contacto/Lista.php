@@ -6,7 +6,9 @@
 <?php endif; ?>
 
 <h1>Agenda de contactos</h1>
+			<?php if ($rolActual == 'Administrador') : ?>
 <?= anchor(site_url('contacto/nuevo'), '<img alt="Añadir un contacto" title="Añadir un contacto" src="' . base_url() . 'assets/images/icons/btnAddContacto.png" />') ?>
+			<?php endif; ?>
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -30,8 +32,10 @@
                 <td><?= $l->fijo ?></td>
                 <td>
                     <?= anchor(site_url('contacto/detalle/' . $l->idContacto), '<img alt="Ver detalles de un contacto" title="Ver detalles de un contacto" src="' . base_url() . 'assets/images/icons/iconVer.png" />') ?>
+			<?php if ($rolActual == 'Administrador') : ?>
                     <?= anchor(site_url('contacto/cambio/' . $l->idContacto), '<img alt="Modificar un contacto" title="Modificar un contacto" src="' . base_url() . 'assets/images/icons/iconEditar.png" />') ?>
                     <?= anchor(site_url('contacto/eliminar/' . $l->idContacto), '<img alt="Eliminar un contacto" title="Eliminar un contacto" src="' . base_url() . 'assets/images/icons/iconBorrar.png" />') ?>
+			<?php endif; ?>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -18,7 +18,11 @@
     </head>
     <body>
         <div id="container">
+                            <?php if (!is_null($alerta)): ?>
+		<div id='loginConAlerta'>
+		<?php else: ?>
 		<div id='login'>
+                            <?php endif; ?>
 		<img src='<?= base_url() ?>assets/images/imgLogin.png' />
                             <?php if (!is_null($alerta)): ?>
                                 <div class="alert alert-<?= $alerta['tipo'] ?> alert-dismissible" role="alert">
@@ -32,7 +36,7 @@
                                     <span>Usuario</span>
                                 </div>
                                 <div class="float-input">
-                                    <input type="text" name="clave" placeholder="Contraseña" />
+                                    <input type="password" name="clave" placeholder="Contraseña" />
                                     <span>Contraseña</span>
                                 </div>
 								<input type="hidden" name="url" value="<?= current_url() ?>" />

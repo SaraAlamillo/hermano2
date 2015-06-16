@@ -1450,7 +1450,8 @@ ul.depth li:before {
 .comment-form input[type="text"],
 #contact-form select,
 .radioButton,
-#contact-form input[type ="date"]{
+#contact-form input[type ="date"],
+#contact-form input[type ="password"]{
     color: #848484;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -1619,4 +1620,28 @@ background-color: white;
 		margin-top:-158px;
 		border:1px solid #808080;
 		padding:10px;
+}
+#loginConAlerta {
+background-color: white;
+	position: absolute;
+		top:50%;
+		left:50%;
+		width:400px;
+		margin-left:-200px;
+		height:388px;
+		margin-top:-194px;
+		border:1px solid #808080;
+		padding:10px;
+}
+.detalle  .vacio {
+background-color: white;
+}
+.detalle  .titulo {
+    background-color: #242b2e;
+    color: white;
+	text-align: center;
+}
+.detalle  th {
+    background-color: #465359;
+    color: white;
 }

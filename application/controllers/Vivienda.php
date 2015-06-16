@@ -19,13 +19,15 @@ class Vivienda extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Vivienda_model->listarTodo(),
-            "alerta" => $this->session->flashdata("alerta")
+            "alerta" => $this->session->flashdata("alerta"),
+			'rolActual' => $this->rolActual
         ];
 
         $this->vista($this->load->view('vivienda/Lista', $parametros, TRUE), 'vivienda');
     }
 
     public function cambio($idVivienda) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->Vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
             $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
@@ -36,10 +38,14 @@ class Vivienda extends Main {
             ];
 
             $this->vista($this->load->view('vivienda/Cambio', $parametros, TRUE), 'vivienda');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar una vivienda', 'tipo' => 'info']);
+			redirect(site_url('Vivienda'));
+		}
     }
 
     public function nueva() {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->Vivienda_model->alta($this->input->post());
             $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
@@ -54,7 +60,10 @@ class Vivienda extends Main {
             ];
 
             $this->vista($this->load->view('vivienda/Nueva', $parametros, TRUE), 'vivienda');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear una vivienda', 'tipo' => 'info']);
+			redirect(site_url('Vivienda'));
+		}
     }
 
 }

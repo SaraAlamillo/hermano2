@@ -22,7 +22,8 @@ class Hermano extends Main {
         $parametros = [
             'listado' => $this->Hermano_model->lista(),
             "alerta" => $this->session->flashdata("alerta"),
-            'morosos' => $this->Pago_model->listaMorosos()
+            'morosos' => $this->Pago_model->listaMorosos(),
+			'rolActual' => $this->rolActual
         ];
 
         $this->vista($this->load->view('hermano/Lista', $parametros, TRUE), 'hermano');
@@ -41,6 +42,7 @@ class Hermano extends Main {
     }
 
     public function cambio($idHermano) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->load->helper('Datos');
 
@@ -73,10 +75,14 @@ class Hermano extends Main {
             $this->load->helper('Form');
 
             $this->vista($this->load->view('hermano/Cambio', $parametros, TRUE), 'hermano');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar un hermano', 'tipo' => 'info']);
+			redirect(site_url('Hermano'));
+		}
     }
 
     public function nuevo() {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->load->helper('Datos');
 
@@ -109,10 +115,14 @@ class Hermano extends Main {
             $this->load->helper('Form');
 
             $this->vista($this->load->view('hermano/Nueva', $parametros, TRUE), 'hermano');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear un hermano', 'tipo' => 'info']);
+			redirect(site_url('Hermano'));
+		}
     }
 
     public function elimina($idHermano) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             if ($this->input->post('eliminar') == 'Si') {
                 echo $this->Hermano_model->elimina($idHermano);
@@ -130,7 +140,10 @@ class Hermano extends Main {
             $this->load->helper('bd');
             
             $this->vista($this->load->view('Confirmar_eliminacion', $parametros, TRUE), 'hermano');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para eliminar un hermano', 'tipo' => 'info']);
+			redirect(site_url('Hermano'));
+		}
     }
 
     public function medallas() {

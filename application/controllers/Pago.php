@@ -15,13 +15,15 @@ class Pago extends Main {
     public function lista($idHermano) {
         $parametros = [
             'listado' => $this->Pago_model->lista(['hermano.idHermano = ' => $idHermano]),
-            "alerta" => $this->session->flashdata("alerta")
+            "alerta" => $this->session->flashdata("alerta"),
+			'rolActual' => $this->rolActual
         ];
 
         $this->vista($this->load->view('pago/Lista', $parametros, TRUE), 'hermano');
     }
 
     public function registra($hermano = NULL, $anio = NULL, $descripcion = NULL) {
+		if ($this->rolActual == 'Administrador') {
         $alerta = NULL;
 
         if ($this->input->post()) {
@@ -87,6 +89,10 @@ class Pago extends Main {
         $this->load->helper('Form');
 
         $this->vista($this->load->view('pago/Registro', $parametros, TRUE), 'registro');
+		}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para registrar un pago', 'tipo' => 'info']);
+			redirect(site_url('Hermano'));
+		}
     }
 
 }

@@ -19,23 +19,29 @@ class Remesa extends Main {
     public function lista() {
         $parametros = [
             'listado' => $this->Remesa_model->listar(),
-            "alerta" => $this->session->flashdata("alerta")
+            "alerta" => $this->session->flashdata("alerta"),
+			'rolActual' => $this->rolActual
         ];
 
         $this->vista($this->load->view('remesa/Lista', $parametros, TRUE), 'remesa');
     }
 
     public function insertar() {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->Remesa_model->alta($this->input->post());
             $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la remesa correctamente', 'tipo' => 'success']);
             redirect(site_url("Remesa"));
         } else {
             $this->vista($this->load->view('remesa/Nueva', NULL, TRUE), 'remesa');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear una remesa', 'tipo' => 'info']);
+			redirect(site_url('Remesa'));
+		}
     }
 
     public function cambiar($id) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->input->post()) {
             $this->Remesa_model->cambio($this->input->post(), $id);
             $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo'=> 'success']);
@@ -45,10 +51,14 @@ class Remesa extends Main {
                 'remesa' => $this->Remesa_model->listaUno($id)
             ];
             $this->vista($this->load->view('remesa/Cambio', $parametros, TRUE), 'remesa');
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar una remesa', 'tipo' => 'info']);
+			redirect(site_url('Remesa'));
+		}
     }
 
     public function elimina($idRemesa) {
+		if ($this->rolActual == 'Administrador') {
         if ($this->Remesa_model->tieneCuotas($idRemesa)) {
             $this->session->set_flashdata("alerta", ['mensaje' => 'No se puede eliminar una remesa con cuotas asociadas', 'tipo' => 'warning']);
             redirect(site_url("Remesa"));
@@ -71,7 +81,10 @@ class Remesa extends Main {
             
                 $this->vista($this->load->view('Confirmar_eliminacion', $parametros, TRUE), 'remesa');
             }
-        }
+        }}else {
+            $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para eliminar una remesa', 'tipo' => 'info']);
+			redirect(site_url('Remesa'));
+		}
     }
 
 }
