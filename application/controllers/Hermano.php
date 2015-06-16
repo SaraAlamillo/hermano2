@@ -31,12 +31,14 @@ class Hermano extends Main {
 
     public function detalle($idHermano) {
         $this->load->model('Vivienda_model');
+        $this->load->model('Provincia_model');
 
         $parametros = [
             'hermano' => $this->Hermano_model->listaUno($idHermano)
         ];
 
         $parametros['hermano']->vivienda = $this->Vivienda_model->listarUno($parametros['hermano']->vivienda);
+        $parametros['hermano']->provincia = $this->Provincia_model->getNombre($parametros['hermano']->provincia);
 
         $this->vista($this->load->view('hermano/Detalle', $parametros, TRUE), 'hermano');
     }
