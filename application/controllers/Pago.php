@@ -12,7 +12,7 @@ class Pago extends Main {
         $this->load->model('Pago_model');
     }
 
-    public function lista($idHermano, $pagina = 1) {
+    public function lista($idHermano, $pagina = 0) {
         $parametros = [
             'listado' => $this->Pago_model->lista(['hermano.idHermano = ' => $idHermano], $pagina),
             "alerta" => $this->session->flashdata("alerta"),

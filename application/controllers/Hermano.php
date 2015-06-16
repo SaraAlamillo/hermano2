@@ -12,15 +12,15 @@ class Hermano extends Main {
         $this->load->model('Hermano_model');
     }
 
-    public function index($pagina = 1) {
+    public function index($pagina = 0) {
         $this->lista($pagina);
     }
 
-    public function lista($pagina) {
+    public function lista($pagina = 0) {
         $this->load->model('Pago_model');
 
         $parametros = [
-            'listado' => $this->Hermano_model->lista($pagina),
+            'listado' => $this->Hermano_model->lista(NULL, $pagina),
             "alerta" => $this->session->flashdata("alerta"),
             'morosos' => $this->Pago_model->listaMorosos(),
             'rolActual' => $this->rolActual,

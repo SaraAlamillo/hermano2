@@ -20,7 +20,7 @@ class Vivienda_model extends CI_Model {
 
     function listarTodo($criterios = NULL, $limit = NULL) {
         if (!is_null($limit)) {
-            $this->db->limit($limit, Main::MaxPorPag);
+            $this->db->limit(Main::MaxPorPag, $limit);
         }
         if (!is_null($criterios)) {
             $this->db->where($criterios);

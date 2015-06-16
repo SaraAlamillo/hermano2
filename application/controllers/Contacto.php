@@ -12,11 +12,11 @@ class Contacto extends Main {
         $this->load->model('Contacto_model');
     }
 
-    public function index($pagina = 1) {
+    public function index($pagina = 0) {
         $this->lista($pagina);
     }
 
-    public function lista($pagina) {
+    public function lista($pagina = 0) {
         $parametros = [
             'listado' => $this->Contacto_model->listarTodo($pagina),
             "alerta" => $this->session->flashdata("alerta"),

@@ -12,7 +12,7 @@ class Pago_model extends CI_Model {
 
     public function lista($criterios = NULL, $limit = NULL) {
         if (!is_null($limit)) {
-            $this->db->limit($limit, Main::MaxPorPag);
+            $this->db->limit(Main::MaxPorPag, $limit);
         }
         $this->db->select('remesa.*, pago.*, hermano.idHermano, hermano.nombre, hermano.apellido1, hermano.apellido2');
         $this->db->from('remesa');

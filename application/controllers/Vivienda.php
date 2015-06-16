@@ -12,13 +12,13 @@ class Vivienda extends Main {
         $this->load->model('Vivienda_model');
     }
 
-    public function index($pagina = 1) {
+    public function index($pagina = 0) {
         $this->lista($pagina);
     }
 
-    public function lista($pagina) {
+    public function lista($pagina = 0) {
         $parametros = [
-            'listado' => $this->Vivienda_model->listarTodo($pagina),
+            'listado' => $this->Vivienda_model->listarTodo(NULL, $pagina),
             "alerta" => $this->session->flashdata("alerta"),
             'rolActual' => $this->rolActual,
             'paginador' => $this->paginar(site_url('Vivienda/lista/'), $this->Vivienda_model->total())

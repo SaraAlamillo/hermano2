@@ -20,9 +20,10 @@ class Contacto_model extends CI_Model {
 
     function listarTodo($limit = NULL) {
         if (!is_null($limit)) {
-            $this->db->limit($limit, Main::MaxPorPag);
+            $this->db->limit(Main::MaxPorPag, $limit);
         }
         $consulta = $this->db->get('contacto');
+        
         return $consulta->result();
     }
 

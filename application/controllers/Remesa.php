@@ -12,13 +12,13 @@ class Remesa extends Main {
         $this->load->model('Remesa_model');
     }
 
-    public function index($pagina = 1) {
+    public function index($pagina = 0) {
         $this->lista($pagina);
     }
 
-    public function lista($pagina) {
+    public function lista($pagina = 0) {
         $parametros = [
-            'listado' => $this->Remesa_model->listar($pagina),
+            'listado' => $this->Remesa_model->listar(NULL, $pagina),
             "alerta" => $this->session->flashdata("alerta"),
             'rolActual' => $this->rolActual,
             'paginador' => $this->paginar(site_url('Remesa/lista/'), $this->Remesa_model->total())
