@@ -18,7 +18,10 @@ class Contacto_model extends CI_Model {
         $this->db->update('contacto', $datos, ['idContacto' => $idContacto]);
     }
 
-    function listarTodo() {
+    function listarTodo($limit = NULL) {
+        if (!is_null($limit)) {
+            $this->db->limit($limit, Main::MaxPorPag);
+        }
         $consulta = $this->db->get('contacto');
         return $consulta->result();
     }
@@ -68,6 +71,10 @@ class Contacto_model extends CI_Model {
     public function eliminar($id) {
         $this->db->where('idContacto', $id);
         $this->db->delete('contacto');
+    }
+
+    public function total() {
+        return $this->db->count_all('contacto');
     }
 
 }

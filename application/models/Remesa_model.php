@@ -32,7 +32,10 @@ class Remesa_model extends CI_Model {
         $this->db->update('remesa', $datos, ['idRemesa' => $id]);
     }
 
-    public function listar($criterios = NULL) {
+    public function listar($criterios = NULL, $limit = NULL) {
+        if (!is_null($limit)) {
+            $this->db->limit($limit, Main::MaxPorPag);
+        }
         if (!is_null($criterios)) {
             $this->db->where($criterios);
         }
@@ -80,6 +83,10 @@ class Remesa_model extends CI_Model {
         $consulta = $this->db->get('remesa');
 
         return $consulta->result();
+    }
+
+    public function total() {
+        return $this->db->count_all('remesa');
     }
 
 }

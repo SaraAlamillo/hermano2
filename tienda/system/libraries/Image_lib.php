@@ -265,12 +265,12 @@ class CI_Image_lib {
         // Set the quality
         $this->quality = trim(str_replace("%", "", $this->quality));
 
-        if ($this->quality == '' OR $this->quality == 0 OR ! is_numeric($this->quality))
+        if ($this->quality == '' OR $this->quality == 0 OR !is_numeric($this->quality))
             $this->quality = 90;
 
         // Set the x/y coordinates
-        $this->x_axis = ($this->x_axis == '' OR ! is_numeric($this->x_axis)) ? 0 : $this->x_axis;
-        $this->y_axis = ($this->y_axis == '' OR ! is_numeric($this->y_axis)) ? 0 : $this->y_axis;
+        $this->x_axis = ($this->x_axis == '' OR !is_numeric($this->x_axis)) ? 0 : $this->x_axis;
+        $this->y_axis = ($this->y_axis == '' OR !is_numeric($this->y_axis)) ? 0 : $this->y_axis;
 
         // Watermark-related Stuff...
         if ($this->wm_font_color != '') {
@@ -357,7 +357,7 @@ class CI_Image_lib {
         // Allowed rotation values
         $degs = array(90, 180, 270, 'vrt', 'hor');
 
-        if ($this->rotation_angle == '' OR ! in_array($this->rotation_angle, $degs)) {
+        if ($this->rotation_angle == '' OR !in_array($this->rotation_angle, $degs)) {
             $this->set_error('imglib_rotation_angle_required');
             return FALSE;
         }
@@ -866,7 +866,7 @@ class CI_Image_lib {
             return FALSE;
         }
 
-        if ($this->wm_use_truetype == TRUE AND ! file_exists($this->wm_font_path)) {
+        if ($this->wm_use_truetype == TRUE AND !file_exists($this->wm_font_path)) {
             $this->set_error('imglib_missing_font');
             return FALSE;
         }
@@ -1131,10 +1131,10 @@ class CI_Image_lib {
      * @return	void
      */
     function image_reproportion() {
-        if (!is_numeric($this->width) OR ! is_numeric($this->height) OR $this->width == 0 OR $this->height == 0)
+        if (!is_numeric($this->width) OR !is_numeric($this->height) OR $this->width == 0 OR $this->height == 0)
             return;
 
-        if (!is_numeric($this->orig_width) OR ! is_numeric($this->orig_height) OR $this->orig_width == 0 OR $this->orig_height == 0)
+        if (!is_numeric($this->orig_width) OR !is_numeric($this->orig_height) OR $this->orig_width == 0 OR $this->orig_height == 0)
             return;
 
         $new_width = ceil($this->orig_width * $this->height / $this->orig_height);

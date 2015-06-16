@@ -182,7 +182,7 @@ if (!function_exists('parse_smileys')) {
      * @return	string
      */
     function parse_smileys($str = '', $image_url = '', $smileys = NULL) {
-        if ($image_url === '' OR ( !is_array($smileys) && FALSE === ($smileys = _get_smiley_array()))) {
+        if ($image_url === '' OR (!is_array($smileys) && FALSE === ($smileys = _get_smiley_array()))) {
             return $str;
         }
 
@@ -221,7 +221,7 @@ if (!function_exists('_get_smiley_array')) {
                 include(APPPATH . 'config/' . ENVIRONMENT . '/smileys.php');
             }
 
-            if (empty($smileys) OR ! is_array($smileys)) {
+            if (empty($smileys) OR !is_array($smileys)) {
                 $_smileys = array();
                 return FALSE;
             }

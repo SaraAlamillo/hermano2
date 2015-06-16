@@ -3381,7 +3381,7 @@ input[type="button"].btn-block {
     position: relative;
     display: inline-block;
     vertical-align: middle;
-   width: 100%;
+    width: 100%;
 }
 
 .btn-group > .btn,
@@ -4650,6 +4650,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .pagination > li > a,
 .pagination > li > span {
+    color: #1ab5b3;
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -4689,8 +4690,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
     z-index: 2;
     color: #ffffff;
     cursor: default;
-    background-color: #428bca;
-    border-color: #428bca;
+    background-color: #1ab5b3;
+    border-color: #1ab5b3;
 }
 
 .pagination > .disabled > span,

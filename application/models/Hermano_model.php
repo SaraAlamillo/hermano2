@@ -10,7 +10,10 @@ if (!defined('BASEPATH'))
  */
 class Hermano_model extends CI_Model {
 
-    public function lista($criterios = NULL) {
+    public function lista($criterios = NULL, $limit = NULL) {
+        if (!is_null($limit)) {
+            $this->db->limit($limit, Main::MaxPorPag);
+        }
         if (!is_null($criterios)) {
             $this->db->where($criterios);
         }
@@ -140,6 +143,10 @@ class Hermano_model extends CI_Model {
     public function listarFamilia() {
         $this->load->helper('Bd');
         return obtenerEnumerados('hermano', 'familia');
+    }
+
+    public function total() {
+        return $this->db->count_all('hermano');
     }
 
 }

@@ -1,6 +1,6 @@
 <h1>Modificar un contacto de la agenda</h1>
 <form action="" method="POST" id="contact-form">
-     <div class="text-fields">
+    <div class="text-fields">
         <div class="float-input">
             <?= crearDesplegable('tipo', $lisTipo, $contacto->tipo, ['tipo' => 'Tipo de contacto', 'idTipo_Contacto' => ''], ['desc' => 'tipo', 'valor' => 'idTipo_Contacto'], TRUE) ?>
             <span>Tipo de contacto</span>

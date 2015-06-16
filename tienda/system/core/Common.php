@@ -205,7 +205,7 @@ if (!function_exists('get_config')) {
         }
 
         // Is the config file in the environment folder?
-        if (!defined('ENVIRONMENT') OR ! file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/config.php')) {
+        if (!defined('ENVIRONMENT') OR !file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/config.php')) {
             $file_path = APPPATH . 'config/config.php';
         }
 
@@ -217,7 +217,7 @@ if (!function_exists('get_config')) {
         require($file_path);
 
         // Does the $config array exist in the file?
-        if (!isset($config) OR ! is_array($config)) {
+        if (!isset($config) OR !is_array($config)) {
             exit('Your config file does not appear to be formatted correctly.');
         }
 
@@ -387,7 +387,7 @@ if (!function_exists('set_status_header')) {
             505 => 'HTTP Version Not Supported'
         );
 
-        if ($code == '' OR ! is_numeric($code)) {
+        if ($code == '' OR !is_numeric($code)) {
             show_error('Status codes must be numeric', 500);
         }
 

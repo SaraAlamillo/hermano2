@@ -589,7 +589,7 @@ class CI_Image_lib {
         // Set the quality
         $this->quality = trim(str_replace('%', '', $this->quality));
 
-        if ($this->quality === '' OR $this->quality === 0 OR ! ctype_digit($this->quality)) {
+        if ($this->quality === '' OR $this->quality === 0 OR !ctype_digit($this->quality)) {
             $this->quality = 90;
         }
 
@@ -659,7 +659,7 @@ class CI_Image_lib {
         // Allowed rotation values
         $degs = array(90, 180, 270, 'vrt', 'hor');
 
-        if ($this->rotation_angle === '' OR ! in_array($this->rotation_angle, $degs)) {
+        if ($this->rotation_angle === '' OR !in_array($this->rotation_angle, $degs)) {
             $this->set_error('imglib_rotation_angle_required');
             return FALSE;
         }
@@ -1396,9 +1396,7 @@ class CI_Image_lib {
      * @return	void
      */
     public function image_reproportion() {
-        if (($this->width === 0 && $this->height === 0) OR $this->orig_width === 0 OR $this->orig_height === 0
-                OR ( !ctype_digit((string) $this->width) && !ctype_digit((string) $this->height))
-                OR ! ctype_digit((string) $this->orig_width) OR ! ctype_digit((string) $this->orig_height)) {
+        if (($this->width === 0 && $this->height === 0) OR $this->orig_width === 0 OR $this->orig_height === 0 OR (!ctype_digit((string) $this->width) && !ctype_digit((string) $this->height)) OR !ctype_digit((string) $this->orig_width) OR !ctype_digit((string) $this->orig_height)) {
             return;
         }
 
@@ -1412,8 +1410,7 @@ class CI_Image_lib {
             } else {
                 $this->master_dim = ($this->height === 0) ? 'width' : 'height';
             }
-        } elseif (($this->master_dim === 'width' && $this->width === 0)
-                OR ( $this->master_dim === 'height' && $this->height === 0)) {
+        } elseif (($this->master_dim === 'width' && $this->width === 0) OR ( $this->master_dim === 'height' && $this->height === 0)) {
             return;
         }
 

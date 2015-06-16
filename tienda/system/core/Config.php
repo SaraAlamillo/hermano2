@@ -119,7 +119,7 @@ class CI_Config {
 
             include($file_path);
 
-            if (!isset($config) OR ! is_array($config)) {
+            if (!isset($config) OR !is_array($config)) {
                 if ($fail_gracefully === TRUE) {
                     return FALSE;
                 }

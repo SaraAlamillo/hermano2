@@ -137,7 +137,7 @@ class CI_Router {
             include(APPPATH . 'config/routes.php');
         }
 
-        $this->routes = (!isset($route) OR ! is_array($route)) ? array() : $route;
+        $this->routes = (!isset($route) OR !is_array($route)) ? array() : $route;
         unset($route);
 
         // Set the default controller so we can display it in the event

@@ -82,7 +82,7 @@ class CI_Form_validation {
         if (is_array($field)) {
             foreach ($field as $row) {
                 // Houston, we have a problem...
-                if (!isset($row['field']) OR ! isset($row['rules'])) {
+                if (!isset($row['field']) OR !isset($row['rules'])) {
                     continue;
                 }
 
@@ -96,7 +96,7 @@ class CI_Form_validation {
         }
 
         // No fields? Nothing to do...
-        if (!is_string($field) OR ! is_string($rules) OR $field == '') {
+        if (!is_string($field) OR !is_string($rules) OR $field == '') {
             return $this;
         }
 
@@ -639,7 +639,7 @@ class CI_Form_validation {
      * @return	string
      */
     public function set_select($field = '', $value = '', $default = FALSE) {
-        if (!isset($this->_field_data[$field]) OR ! isset($this->_field_data[$field]['postdata'])) {
+        if (!isset($this->_field_data[$field]) OR !isset($this->_field_data[$field]['postdata'])) {
             if ($default === TRUE AND count($this->_field_data) === 0) {
                 return ' selected="selected"';
             }
@@ -675,7 +675,7 @@ class CI_Form_validation {
      * @return	string
      */
     public function set_radio($field = '', $value = '', $default = FALSE) {
-        if (!isset($this->_field_data[$field]) OR ! isset($this->_field_data[$field]['postdata'])) {
+        if (!isset($this->_field_data[$field]) OR !isset($this->_field_data[$field]['postdata'])) {
             if ($default === TRUE AND count($this->_field_data) === 0) {
                 return ' checked="checked"';
             }
@@ -711,7 +711,7 @@ class CI_Form_validation {
      * @return	string
      */
     public function set_checkbox($field = '', $value = '', $default = FALSE) {
-        if (!isset($this->_field_data[$field]) OR ! isset($this->_field_data[$field]['postdata'])) {
+        if (!isset($this->_field_data[$field]) OR !isset($this->_field_data[$field]['postdata'])) {
             if ($default === TRUE AND count($this->_field_data) === 0) {
                 return ' checked="checked"';
             }

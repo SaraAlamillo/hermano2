@@ -235,8 +235,7 @@ class CI_Encryption {
         }
 
         if (isset($this->_cipher, $this->_mode)) {
-            if (is_resource($this->_handle) && (strtolower(mcrypt_enc_get_algorithms_name($this->_handle)) !== $this->_cipher
-                    OR strtolower(mcrypt_enc_get_modes_name($this->_handle)) !== $this->_mode)
+            if (is_resource($this->_handle) && (strtolower(mcrypt_enc_get_algorithms_name($this->_handle)) !== $this->_cipher OR strtolower(mcrypt_enc_get_modes_name($this->_handle)) !== $this->_mode)
             ) {
                 mcrypt_module_close($this->_handle);
             }
@@ -714,7 +713,7 @@ class CI_Encryption {
             return FALSE;
         }
 
-        if (empty($length) OR ! is_int($length)) {
+        if (empty($length) OR !is_int($length)) {
             $length = $this->_digests[$digest];
         } elseif ($length > (255 * $this->_digests[$digest])) {
             return FALSE;

@@ -146,7 +146,7 @@ class CI_Input {
      */
     function get($index = NULL, $xss_clean = FALSE) {
         // Check if a field has been provided
-        if ($index === NULL AND ! empty($_GET)) {
+        if ($index === NULL AND !empty($_GET)) {
             $get = array();
 
             // loop through the full _GET array
@@ -171,7 +171,7 @@ class CI_Input {
      */
     function post($index = NULL, $xss_clean = FALSE) {
         // Check if a field has been provided
-        if ($index === NULL AND ! empty($_POST)) {
+        if ($index === NULL AND !empty($_POST)) {
             $post = array();
 
             // Loop through the full _POST array and return it

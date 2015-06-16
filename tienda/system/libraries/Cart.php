@@ -130,7 +130,7 @@ class CI_Cart {
 
         // --------------------------------------------------------------------
         // Does the $items array contain an id, quantity, price, and name?  These are required
-        if (!isset($items['id']) OR ! isset($items['qty']) OR ! isset($items['price']) OR ! isset($items['name'])) {
+        if (!isset($items['id']) OR !isset($items['qty']) OR !isset($items['price']) OR !isset($items['name'])) {
             log_message('error', 'The cart array must contain a product ID, quantity, price, and name.');
             return FALSE;
         }
@@ -277,7 +277,7 @@ class CI_Cart {
      */
     function _update($items = array()) {
         // Without these array indexes there is nothing we can do
-        if (!isset($items['qty']) OR ! isset($items['rowid']) OR ! isset($this->_cart_contents[$items['rowid']])) {
+        if (!isset($items['qty']) OR !isset($items['rowid']) OR !isset($this->_cart_contents[$items['rowid']])) {
             return FALSE;
         }
 
@@ -324,7 +324,7 @@ class CI_Cart {
         $items = 0;
         foreach ($this->_cart_contents as $key => $val) {
             // We make sure the array contains the proper indexes
-            if (!is_array($val) OR ! isset($val['price']) OR ! isset($val['qty'])) {
+            if (!is_array($val) OR !isset($val['price']) OR !isset($val['qty'])) {
                 continue;
             }
 

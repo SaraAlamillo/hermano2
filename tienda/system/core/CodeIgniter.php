@@ -251,9 +251,7 @@ $BM->mark('loading_time:_base_classes_end');
 $class = $RTR->fetch_class();
 $method = $RTR->fetch_method();
 
-if (!class_exists($class)
-        OR strncmp($method, '_', 1) == 0
-        OR in_array(strtolower($method), array_map('strtolower', get_class_methods('CI_Controller')))
+if (!class_exists($class) OR strncmp($method, '_', 1) == 0 OR in_array(strtolower($method), array_map('strtolower', get_class_methods('CI_Controller')))
 ) {
     if (!empty($RTR->routes['404_override'])) {
         $x = explode('/', $RTR->routes['404_override']);

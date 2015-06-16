@@ -106,7 +106,7 @@ class CI_Hooks {
         }
 
         // If there are no hooks, we're done.
-        if (!isset($hook) OR ! is_array($hook)) {
+        if (!isset($hook) OR !is_array($hook)) {
             return;
         }
 
@@ -127,7 +127,7 @@ class CI_Hooks {
      * @return	bool	TRUE on success or FALSE on failure
      */
     public function call_hook($which = '') {
-        if (!$this->enabled OR ! isset($this->hooks[$which])) {
+        if (!$this->enabled OR !isset($this->hooks[$which])) {
             return FALSE;
         }
 
@@ -209,7 +209,7 @@ class CI_Hooks {
             } else {
                 class_exists($class, FALSE) OR require_once($filepath);
 
-                if (!class_exists($class, FALSE) OR ! method_exists($class, $function)) {
+                if (!class_exists($class, FALSE) OR !method_exists($class, $function)) {
                     return $this->_in_progress = FALSE;
                 }
 

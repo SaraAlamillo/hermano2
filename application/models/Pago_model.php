@@ -10,7 +10,10 @@ if (!defined('BASEPATH'))
  */
 class Pago_model extends CI_Model {
 
-    public function lista($criterios = NULL) {
+    public function lista($criterios = NULL, $limit = NULL) {
+        if (!is_null($limit)) {
+            $this->db->limit($limit, Main::MaxPorPag);
+        }
         $this->db->select('remesa.*, pago.*, hermano.idHermano, hermano.nombre, hermano.apellido1, hermano.apellido2');
         $this->db->from('remesa');
         $this->db->join('pago', 'remesa.idRemesa = pago.idRemesa');
@@ -63,6 +66,10 @@ class Pago_model extends CI_Model {
         }
 
         return $return;
+    }
+
+    public function total() {
+        return $this->db->count_all('pago');
     }
 
 }

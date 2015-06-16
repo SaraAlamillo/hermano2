@@ -210,7 +210,7 @@ class CI_Xmlrpc {
 
     function values_parsing($value, $return = FALSE) {
         if (is_array($value) && array_key_exists(0, $value)) {
-            if (!isset($value['1']) OR ( !isset($this->xmlrpcTypes[$value['1']]))) {
+            if (!isset($value['1']) OR (!isset($this->xmlrpcTypes[$value['1']]))) {
                 if (is_array($value[0])) {
                     $temp = new XML_RPC_Values($value['0'], 'array');
                 } else {
@@ -942,6 +942,9 @@ class XML_RPC_Message extends CI_Xmlrpc {
     function character_data($the_parser, $data) {
         if ($this->xh[$the_parser]['isf'] > 1)
             return; // XML Fault found already
+
+
+
 
 
 

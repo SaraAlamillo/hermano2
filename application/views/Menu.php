@@ -33,19 +33,19 @@
                 </div>
             </div>
         </div>
-		
-						<?php if ($rolActual == 'Administrador'): ?>
-        <div class="project-post">
-            <img alt="" src="<?= base_url() ?>assets/images/main_menu/GestPagos.png">
-            <div class="hover-box">
-                <div class="project-title">
-                    <h2>Registro de pago</h2>
-                    <span>Registro del pago de un plazo</span>
-                    <div><?= anchor(site_url('pago/registra'), '<i class="fa fa-arrow-right"></i>') ?></div>
+
+        <?php if ($rolActual == 'Administrador'): ?>
+            <div class="project-post">
+                <img alt="" src="<?= base_url() ?>assets/images/main_menu/GestPagos.png">
+                <div class="hover-box">
+                    <div class="project-title">
+                        <h2>Registro de pago</h2>
+                        <span>Registro del pago de un plazo</span>
+                        <div><?= anchor(site_url('pago/registra'), '<i class="fa fa-arrow-right"></i>') ?></div>
+                    </div>
                 </div>
             </div>
-        </div>
-		<?php endif; ?>
+        <?php endif; ?>
 
         <div class="project-post">
             <img alt="" src="<?= base_url() ?>assets/images/main_menu/AgContactos.png">

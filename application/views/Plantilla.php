@@ -29,13 +29,13 @@
                         <li><?= anchor(site_url('Vivienda'), '<span>Viviendas</span>', ['class' => $activo == 'vivienda' ? 'active' : '']) ?></li>
                         <li><?= anchor(site_url('Hermano'), '<span>Hermanos</span>', ['class' => $activo == 'hermano' ? 'active' : '']) ?></li>
                         <li><?= anchor(site_url('Remesa'), '<span>Remesas</span>', ['class' => $activo == 'remesa' ? 'active' : '']) ?></li>
-						<?php if ($rolActual == 'Administrador'): ?>
-                        <li><?= anchor(site_url('Pago/registra'), '<span>Registro de pago</span>', ['class' => $activo == 'registro' ? 'active' : '']) ?></li>
-						<?php endif; ?>
+                        <?php if ($rolActual == 'Administrador'): ?>
+                            <li><?= anchor(site_url('Pago/registra'), '<span>Registro de pago</span>', ['class' => $activo == 'registro' ? 'active' : '']) ?></li>
+                        <?php endif; ?>
                         <li><?= anchor(site_url('Contacto'), '<span>Contactos</span>', ['class' => $activo == 'contacto' ? 'active' : '']) ?></li>
                         <li><?= anchor(site_url('Hermano/medallas'), '<span>Sorteo de medalla</span>', ['class' => $activo == 'medalla' ? 'active' : '']) ?></li>
-						<li>
-				<?= anchor(site_url('Main/salir'), '<span><img  src="' . base_url() . 'assets/images/icons/iconCerrSes.png" class="img-responsive" style="float:left;" /><br />Cerrar Sesión</span>') ?></li>
+                        <li>
+                            <?= anchor(site_url('Main/salir'), '<span><img  src="' . base_url() . 'assets/images/icons/iconCerrSes.png" class="img-responsive" style="float:left;" /><br />Cerrar Sesión</span>') ?></li>
                     </ul>				
                 </div>
             </header>

@@ -215,8 +215,7 @@ class CI_Security {
         }
 
         // Do the tokens exist in both the _POST and _COOKIE arrays?
-        if (!isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name])
-                OR $_POST[$this->_csrf_token_name] !== $_COOKIE[$this->_csrf_cookie_name]) { // Do the tokens match?
+        if (!isset($_POST[$this->_csrf_token_name], $_COOKIE[$this->_csrf_cookie_name]) OR $_POST[$this->_csrf_token_name] !== $_COOKIE[$this->_csrf_cookie_name]) { // Do the tokens match?
             $this->csrf_show_error();
         }
 
@@ -525,7 +524,7 @@ class CI_Security {
      * @return	string
      */
     public function get_random_bytes($length) {
-        if (empty($length) OR ! ctype_digit((string) $length)) {
+        if (empty($length) OR !ctype_digit((string) $length)) {
             return FALSE;
         }
 

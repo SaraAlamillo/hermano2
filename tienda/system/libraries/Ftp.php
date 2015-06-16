@@ -152,7 +152,7 @@ class CI_FTP {
      * @return	bool
      */
     function changedir($path = '', $supress_debug = FALSE) {
-        if ($path == '' OR ! $this->_is_conn()) {
+        if ($path == '' OR !$this->_is_conn()) {
             return FALSE;
         }
 
@@ -178,7 +178,7 @@ class CI_FTP {
      * @return	bool
      */
     function mkdir($path = '', $permissions = NULL) {
-        if ($path == '' OR ! $this->_is_conn()) {
+        if ($path == '' OR !$this->_is_conn()) {
             return FALSE;
         }
 
@@ -469,7 +469,7 @@ class CI_FTP {
             // Attempt to open the remote file path.
             if (!$this->changedir($rempath, TRUE)) {
                 // If it doesn't exist we'll attempt to create the direcotory
-                if (!$this->mkdir($rempath) OR ! $this->changedir($rempath)) {
+                if (!$this->mkdir($rempath) OR !$this->changedir($rempath)) {
                     return FALSE;
                 }
             }

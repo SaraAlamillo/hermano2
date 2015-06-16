@@ -1627,8 +1627,7 @@ class CI_Email {
      */
     protected function _send_with_sendmail() {
         // is popen() enabled?
-        if (!function_usable('popen')
-                OR FALSE === ($fp = @popen(
+        if (!function_usable('popen') OR FALSE === ($fp = @popen(
                         $this->mailpath . ' -oi -f ' . $this->clean_email($this->_headers['From'])
                         . ' -t -r ' . $this->clean_email($this->_headers['Return-Path'])
                         , 'w'))
@@ -1663,7 +1662,7 @@ class CI_Email {
             return FALSE;
         }
 
-        if (!$this->_smtp_connect() OR ! $this->_smtp_authenticate()) {
+        if (!$this->_smtp_connect() OR !$this->_smtp_authenticate()) {
             return FALSE;
         }
 

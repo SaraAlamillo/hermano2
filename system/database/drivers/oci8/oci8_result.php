@@ -199,7 +199,7 @@ class CI_DB_oci8_result extends CI_DB_result {
     protected function _fetch_object($class_name = 'stdClass') {
         $row = ($this->curs_id) ? oci_fetch_object($this->curs_id) : oci_fetch_object($this->stmt_id);
 
-        if ($class_name === 'stdClass' OR ! $row) {
+        if ($class_name === 'stdClass' OR !$row) {
             return $row;
         }
 

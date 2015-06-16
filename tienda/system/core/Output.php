@@ -425,7 +425,7 @@ class CI_Output {
 
         $cache_path = ($path == '') ? APPPATH . 'cache/' : $path;
 
-        if (!is_dir($cache_path) OR ! is_really_writable($cache_path)) {
+        if (!is_dir($cache_path) OR !is_really_writable($cache_path)) {
             log_message('error', "Unable to write cache file: " . $cache_path);
             return;
         }

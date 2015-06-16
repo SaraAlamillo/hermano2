@@ -99,7 +99,7 @@ if (!function_exists('array_column')) {
                 continue;
             }
 
-            if ($index_key === NULL OR ! array_key_exists($index_key, $a)) {
+            if ($index_key === NULL OR !array_key_exists($index_key, $a)) {
                 $result[] = $value;
             } else {
                 $result[$a[$index_key]] = $value;
@@ -290,17 +290,10 @@ if (!function_exists('quoted_printable_encode')) {
             }
 
             if (
-                    ctype_cntrl($c)
-                    OR ( ord($c) === 0x7f)
-                    OR ( ord($c) & 0x80)
-                    OR ( $c === '=')
-                    OR ( $c === ' ' && isset($str[$i]) && $str[$i] === "\015")
+                    ctype_cntrl($c) OR ( ord($c) === 0x7f) OR ( ord($c) & 0x80) OR ( $c === '=') OR ( $c === ' ' && isset($str[$i]) && $str[$i] === "\015")
             ) {
                 if (
-                        (($lp += 3) > 75 && ord($c) <= 0x7f)
-                        OR ( ord($c) > 0x7f && ord($c) <= 0xdf && ($lp + 3) > 75)
-                        OR ( ord($c) > 0xdf && ord($c) <= 0xef && ($lp + 6) > 75)
-                        OR ( ord($c) > 0xef && ord($c) <= 0xf4 && ($lp + 9) > 75)
+                        (($lp += 3) > 75 && ord($c) <= 0x7f) OR ( ord($c) > 0x7f && ord($c) <= 0xdf && ($lp + 3) > 75) OR ( ord($c) > 0xdf && ord($c) <= 0xef && ($lp + 6) > 75) OR ( ord($c) > 0xef && ord($c) <= 0xf4 && ($lp + 9) > 75)
                 ) {
                     $output .= "=\015\012";
                     $lp = 3;

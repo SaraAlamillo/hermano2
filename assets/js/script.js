@@ -3,7 +3,7 @@
 
 var $ = jQuery.noConflict();
 
-$(document).ready(function ($) {
+$(document).ready(function($) {
     "use strict";
 
 
@@ -17,7 +17,7 @@ $(document).ready(function ($) {
     var $filter = $('.filter');
 
     try {
-        $container.imagesLoaded(function () {
+        $container.imagesLoaded(function() {
             $container.show();
             $container.isotope({
                 filter: '*',
@@ -31,7 +31,7 @@ $(document).ready(function ($) {
     } catch (err) {
     }
 
-    winDow.bind('resize', function () {
+    winDow.bind('resize', function() {
         var selector = $filter.find('a.active').attr('data-filter');
 
         try {
@@ -49,7 +49,7 @@ $(document).ready(function ($) {
     });
 
     // Isotope Filter 
-    $filter.find('a').click(function () {
+    $filter.find('a').click(function() {
         var selector = $(this).attr('data-filter');
 
         try {
@@ -70,7 +70,7 @@ $(document).ready(function ($) {
 
     var filterItemA = $('.filter li a');
 
-    filterItemA.on('click', function () {
+    filterItemA.on('click', function() {
         var $this = $(this);
         if (!$this.hasClass('active')) {
             filterItemA.removeClass('active');
@@ -84,11 +84,11 @@ $(document).ready(function ($) {
     var body = $('body');
     body.addClass('active');
 
-    winDow.load(function () {
+    winDow.load(function() {
         var mainDiv = $('#container'),
                 preloader = $('.preloader');
 
-        preloader.fadeOut(400, function () {
+        preloader.fadeOut(400, function() {
             mainDiv.delay(400).addClass('active');
             //body.delay(400).css('background', '#b4b7b8');
             body.delay(400).css('background-image', "url('http://iessansebastian.com/alumnos/2daw1415/sara/assets/images/PatFondo.png')");
@@ -115,7 +115,7 @@ $(document).ready(function ($) {
     /* =  header height fix
      /*-------------------------------------------------*/
     var content = $('#content');
-    content.imagesLoaded(function () {
+    content.imagesLoaded(function() {
         var bodyHeight = $(window).outerHeight(),
                 containerHeight = $('.inner-content').outerHeight(),
                 headerHeight = $('header');
@@ -127,7 +127,7 @@ $(document).ready(function ($) {
         }
     });
 
-    winDow.bind('resize', function () {
+    winDow.bind('resize', function() {
         var bodyHeight = $(window).outerHeight(),
                 containerHeight = $('.inner-content').outerHeight(),
                 headerHeight = $('header');
@@ -159,7 +159,7 @@ $(document).ready(function ($) {
     var toggleInfo = $('.info-toggle'),
             toggleContent = $('.info-content');
 
-    toggleInfo.on('click', function (e) {
+    toggleInfo.on('click', function(e) {
         e.preventDefault();
 
         if (!$(this).hasClass('active')) {
@@ -225,7 +225,7 @@ $(document).ready(function ($) {
 
     try {
         var animateElement = $(".meter > span");
-        animateElement.each(function () {
+        animateElement.each(function() {
             $(this)
                     .data("origWidth", $(this).width())
                     .width(0)
@@ -243,7 +243,7 @@ $(document).ready(function ($) {
     var menuClick = $('a.elemadded'),
             navbarVertical = $('.menu-box');
 
-    menuClick.on('click', function (e) {
+    menuClick.on('click', function(e) {
         e.preventDefault();
 
         if (navbarVertical.hasClass('active')) {
@@ -253,7 +253,7 @@ $(document).ready(function ($) {
         }
     });
 
-    winDow.bind('resize', function () {
+    winDow.bind('resize', function() {
         if (winDow.width() > 768) {
             navbarVertical.slideDown(300).removeClass('active');
         } else {
@@ -268,7 +268,7 @@ $(document).ready(function ($) {
     var submitContact = $('#submit_contact'),
             message = $('#msg');
 
-    submitContact.on('click', function (e) {
+    submitContact.on('click', function(e) {
         e.preventDefault();
 
         var $this = $(this);
@@ -279,7 +279,7 @@ $(document).ready(function ($) {
             dataType: 'json',
             cache: false,
             data: $('#contact-form').serialize(),
-            success: function (data) {
+            success: function(data) {
 
                 if (data.info !== 'error') {
                     $this.parents('form').find('input[type=text],textarea,select').filter(':visible').val('');

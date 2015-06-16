@@ -18,7 +18,10 @@ class Vivienda_model extends CI_Model {
         $this->db->update('vivienda', ['Observaciones' => $observaciones], ['idVivienda' => $idVivienda]);
     }
 
-    function listarTodo($criterios = NULL) {
+    function listarTodo($criterios = NULL, $limit = NULL) {
+        if (!is_null($limit)) {
+            $this->db->limit($limit, Main::MaxPorPag);
+        }
         if (!is_null($criterios)) {
             $this->db->where($criterios);
         }
@@ -55,6 +58,10 @@ class Vivienda_model extends CI_Model {
     public function listarNumero() {
         $this->load->helper('Bd');
         return obtenerEnumerados('vivienda', 'Numero');
+    }
+
+    public function total() {
+        return $this->db->count_all('vivienda');
     }
 
 }

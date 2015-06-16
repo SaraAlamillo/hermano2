@@ -244,7 +244,7 @@ class CI_FTP {
      * @return	bool
      */
     public function mkdir($path, $permissions = NULL) {
-        if ($path === '' OR ! $this->_is_conn()) {
+        if ($path === '' OR !$this->_is_conn()) {
             return FALSE;
         }
 
@@ -516,7 +516,7 @@ class CI_FTP {
         // Open the local file path
         if ($fp = @opendir($locpath)) {
             // Attempt to open the remote file path and try to create it, if it doesn't exist
-            if (!$this->changedir($rempath, TRUE) && (!$this->mkdir($rempath) OR ! $this->changedir($rempath))) {
+            if (!$this->changedir($rempath, TRUE) && (!$this->mkdir($rempath) OR !$this->changedir($rempath))) {
                 return FALSE;
             }
 

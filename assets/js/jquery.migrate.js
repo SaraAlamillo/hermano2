@@ -3,7 +3,7 @@
  * https://github.com/jquery/jquery-migrate
  * Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors; Licensed MIT
  */
-(function (jQuery, window, undefined) {
+(function(jQuery, window, undefined) {
     "use strict";
 
 
@@ -16,7 +16,7 @@
 // jQuery.migrateMute = false;
 
 // Forget any warnings we've already given; public
-    jQuery.migrateReset = function () {
+    jQuery.migrateReset = function() {
         warnedAbout = {};
         jQuery.migrateWarnings.length = 0;
     };
@@ -39,11 +39,11 @@
                 Object.defineProperty(obj, prop, {
                     configurable: true,
                     enumerable: true,
-                    get: function () {
+                    get: function() {
                         migrateWarn(msg);
                         return value;
                     },
-                    set: function (newValue) {
+                    set: function(newValue) {
                         migrateWarn(msg);
                         value = newValue;
                     }
@@ -68,11 +68,11 @@
     var attrFn = {},
             attr = jQuery.attr,
             valueAttrGet = jQuery.attrHooks.value && jQuery.attrHooks.value.get ||
-            function () {
+            function() {
                 return null;
             },
             valueAttrSet = jQuery.attrHooks.value && jQuery.attrHooks.value.set ||
-            function () {
+            function() {
                 return undefined;
             },
             rnoType = /^(?:input|button)$/i,
@@ -83,7 +83,7 @@
 // jQuery.attrFn
     migrateWarnProp(jQuery, "attrFn", attrFn, "jQuery.attrFn is deprecated");
 
-    jQuery.attr = function (elem, name, value, pass) {
+    jQuery.attr = function(elem, name, value, pass) {
         var lowerName = name.toLowerCase(),
                 nType = elem && elem.nodeType;
 
@@ -102,7 +102,7 @@
         // Restore boolHook for boolean property/attribute synchronization
         if (!jQuery.attrHooks[ lowerName ] && rboolean.test(lowerName)) {
             jQuery.attrHooks[ lowerName ] = {
-                get: function (elem, name) {
+                get: function(elem, name) {
                     // Align boolean attributes with corresponding properties
                     // Fall back to attribute presence where some booleans are not supported
                     var attrNode,
@@ -112,7 +112,7 @@
                             name.toLowerCase() :
                             undefined;
                 },
-                set: function (elem, value, name) {
+                set: function(elem, value, name) {
                     var propName;
                     if (value === false) {
                         // Remove boolean attributes when set to false
@@ -143,7 +143,7 @@
 
 // attrHooks: value
     jQuery.attrHooks.value = {
-        get: function (elem, name) {
+        get: function(elem, name) {
             var nodeName = (elem.nodeName || "").toLowerCase();
             if (nodeName === "button") {
                 return valueAttrGet.apply(this, arguments);
@@ -155,7 +155,7 @@
                     elem.value :
                     null;
         },
-        set: function (elem, value) {
+        set: function(elem, value) {
             var nodeName = (elem.nodeName || "").toLowerCase();
             if (nodeName === "button") {
                 return valueAttrSet.apply(this, arguments);
@@ -175,7 +175,7 @@
             rquickExpr = /^(?:.*(<[\w\W]+>)[^>]*|#([\w\-]*))$/;
 
 // $(html) "looks like html" rule change
-    jQuery.fn.init = function (selector, context, rootjQuery) {
+    jQuery.fn.init = function(selector, context, rootjQuery) {
         var match;
 
         if (selector && typeof selector === "string" && !jQuery.isPlainObject(context) &&
@@ -198,7 +198,7 @@
     };
     jQuery.fn.init.prototype = jQuery.fn;
 
-    jQuery.uaMatch = function (ua) {
+    jQuery.uaMatch = function(ua) {
         ua = ua.toLowerCase();
 
         var match = /(chrome)[ \/]([\w.]+)/.exec(ua) ||
@@ -234,7 +234,7 @@
 // Warn if the code tries to get jQuery.browser
     migrateWarnProp(jQuery, "browser", browser, "jQuery.browser is deprecated");
 
-    jQuery.sub = function () {
+    jQuery.sub = function() {
         function jQuerySub(selector, context) {
             return new jQuerySub.fn.init(selector, context);
         }
@@ -259,7 +259,7 @@
 
     var oldFnData = jQuery.fn.data;
 
-    jQuery.fn.data = function (name) {
+    jQuery.fn.data = function(name) {
         var ret, evt,
                 elem = this[0];
 
@@ -280,14 +280,14 @@
             oldSelf = jQuery.fn.andSelf || jQuery.fn.addBack,
             oldFragment = jQuery.buildFragment;
 
-    jQuery.fn.andSelf = function () {
+    jQuery.fn.andSelf = function() {
         migrateWarn("jQuery.fn.andSelf() replaced by jQuery.fn.addBack()");
         return oldSelf.apply(this, arguments);
     };
 
 // Since jQuery.clean is used internally on older versions, we only shim if it's missing
     if (!jQuery.clean) {
-        jQuery.clean = function (elems, context, fragment, scripts) {
+        jQuery.clean = function(elems, context, fragment, scripts) {
             // Set context per 1.8 logic
             context = context || document;
             context = !context.nodeType && context[0] || context;
@@ -303,7 +303,7 @@
             // Complex logic lifted directly from jQuery 1.8
             if (fragment) {
                 // Special handling of each script element
-                handleScript = function (elem) {
+                handleScript = function(elem) {
                     // Check if we consider it executable
                     if (!elem.type || rscriptType.test(elem.type)) {
                         // Detach the script and store it in the scripts array (if provided) or the fragment
@@ -335,7 +335,7 @@
         };
     }
 
-    jQuery.buildFragment = function (elems, context, scripts, selection) {
+    jQuery.buildFragment = function(elems, context, scripts, selection) {
         var ret,
                 warning = "jQuery.buildFragment() is deprecated";
 
@@ -373,7 +373,7 @@
             ajaxEvents = "ajaxStart|ajaxStop|ajaxSend|ajaxComplete|ajaxError|ajaxSuccess",
             rajaxEvent = new RegExp("\\b(?:" + ajaxEvents + ")\\b"),
             rhoverHack = /(?:^|\s)hover(\.\S+|)\b/,
-            hoverHack = function (events) {
+            hoverHack = function(events) {
                 if (typeof (events) != "string" || jQuery.event.special.hover) {
                     return events;
                 }
@@ -392,17 +392,17 @@
     migrateWarnProp(jQuery.event, "handle", jQuery.event.dispatch, "jQuery.event.handle is undocumented and deprecated");
 
 // Support for 'hover' pseudo-event and ajax event warnings
-    jQuery.event.add = function (elem, types, handler, data, selector) {
+    jQuery.event.add = function(elem, types, handler, data, selector) {
         if (elem !== document && rajaxEvent.test(types)) {
             migrateWarn("AJAX events should be attached to document: " + types);
         }
         eventAdd.call(this, elem, hoverHack(types || ""), handler, data, selector);
     };
-    jQuery.event.remove = function (elem, types, handler, selector, mappedTypes) {
+    jQuery.event.remove = function(elem, types, handler, selector, mappedTypes) {
         eventRemove.call(this, elem, hoverHack(types) || "", handler, selector, mappedTypes);
     };
 
-    jQuery.fn.error = function () {
+    jQuery.fn.error = function() {
         var args = Array.prototype.slice.call(arguments, 0);
         migrateWarn("jQuery.fn.error() is deprecated");
         args.splice(0, 0, "error");
@@ -414,7 +414,7 @@
         return this;
     };
 
-    jQuery.fn.toggle = function (fn, fn2) {
+    jQuery.fn.toggle = function(fn, fn2) {
 
         // Don't mess with animation or css toggles
         if (!jQuery.isFunction(fn) || !jQuery.isFunction(fn2)) {
@@ -426,7 +426,7 @@
         var args = arguments,
                 guid = fn.guid || jQuery.guid++,
                 i = 0,
-                toggler = function (event) {
+                toggler = function(event) {
                     // Figure out which function to execute
                     var lastToggle = (jQuery._data(this, "lastToggle" + fn.guid) || 0) % i;
                     jQuery._data(this, "lastToggle" + fn.guid, lastToggle + 1);
@@ -447,7 +447,7 @@
         return this.click(toggler);
     };
 
-    jQuery.fn.live = function (types, data, fn) {
+    jQuery.fn.live = function(types, data, fn) {
         migrateWarn("jQuery.fn.live() is deprecated");
         if (oldLive) {
             return oldLive.apply(this, arguments);
@@ -456,7 +456,7 @@
         return this;
     };
 
-    jQuery.fn.die = function (types, fn) {
+    jQuery.fn.die = function(types, fn) {
         migrateWarn("jQuery.fn.die() is deprecated");
         if (oldDie) {
             return oldDie.apply(this, arguments);
@@ -466,28 +466,28 @@
     };
 
 // Turn global events into document-triggered events
-    jQuery.event.trigger = function (event, data, elem, onlyHandlers) {
+    jQuery.event.trigger = function(event, data, elem, onlyHandlers) {
         if (!elem & !rajaxEvent.test(event)) {
             migrateWarn("Global events are undocumented and deprecated");
         }
         return eventTrigger.call(this, event, data, elem || document, onlyHandlers);
     };
     jQuery.each(ajaxEvents.split("|"),
-            function (_, name) {
+            function(_, name) {
                 jQuery.event.special[ name ] = {
-                    setup: function () {
+                    setup: function() {
                         var elem = this;
 
                         // The document needs no shimming; must be !== for oldIE
                         if (elem !== document) {
-                            jQuery.event.add(document, name + "." + jQuery.guid, function () {
+                            jQuery.event.add(document, name + "." + jQuery.guid, function() {
                                 jQuery.event.trigger(name, null, elem, true);
                             });
                             jQuery._data(this, name, jQuery.guid++);
                         }
                         return false;
                     },
-                    teardown: function () {
+                    teardown: function() {
                         if (this !== document) {
                             jQuery.event.remove(document, name + "." + jQuery._data(this, name));
                         }

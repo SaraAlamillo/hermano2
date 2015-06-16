@@ -167,7 +167,7 @@ class CI_Table {
      * @return	array
      */
     public function make_columns($array = array(), $col_limit = 0) {
-        if (!is_array($array) OR count($array) === 0 OR ! is_int($col_limit)) {
+        if (!is_array($array) OR count($array) === 0 OR !is_int($col_limit)) {
             return FALSE;
         }
 

@@ -184,7 +184,7 @@ class CI_DB_utility extends CI_DB_forge {
      * @return	string
      */
     function csv_from_result($query, $delim = ",", $newline = "\n", $enclosure = '"') {
-        if (!is_object($query) OR ! method_exists($query, 'list_fields')) {
+        if (!is_object($query) OR !method_exists($query, 'list_fields')) {
             show_error('You must submit a valid result object');
         }
 
@@ -221,7 +221,7 @@ class CI_DB_utility extends CI_DB_forge {
      * @return	string
      */
     function xml_from_result($query, $params = array()) {
-        if (!is_object($query) OR ! method_exists($query, 'list_fields')) {
+        if (!is_object($query) OR !method_exists($query, 'list_fields')) {
             show_error('You must submit a valid result object');
         }
 
@@ -307,8 +307,7 @@ class CI_DB_utility extends CI_DB_forge {
         // ------------------------------------------------------
         // Is the encoder supported?  If not, we'll either issue an
         // error or use plain text depending on the debug settings
-        if (($prefs['format'] == 'gzip' AND ! @function_exists('gzencode'))
-                OR ( $prefs['format'] == 'zip' AND ! @function_exists('gzcompress'))) {
+        if (($prefs['format'] == 'gzip' AND !@function_exists('gzencode')) OR ( $prefs['format'] == 'zip' AND !@function_exists('gzcompress'))) {
             if ($this->db->db_debug) {
                 return $this->db->display_error('db_unsuported_compression');
             }

@@ -30,7 +30,7 @@ function &DB($params = '', $active_record_override = NULL) {
     // Load the DB config file if a DSN string wasn't passed
     if (is_string($params) AND strpos($params, '://') === FALSE) {
         // Is the config file in the environment folder?
-        if (!defined('ENVIRONMENT') OR ! file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/database.php')) {
+        if (!defined('ENVIRONMENT') OR !file_exists($file_path = APPPATH . 'config/' . ENVIRONMENT . '/database.php')) {
             if (!file_exists($file_path = APPPATH . 'config/database.php')) {
                 show_error('The configuration file database.php does not exist.');
             }
@@ -46,7 +46,7 @@ function &DB($params = '', $active_record_override = NULL) {
             $active_group = $params;
         }
 
-        if (!isset($active_group) OR ! isset($db[$active_group])) {
+        if (!isset($active_group) OR !isset($db[$active_group])) {
             show_error('You have specified an invalid database connection group.');
         }
 

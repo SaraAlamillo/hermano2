@@ -1538,7 +1538,7 @@ ul.depth li:before {
     background: #fff;
     font-size: 20px;
     font-weight: 800;
-    
+
 }
 
 #contact-form input[type="submit"],
@@ -1610,39 +1610,43 @@ label {
 }
 
 #login {
-background-color: white;
-	position: absolute;
-		top:50%;
-		left:50%;
-		width:400px;
-		margin-left:-200px;
-		height:316px;
-		margin-top:-158px;
-		border:1px solid #808080;
-		padding:10px;
+    background-color: white;
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:400px;
+    margin-left:-200px;
+    height:316px;
+    margin-top:-158px;
+    border:1px solid #808080;
+    padding:10px;
 }
 #loginConAlerta {
-background-color: white;
-	position: absolute;
-		top:50%;
-		left:50%;
-		width:400px;
-		margin-left:-200px;
-		height:388px;
-		margin-top:-194px;
-		border:1px solid #808080;
-		padding:10px;
+    background-color: white;
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:400px;
+    margin-left:-200px;
+    height:388px;
+    margin-top:-194px;
+    border:1px solid #808080;
+    padding:10px;
 }
 .detalle  .vacio {
-background-color: white;
-border: none;
+    background-color: white;
+    border: none;
 }
 .detalle  .titulo {
     background-color: #242b2e;
     color: white;
-	text-align: center;
+    text-align: center;
 }
 .detalle  th {
     background-color: #465359;
     color: white;
+}
+
+input[readonly="readonly"] {
+    background-color: #f0f0f0;
 }

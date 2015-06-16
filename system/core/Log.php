@@ -120,7 +120,7 @@ class CI_Log {
 
         file_exists($this->_log_path) OR mkdir($this->_log_path, 0755, TRUE);
 
-        if (!is_dir($this->_log_path) OR ! is_really_writable($this->_log_path)) {
+        if (!is_dir($this->_log_path) OR !is_really_writable($this->_log_path)) {
             $this->_enabled = FALSE;
         }
 

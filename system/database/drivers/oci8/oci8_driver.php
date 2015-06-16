@@ -298,7 +298,7 @@ class CI_DB_oci8_driver extends CI_DB {
      * length	yes	the max size of the parameter
      */
     public function stored_procedure($package, $procedure, $params) {
-        if ($package === '' OR $procedure === '' OR ! is_array($params)) {
+        if ($package === '' OR $procedure === '' OR !is_array($params)) {
             log_message('error', 'Invalid query: ' . $package . '.' . $procedure);
             return ($this->db_debug) ? $this->display_error('db_invalid_query') : FALSE;
         }
@@ -331,7 +331,7 @@ class CI_DB_oci8_driver extends CI_DB {
      * @return	void
      */
     protected function _bind_params($params) {
-        if (!is_array($params) OR ! is_resource($this->stmt_id)) {
+        if (!is_array($params) OR !is_resource($this->stmt_id)) {
             return;
         }
 

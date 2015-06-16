@@ -168,7 +168,7 @@ class CI_URI {
      * @return	string
      */
     private function _detect_uri() {
-        if (!isset($_SERVER['REQUEST_URI']) OR ! isset($_SERVER['SCRIPT_NAME'])) {
+        if (!isset($_SERVER['REQUEST_URI']) OR !isset($_SERVER['SCRIPT_NAME'])) {
             return '';
         }
 
