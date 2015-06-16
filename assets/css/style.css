@@ -1635,6 +1635,7 @@ background-color: white;
 }
 .detalle  .vacio {
 background-color: white;
+border: none;
 }
 .detalle  .titulo {
     background-color: #242b2e;
