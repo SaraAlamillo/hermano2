@@ -52,7 +52,7 @@ class Contacto_model extends CI_Model {
         return $consulta->result();
     }
 	
-	public function existeTipo($tipo) {
+	public function existeIdTipo($tipo) {
 		$this->db->where('idtipo_contacto', $tipo);
 		
 		if ($this->db->count_all_results('tipo_contacto') != 0) {

@@ -2,20 +2,20 @@
 <form action="" method="POST" id="contact-form">
     <div class="text-fields">
         <div class="float-input">
-            <?= crearDesplegable('Barriada', $lisBarriada, '', ['nombre' => 'Barriada', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE) ?>
+            <?= crearDesplegable('Barriada', $lisBarriada,  set_value('Barriada'), ['nombre' => 'Barriada', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE) ?>
             <span>Barriada</span>
         </div>
         <div class="float-input">
-            <?= crearDesplegable('Linea', $lisLinea, '', ['nombre' => 'Línea', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+            <?= crearDesplegable('Linea', $lisLinea,  set_value('Linea'), ['nombre' => 'Línea', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
             <span>Línea</span>
         </div>
         <div class="float-input">
-            <?= crearDesplegable('Numero', $lisNumero, '', ['nombre' => 'Número', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
+            <?= crearDesplegable('Numero', $lisNumero,  set_value('Numero'), ['nombre' => 'Número', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id']) ?>
             <span>Número</span>
         </div>
     </div>
     <div class="submit-area">
-        <textarea name="Observaciones" placeholder="Observaciones"></textarea>
+        <textarea name="Observaciones" placeholder="Observaciones"><?= set_value('Observaciones') ?></textarea>
         <input type="submit" value="Añadir" />
     </div>
 </form>

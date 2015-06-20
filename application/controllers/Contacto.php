@@ -29,27 +29,33 @@ class Contacto extends Main {
 
     public function cambio($idContacto) {
         if ($this->rolActual == 'Administrador') {
+            $this->load->helper('form');
+            $this->load->library('Form_validation');
+
             if ($this->input->post()) {
+                $this->reglasContacto();
+
                 $this->load->helper('Datos');
 
-                $this->Contacto_model->cambio($idContacto, quitaDatoVacio($this->input->post()));
-                $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
-                redirect(site_url("Contacto"));
-            } else {
-                $this->load->model('Provincia_model');
-
-                $parametros = [
-                    'lisTratamiento' => $this->Contacto_model->listarTratamiento(),
-                    'lisTipoVia' => $this->Contacto_model->listarTipoVia(),
-                    'lisTipo' => $this->Contacto_model->listaTipo(),
-                    'lisProvincia' => $this->Provincia_model->listar(),
-                    'contacto' => $this->Contacto_model->listarUno($idContacto)
-                ];
-
-                $this->load->helper('Form');
-
-                $this->vista($this->load->view('contacto/Cambio', $parametros, TRUE), 'contacto');
+                if ($this->form_validation->run()) {
+                    $this->Contacto_model->cambio($idContacto, quitaDatoVacio($this->input->post()));
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
+                    redirect(site_url("Contacto"));
+                }
             }
+            $this->load->model('Provincia_model');
+
+            $parametros = [
+                'lisTratamiento' => $this->Contacto_model->listarTratamiento(),
+                'lisTipoVia' => $this->Contacto_model->listarTipoVia(),
+                'lisTipo' => $this->Contacto_model->listaTipo(),
+                'lisProvincia' => $this->Provincia_model->listar(),
+                'contacto' => $this->Contacto_model->listarUno($idContacto)
+            ];
+
+            $this->load->helper('Formulario');
+
+            $this->vista($this->load->view('contacto/Cambio', $parametros, TRUE), 'contacto');
         } else {
             $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar un contacto', 'tipo' => 'info']);
             redirect(site_url('Contacto'));
@@ -58,26 +64,32 @@ class Contacto extends Main {
 
     public function nuevo() {
         if ($this->rolActual == 'Administrador') {
+            $this->load->helper('form');
+            $this->load->library('Form_validation');
+
             if ($this->input->post()) {
+                $this->reglasContacto();
+
                 $this->load->helper('Datos');
 
-                $this->contacto_model->alta(quitaDatoVacio($this->input->post()));
-                $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
-                redirect(site_url("Contacto"));
-            } else {
-                $this->load->model('Provincia_model');
-
-                $parametros = [
-                    'lisTratamiento' => $this->Contacto_model->listarTratamiento(),
-                    'lisTipoVia' => $this->Contacto_model->listarTipoVia(),
-                    'lisTipo' => $this->Contacto_model->listaTipo(),
-                    'lisProvincia' => $this->Provincia_model->listar()
-                ];
-
-                $this->load->helper('Form');
-
-                $this->vista($this->load->view('contacto/Nueva', $parametros, TRUE), 'contacto');
+                if ($this->form_validation->run()) {
+                    $this->contacto_model->alta(quitaDatoVacio($this->input->post()));
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
+                    redirect(site_url("Contacto"));
+                }
             }
+            $this->load->model('Provincia_model');
+
+            $parametros = [
+                'lisTratamiento' => $this->Contacto_model->listarTratamiento(),
+                'lisTipoVia' => $this->Contacto_model->listarTipoVia(),
+                'lisTipo' => $this->Contacto_model->listaTipo(),
+                'lisProvincia' => $this->Provincia_model->listar()
+            ];
+
+            $this->load->helper('Formulario');
+
+            $this->vista($this->load->view('contacto/Nueva', $parametros, TRUE), 'contacto');
         } else {
             $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear un contacto', 'tipo' => 'info']);
             redirect(site_url('Contacto'));

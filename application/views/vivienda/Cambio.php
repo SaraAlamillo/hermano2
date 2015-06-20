@@ -15,7 +15,8 @@
         </div>
     </div>
     <div class="submit-area">
-        <textarea name="Observaciones"><?= $vivienda->Observaciones ?></textarea>
+        <textarea name="Observaciones"><?= set_value('Observaciones', $vivienda->Observaciones) ?></textarea>
+        <?= form_error('Observaciones') ?>
         <input type="submit" value="Modificar" />
     </div>
     <input type="hidden" value="<?= $vivienda->idVivienda ?>" name="idVivienda" />

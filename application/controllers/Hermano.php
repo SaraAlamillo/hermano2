@@ -46,39 +46,45 @@ class Hermano extends Main {
 
     public function cambio($idHermano) {
         if ($this->rolActual == 'Administrador') {
+            $this->load->helper('form');
+            $this->load->library('Form_validation');
+
             if ($this->input->post()) {
+                $this->reglasHermano();
+
                 $this->load->helper('Datos');
 
-                $this->Hermano_model->cambia($idHermano, quitaDatoVacio($this->input->post()));
-                $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
-                redirect(site_url("Hermano"));
-            } else {
-                $this->load->model('Vivienda_model');
-                $this->load->model('Provincia_model');
-
-                $viviendas = $this->Vivienda_model->listarTodo();
-                $parametros['viviendas'] = [];
-
-                foreach ($viviendas as $v) {
-                    $aux = [
-                        'id' => $v->idVivienda,
-                        'nombre' => 'Barriada: ' . $v->Barriada . ' - Línea: ' . $v->Linea . ' - Número: ' . $v->Numero
-                    ];
-                    array_push($parametros['viviendas'], $aux);
+                if ($this->form_validation->run()) {
+                    $this->Hermano_model->cambia($idHermano, quitaDatoVacio($this->input->post()));
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
+                    redirect(site_url("Hermano"));
                 }
-
-                $parametros['hermano'] = $this->Hermano_model->listaUno($idHermano);
-                $parametros['hermano']->provincia = $this->Provincia_model->getNombre($parametros['hermano']->provincia);
-                $parametros['lisTipoPago'] = $this->Hermano_model->listarTipoPago();
-                $parametros['lisProvincia'] = $this->Provincia_model->listar();
-                $parametros['lisTratamiento'] = $this->Hermano_model->listarTratamiento();
-                $parametros['lisTipoVia'] = $this->Hermano_model->listarTipoVia();
-                $parametros['lisFamilia'] = $this->Hermano_model->listarFamilia();
-
-                $this->load->helper('Form');
-
-                $this->vista($this->load->view('hermano/Cambio', $parametros, TRUE), 'hermano');
             }
+            $this->load->model('Vivienda_model');
+            $this->load->model('Provincia_model');
+
+            $viviendas = $this->Vivienda_model->listarTodo();
+            $parametros['viviendas'] = [];
+
+            foreach ($viviendas as $v) {
+                $aux = [
+                    'id' => $v->idVivienda,
+                    'nombre' => 'Barriada: ' . $v->Barriada . ' - Línea: ' . $v->Linea . ' - Número: ' . $v->Numero
+                ];
+                array_push($parametros['viviendas'], $aux);
+            }
+
+            $parametros['hermano'] = $this->Hermano_model->listaUno($idHermano);
+            $parametros['hermano']->provincia = $this->Provincia_model->getNombre($parametros['hermano']->provincia);
+            $parametros['lisTipoPago'] = $this->Hermano_model->listarTipoPago();
+            $parametros['lisProvincia'] = $this->Provincia_model->listar();
+            $parametros['lisTratamiento'] = $this->Hermano_model->listarTratamiento();
+            $parametros['lisTipoVia'] = $this->Hermano_model->listarTipoVia();
+            $parametros['lisFamilia'] = $this->Hermano_model->listarFamilia();
+
+            $this->load->helper('Formulario');
+
+            $this->vista($this->load->view('hermano/Cambio', $parametros, TRUE), 'hermano');
         } else {
             $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar un hermano', 'tipo' => 'info']);
             redirect(site_url('Hermano'));
@@ -87,39 +93,47 @@ class Hermano extends Main {
 
     public function nuevo() {
         if ($this->rolActual == 'Administrador') {
+            $this->load->helper('form');
+            $this->load->library('Form_validation');
+
             if ($this->input->post()) {
+                $this->reglasHermano();
+
                 $this->load->helper('Datos');
 
-                $this->Hermano_model->agrega(quitaDatoVacio($this->input->post()));
-                $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido el hermano correctamente', 'tipo' => 'success']);
-                redirect(site_url("Hermano"));
-            } else {
-                $this->load->model('Vivienda_model');
-                $this->load->model('Provincia_model');
-
-                $parametros = [
-                    'lisTratamiento' => $this->Hermano_model->listarTratamiento(),
-                    'lisTipoVia' => $this->Hermano_model->listarTipoVia(),
-                    'lisTipoPago' => $this->Hermano_model->listarTipoPago(),
-                    'lisProvincia' => $this->Provincia_model->listar(),
-                    'lisFamilia' => $this->Hermano_model->listarFamilia()
-                ];
-
-                $viviendas = $this->Vivienda_model->listarTodo();
-                $parametros['viviendas'] = [];
-
-                foreach ($viviendas as $v) {
-                    $aux = [
-                        'id' => $v->idVivienda,
-                        'nombre' => 'Barriada: ' . $v->Barriada . ' - Línea: ' . $v->Linea . ' - Número: ' . $v->Numero
-                    ];
-                    array_push($parametros['viviendas'], $aux);
+                if ($this->form_validation->run()) {
+                    $this->Hermano_model->agrega(quitaDatoVacio($this->input->post()));
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido el hermano correctamente', 'tipo' => 'success']);
+                    redirect(site_url("Hermano"));
                 }
-
-                $this->load->helper('Form');
-
-                $this->vista($this->load->view('hermano/Nueva', $parametros, TRUE), 'hermano');
             }
+
+            $this->load->model('Vivienda_model');
+            $this->load->model('Provincia_model');
+
+            $parametros = [
+                'lisTratamiento' => $this->Hermano_model->listarTratamiento(),
+                'lisTipoVia' => $this->Hermano_model->listarTipoVia(),
+                'lisTipoPago' => $this->Hermano_model->listarTipoPago(),
+                'lisProvincia' => $this->Provincia_model->listar(),
+                'lisFamilia' => $this->Hermano_model->listarFamilia()
+            ];
+
+            $viviendas = $this->Vivienda_model->listarTodo();
+            $parametros['viviendas'] = [];
+
+            foreach ($viviendas as $v) {
+                $aux = [
+                    'id' => $v->idVivienda,
+                    'nombre' => 'Barriada: ' . $v->Barriada . ' - Línea: ' . $v->Linea . ' - Número: ' . $v->Numero
+                ];
+                array_push($parametros['viviendas'], $aux);
+            }
+
+            $this->load->helper('Formulario');
+
+
+            $this->vista($this->load->view('hermano/Nueva', $parametros, TRUE), 'hermano');
         } else {
             $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear un hermano', 'tipo' => 'info']);
             redirect(site_url('Hermano'));

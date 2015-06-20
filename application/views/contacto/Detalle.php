@@ -83,4 +83,4 @@
 </table>
 <?= anchor(site_url('contacto'), '<img alt="Volver al listado" title="Volver al listado" src="' . base_url() . 'assets/images/icons/btnAtras.png" />') ?>
 <?= anchor(site_url('contacto/cambio/' . $contacto->idContacto), '<img alt="Modificar" title ="Modificar" src="' . base_url() . 'assets/images/icons/btnEditar.png" />') ?>
-<?= anchor(site_url('contacto/elimina/' . $contacto->idContacto), '<img alt="Eliminar" title ="Eliminar" src="' . base_url() . 'assets/images/icons/btnBorrar.png" />') ?>
+<?= anchor(site_url('contacto/eliminar/' . $contacto->idContacto), '<img alt="Eliminar" title ="Eliminar" src="' . base_url() . 'assets/images/icons/btnBorrar.png" />') ?>

@@ -27,29 +27,36 @@ class Pago extends Main {
         if ($this->rolActual == 'Administrador') {
             $alerta = NULL;
 
+            $this->load->helper('form');
+            $this->load->library('Form_validation');
+
             if ($this->input->post()) {
-                $contador = 0;
+                $this->reglasPago();
 
-                if ($this->input->post('cuota1')) {
-                    $this->Pago_model->agregaCuota($hermano, $descripcion, 'cuota1', $this->input->post('cuota1'));
-                    $contador++;
-                }
+                if ($this->form_validation->run()) {
+                    $contador = 0;
 
-                if ($this->input->post('cuota2')) {
-                    $this->Pago_model->agregaCuota($hermano, $descripcion, 'cuota2', $this->input->post('cuota2'));
-                    $contador++;
-                }
+                    if ($this->input->post('cuota1')) {
+                        $this->Pago_model->agregaCuota($hermano, $descripcion, 'cuota1', $this->input->post('cuota1'));
+                        $contador++;
+                    }
 
-                if ($contador == 0) {
-                    $alerta = [
-                        'tipo' => 'danger',
-                        'mensaje' => 'No se ha registrado ningún pago.'
-                    ];
-                } else {
-                    $alerta = [
-                        'tipo' => 'success',
-                        'mensaje' => 'Se ha registrado el pago correctamente.'
-                    ];
+                    if ($this->input->post('cuota2')) {
+                        $this->Pago_model->agregaCuota($hermano, $descripcion, 'cuota2', $this->input->post('cuota2'));
+                        $contador++;
+                    }
+
+                    if ($contador == 0) {
+                        $alerta = [
+                            'tipo' => 'danger',
+                            'mensaje' => 'No se ha registrado ningún pago.'
+                        ];
+                    } else {
+                        $alerta = [
+                            'tipo' => 'success',
+                            'mensaje' => 'Se ha registrado el pago correctamente.'
+                        ];
+                    }
                 }
             }
             $this->load->model('Hermano_model');
@@ -79,7 +86,7 @@ class Pago extends Main {
             ];
 
 
-            if (!is_null($hermano) and !is_null($descripcion)) {
+            if (!is_null($hermano) and ! is_null($descripcion)) {
                 $this->load->model('Pago_model');
                 $plazos = $this->Pago_model->plazos($hermano, $descripcion);
 
@@ -87,7 +94,7 @@ class Pago extends Main {
                 $parametros['seleccionado']['cuota2'] = $plazos->cuota2;
             }
 
-            $this->load->helper('Form');
+            $this->load->helper('Formulario');
 
             $this->vista($this->load->view('pago/Registro', $parametros, TRUE), 'registro');
         } else {
