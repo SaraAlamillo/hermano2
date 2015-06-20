@@ -102,7 +102,7 @@ class CI_Lang {
 
         $langfile .= '.php';
 
-        if (empty($idiom) OR !preg_match('/^[a-z_-]+$/i', $idiom)) {
+        if (empty($idiom) OR ! preg_match('/^[a-z_-]+$/i', $idiom)) {
             $config = & get_config();
             $idiom = empty($config['language']) ? 'english' : $config['language'];
         }
@@ -139,7 +139,7 @@ class CI_Lang {
             show_error('Unable to load the requested language file: language/' . $idiom . '/' . $langfile);
         }
 
-        if (!isset($lang) OR !is_array($lang)) {
+        if (!isset($lang) OR ! is_array($lang)) {
             log_message('error', 'Language file contains no data: language/' . $idiom . '/' . $langfile);
 
             if ($return === TRUE) {

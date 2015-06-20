@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-		
-		<link rel="icon" type="image/vnd.microsoft.icon" href="<?= base_url() ?>assets/images/favicon.ico" />
+
+        <link rel="icon" type="image/vnd.microsoft.icon" href="<?= base_url() ?>assets/images/favicon.ico" />
 
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/bootstrap.css" media="screen">	
         <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/magnific-popup.css" media="screen">

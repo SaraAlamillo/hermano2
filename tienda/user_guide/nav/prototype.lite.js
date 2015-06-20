@@ -11,23 +11,23 @@
 //note: this is a stripped down version of prototype, to be used with moo.fx by mad4milk (http://moofx.mad4milk.net).
 
 var Class = {
-    create: function() {
-        return function() {
+    create: function () {
+        return function () {
             this.initialize.apply(this, arguments);
         }
     }
 }
 
-Object.extend = function(destination, source) {
+Object.extend = function (destination, source) {
     for (property in source) {
         destination[property] = source[property];
     }
     return destination;
 }
 
-Function.prototype.bind = function(object) {
+Function.prototype.bind = function (object) {
     var __method = this;
-    return function() {
+    return function () {
         return __method.apply(object, arguments);
     }
 }
@@ -51,7 +51,7 @@ function $() {
 
 //-------------------------
 
-document.getElementsByClassName = function(className) {
+document.getElementsByClassName = function (className) {
     var children = document.getElementsByTagName('*') || document.all;
     var elements = new Array();
 
@@ -76,11 +76,11 @@ if (!window.Element) {
 }
 
 Object.extend(Element, {
-    remove: function(element) {
+    remove: function (element) {
         element = $(element);
         element.parentNode.removeChild(element);
     },
-    hasClassName: function(element, className) {
+    hasClassName: function (element, className) {
         element = $(element);
         if (!element)
             return;
@@ -91,12 +91,12 @@ Object.extend(Element, {
         }
         return false;
     },
-    addClassName: function(element, className) {
+    addClassName: function (element, className) {
         element = $(element);
         Element.removeClassName(element, className);
         element.className += ' ' + className;
     },
-    removeClassName: function(element, className) {
+    removeClassName: function (element, className) {
         element = $(element);
         if (!element)
             return;
@@ -112,7 +112,7 @@ Object.extend(Element, {
         element.className = newClassName;
     },
     // removes whitespace-only text node children
-    cleanWhitespace: function(element) {
+    cleanWhitespace: function (element) {
         element = $(element);
         for (var i = 0; i < element.childNodes.length; i++) {
             var node = element.childNodes[i];

@@ -713,7 +713,7 @@ class CI_Encryption {
             return FALSE;
         }
 
-        if (empty($length) OR !is_int($length)) {
+        if (empty($length) OR ! is_int($length)) {
             $length = $this->_digests[$digest];
         } elseif ($length > (255 * $this->_digests[$digest])) {
             return FALSE;

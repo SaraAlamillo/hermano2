@@ -492,7 +492,7 @@ class CI_Output {
         $path = $CI->config->item('cache_path');
         $cache_path = ($path === '') ? APPPATH . 'cache/' : $path;
 
-        if (!is_dir($cache_path) OR !is_really_writable($cache_path)) {
+        if (!is_dir($cache_path) OR ! is_really_writable($cache_path)) {
             log_message('error', 'Unable to write cache file: ' . $cache_path);
             return;
         }
@@ -584,7 +584,7 @@ class CI_Output {
 
         $filepath = $cache_path . md5($uri);
 
-        if (!file_exists($filepath) OR !$fp = @fopen($filepath, 'rb')) {
+        if (!file_exists($filepath) OR ! $fp = @fopen($filepath, 'rb')) {
             return FALSE;
         }
 

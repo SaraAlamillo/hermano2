@@ -88,7 +88,7 @@ class CI_Hooks {
         }
 
 
-        if (!isset($hook) OR !is_array($hook)) {
+        if (!isset($hook) OR ! is_array($hook)) {
             return;
         }
 
@@ -108,7 +108,7 @@ class CI_Hooks {
      * @return	mixed
      */
     function _call_hook($which = '') {
-        if (!$this->enabled OR !isset($this->hooks[$which])) {
+        if (!$this->enabled OR ! isset($this->hooks[$which])) {
             return FALSE;
         }
 
@@ -153,7 +153,7 @@ class CI_Hooks {
         // Set file path
         // -----------------------------------
 
-        if (!isset($data['filepath']) OR !isset($data['filename'])) {
+        if (!isset($data['filepath']) OR ! isset($data['filename'])) {
             return FALSE;
         }
 

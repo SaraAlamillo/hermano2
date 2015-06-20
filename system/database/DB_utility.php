@@ -219,7 +219,7 @@ abstract class CI_DB_utility {
      * @return	string
      */
     public function csv_from_result($query, $delim = ',', $newline = "\n", $enclosure = '"') {
-        if (!is_object($query) OR !method_exists($query, 'list_fields')) {
+        if (!is_object($query) OR ! method_exists($query, 'list_fields')) {
             show_error('You must submit a valid result object');
         }
 
@@ -252,7 +252,7 @@ abstract class CI_DB_utility {
      * @return	string
      */
     public function xml_from_result($query, $params = array()) {
-        if (!is_object($query) OR !method_exists($query, 'list_fields')) {
+        if (!is_object($query) OR ! method_exists($query, 'list_fields')) {
             show_error('You must submit a valid result object');
         }
 

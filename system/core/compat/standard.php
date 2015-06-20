@@ -99,7 +99,7 @@ if (!function_exists('array_column')) {
                 continue;
             }
 
-            if ($index_key === NULL OR !array_key_exists($index_key, $a)) {
+            if ($index_key === NULL OR ! array_key_exists($index_key, $a)) {
                 $result[] = $value;
             } else {
                 $result[$a[$index_key]] = $value;

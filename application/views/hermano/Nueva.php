@@ -20,22 +20,22 @@
                 </div>
                 <?= form_error('tratamiento') ?>
                 <div class="float-input">
-                    <input type="text" name="nombre" placeholder="Nombre" value="<?=set_value('nombre') ?>" />
+                    <input type="text" name="nombre" placeholder="Nombre" value="<?= set_value('nombre') ?>" />
                     <span>Nombre</span>
                 </div>
                 <?= form_error('nombre') ?>
                 <div class="float-input">
-                    <input type="text" name="apellido1" placeholder="Primer apellido" value="<?=set_value('apellido1') ?>" />
+                    <input type="text" name="apellido1" placeholder="Primer apellido" value="<?= set_value('apellido1') ?>" />
                     <span>Primer apellido</span>
                 </div>
                 <?= form_error('apellido1') ?>
                 <div class="float-input">
-                    <input type="text" name="apellido2" placeholder="Segundo apellido" value="<?=set_value('apellido2') ?>" />
+                    <input type="text" name="apellido2" placeholder="Segundo apellido" value="<?= set_value('apellido2') ?>" />
                     <span>Segundo apellido</span>
                 </div>
                 <?= form_error('apellido2') ?>
                 <div class="float-input">
-                    <input type="text" name="dni" placeholder="DNI" value="<?=set_value('dni') ?>" /></p>
+                    <input type="text" name="dni" placeholder="DNI" value="<?= set_value('dni') ?>" /></p>
                     <span>DNI</span>
                 </div>
                 <?= form_error('dni') ?>
@@ -43,17 +43,17 @@
             <fieldset>
                 <legend>Contacto</legend>
                 <div class="float-input">
-                    <input type="text" name="movil" placeholder="Móvil" value="<?=set_value('movil') ?>" />
+                    <input type="text" name="movil" placeholder="Móvil" value="<?= set_value('movil') ?>" />
                     <span>Teléfono móvil</span>
                 </div>
                 <?= form_error('movil') ?>
                 <div class="float-input">
-                    <input type="text" name="fijo" placeholder="Fijo" value="<?=set_value('fijo') ?>" />
+                    <input type="text" name="fijo" placeholder="Fijo" value="<?= set_value('fijo') ?>" />
                     <span>Teléfono fijo</span>
                 </div>
                 <?= form_error('fijo') ?>
                 <div class="float-input">
-                    <input type="text" name="email" placeholder="Email" value="<?=set_value('email') ?>" />
+                    <input type="text" name="email" placeholder="Email" value="<?= set_value('email') ?>" />
                     <span>Email</span>
                 </div>
                 <?= form_error('email') ?>
@@ -66,7 +66,7 @@
                 </div>
                 <?= form_error('tipo') ?>
                 <div class="float-input">
-                    <input type="text" name="cuenta_corriente" placeholder="Cuenta corriente" value="<?=set_value('cuenta_corriente') ?>" />
+                    <input type="text" name="cuenta_corriente" placeholder="Cuenta corriente" value="<?= set_value('cuenta_corriente') ?>" />
                     <span>Cuenta corriente</span>
                 </div>
                 <?= form_error('cuenta_corriente') ?>
@@ -80,32 +80,32 @@
         </div>
         <?= form_error('tipo_via') ?>
         <div class="float-input">
-            <input type="text" name="direccion" placeholder="Dirección" value="<?=set_value('direccion') ?>" />
+            <input type="text" name="direccion" placeholder="Dirección" value="<?= set_value('direccion') ?>" />
             <span>Dirección</span>
         </div>
         <?= form_error('direccion') ?>
         <div class="float-input">
-            <input type="text" name="numero" placeholder="Número" value="<?=set_value('numero') ?>" />
+            <input type="text" name="numero" placeholder="Número" value="<?= set_value('numero') ?>" />
             <span>Número</span>
         </div>
         <?= form_error('numero') ?>
         <div class="float-input">
-            <input type="text" name="piso" placeholder="Piso" value="<?=set_value('piso') ?>" />
+            <input type="text" name="piso" placeholder="Piso" value="<?= set_value('piso') ?>" />
             <span>Piso</span>
         </div>
         <?= form_error('piso') ?>
         <div class="float-input">
-            <input type="text" name="puerta" placeholder="Puerta" value="<?=set_value('puerta') ?>" />
+            <input type="text" name="puerta" placeholder="Puerta" value="<?= set_value('puerta') ?>" />
             <span>Puerta</span>
         </div>
         <?= form_error('puerta') ?>
         <div class="float-input">
-            <input type="text" name="codigo_postal" placeholder="Código postal" value="<?=set_value('codigo_postal') ?>" />
+            <input type="text" name="codigo_postal" placeholder="Código postal" value="<?= set_value('codigo_postal') ?>" />
             <span>Código postal</span>
         </div>
         <?= form_error('codigo_postal') ?>
         <div class="float-input">
-            <input type="text" name="poblacion" placeholder="Población" value="<?=set_value('poblacion') ?>" />
+            <input type="text" name="poblacion" placeholder="Población" value="<?= set_value('poblacion') ?>" />
             <span>Población</span>
         </div>
         <?= form_error('poblacion') ?>
@@ -118,17 +118,17 @@
         <fieldset>
             <legend>Redes sociales</legend>
             <div class="float-input">
-                <input type="text" name="twitter" placeholder="Twitter" value="<?=set_value('twitter') ?>" />
+                <input type="text" name="twitter" placeholder="Twitter" value="<?= set_value('twitter') ?>" />
                 <span>Twitter</span>
             </div>
             <?= form_error('twitter') ?>
             <div class="float-input">
-                <input type="text" name="facebook" placeholder="Facebook" value="<?=set_value('facebook') ?>" />
+                <input type="text" name="facebook" placeholder="Facebook" value="<?= set_value('facebook') ?>" />
                 <span>Facebook</span>
             </div>
             <?= form_error('facebook') ?>
             <div class="float-input">
-                <input type="text" name="instagram" placeholder="Instagram" value="<?=set_value('instagram') ?>" />
+                <input type="text" name="instagram" placeholder="Instagram" value="<?= set_value('instagram') ?>" />
                 <span>Instagram</span>
             </div>
             <?= form_error('instagram') ?>

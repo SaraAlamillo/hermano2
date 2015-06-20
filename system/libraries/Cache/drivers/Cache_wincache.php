@@ -185,7 +185,7 @@ class CI_Cache_wincache extends CI_Driver {
      * @return	bool
      */
     public function is_supported() {
-        if (!extension_loaded('wincache') OR !ini_get('wincache.ucenabled')) {
+        if (!extension_loaded('wincache') OR ! ini_get('wincache.ucenabled')) {
             log_message('debug', 'The Wincache PHP extension must be loaded to use Wincache Cache.');
             return FALSE;
         }

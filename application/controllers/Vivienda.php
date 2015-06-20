@@ -36,17 +36,16 @@ class Vivienda extends Main {
                 $this->reglasVivienda();
 
                 if ($this->form_validation->run()) {
-                $this->Vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
-                $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
-                redirect(site_url("Vivienda"));
+                    $this->Vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
+                    redirect(site_url("Vivienda"));
                 }
-            } 
-                $parametros = [
-                    'vivienda' => $this->Vivienda_model->listarUno($idVivienda)
-                ];
+            }
+            $parametros = [
+                'vivienda' => $this->Vivienda_model->listarUno($idVivienda)
+            ];
 
-                $this->vista($this->load->view('vivienda/Cambio', $parametros, TRUE), 'vivienda');
-            
+            $this->vista($this->load->view('vivienda/Cambio', $parametros, TRUE), 'vivienda');
         } else {
             $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para modificar una vivienda', 'tipo' => 'info']);
             redirect(site_url('Vivienda'));
@@ -62,20 +61,20 @@ class Vivienda extends Main {
                 $this->reglasVivienda();
 
                 if ($this->form_validation->run()) {
-                $this->Vivienda_model->alta($this->input->post());
-                $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
-                redirect(site_url("Vivienda"));
-            }}
-                $this->load->helper('Formulario');
+                    $this->Vivienda_model->alta($this->input->post());
+                    $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
+                    redirect(site_url("Vivienda"));
+                }
+            }
+            $this->load->helper('Formulario');
 
-                $parametros = [
-                    'lisBarriada' => $this->Vivienda_model->listarBarriada(),
-                    'lisLinea' => $this->Vivienda_model->listarLinea(),
-                    'lisNumero' => $this->Vivienda_model->listarNumero()
-                ];
+            $parametros = [
+                'lisBarriada' => $this->Vivienda_model->listarBarriada(),
+                'lisLinea' => $this->Vivienda_model->listarLinea(),
+                'lisNumero' => $this->Vivienda_model->listarNumero()
+            ];
 
-                $this->vista($this->load->view('vivienda/Nueva', $parametros, TRUE), 'vivienda');
-            
+            $this->vista($this->load->view('vivienda/Nueva', $parametros, TRUE), 'vivienda');
         } else {
             $this->session->set_flashdata("alerta", ['mensaje' => 'Debe ser <b>administrador</b> para crear una vivienda', 'tipo' => 'info']);
             redirect(site_url('Vivienda'));

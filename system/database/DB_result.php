@@ -289,7 +289,7 @@ class CI_DB_result {
             is_array($this->row_data) OR $this->row_data = $this->row_array(0);
 
             // array_key_exists() instead of isset() to allow for NULL values
-            if (empty($this->row_data) OR !array_key_exists($n, $this->row_data)) {
+            if (empty($this->row_data) OR ! array_key_exists($n, $this->row_data)) {
                 return NULL;
             }
 

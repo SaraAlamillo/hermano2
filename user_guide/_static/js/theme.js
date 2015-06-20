@@ -1,15 +1,15 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Shift nav in mobile when clicking the menu.
-    $(document).on('click', "[data-toggle='wy-nav-top']", function() {
+    $(document).on('click', "[data-toggle='wy-nav-top']", function () {
         $("[data-toggle='wy-nav-shift']").toggleClass("shift");
         $("[data-toggle='rst-versions']").toggleClass("shift");
     });
     // Close menu when you click a link.
-    $(document).on('click', ".wy-menu-vertical .current ul li a", function() {
+    $(document).on('click', ".wy-menu-vertical .current ul li a", function () {
         $("[data-toggle='wy-nav-shift']").removeClass("shift");
         $("[data-toggle='rst-versions']").toggleClass("shift");
     });
-    $(document).on('click', "[data-toggle='rst-current-version']", function() {
+    $(document).on('click', "[data-toggle='rst-current-version']", function () {
         $("[data-toggle='rst-versions']").toggleClass("shift-up");
     });
     // Make tables responsive
@@ -27,18 +27,18 @@ $(document).ready(function() {
     var a = ['Index', 'CodeIgniter User Guide¶', 'Change Log¶', 'Developer’s Certificate of Origin 1.1¶', 'The MIT License (MIT)¶'];
     if ($.inArray($('h1').text(), a) > 0 || $('h2').text() == 'Search Results')
     {
-        $('table.ciNav a').each(function() {
+        $('table.ciNav a').each(function () {
             $(this).attr('href', $(this).attr("href").replace('../', ''));
         });
         console.log(1111);
     }
     //
-    $('#openToc').click(function() {
+    $('#openToc').click(function () {
         $('#nav').slideToggle();
     });
     $('.wy-breadcrumbs').append('<div style="float:right;"><div style="text-decoration:underline;color:blue;margin-left:5px;" id="closeMe"><img title="toc" alt="toc" src="data:image/gif;base64,R0lGODlhFAAUAJEAAAAAADMzM////wAAACH5BAUUAAIALAAAAAAUABQAAAImlI+py+0PU5gRBRDM3DxbWoXis42X13USOLauUIqnlsaH/eY6UwAAOw==" /></div></div>');
     $('#closeMe').toggle(
-            function()
+            function ()
             {
                 setCookie('ciNav', true, 365);
                 $('#nav2').show();
@@ -48,7 +48,7 @@ $(document).ready(function() {
                 $('.wy-breadcrumbs').append('<div style="float:right;"><div style="float:left;" id="topMenu">' + $('.wy-form').parent().html() + '</div></div>');
                 $('.wy-nav-side').toggle();
             },
-            function()
+            function ()
             {
                 setCookie('ciNav', false, 365);
                 $('#topMenu').remove();
@@ -89,23 +89,23 @@ function getCookie(cname) {
 }
 // End
 
-window.SphinxRtdTheme = (function(jquery) {
-    var stickyNav = (function() {
+window.SphinxRtdTheme = (function (jquery) {
+    var stickyNav = (function () {
         var navBar,
                 win,
                 stickyNavCssClass = 'stickynav',
-                applyStickNav = function() {
+                applyStickNav = function () {
                     if (navBar.height() <= win.height()) {
                         navBar.addClass(stickyNavCssClass);
                     } else {
                         navBar.removeClass(stickyNavCssClass);
                     }
                 },
-                enable = function() {
+                enable = function () {
                     applyStickNav();
                     win.on('resize', applyStickNav);
                 },
-                init = function() {
+                init = function () {
                     navBar = jquery('nav.wy-nav-side:first');
                     win = jquery(window);
                 };

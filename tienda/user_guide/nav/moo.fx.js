@@ -8,22 +8,22 @@
 
 //base
 var fx = new Object();
-fx.Base = function() {
+fx.Base = function () {
 };
 fx.Base.prototype = {
-    setOptions: function(options) {
+    setOptions: function (options) {
         this.options = {
             duration: 500,
             onComplete: ''
         }
         Object.extend(this.options, options || {});
     },
-    go: function() {
+    go: function () {
         this.duration = this.options.duration;
         this.startTime = (new Date).getTime();
         this.timer = setInterval(this.step.bind(this), 13);
     },
-    step: function() {
+    step: function () {
         var time = (new Date).getTime();
         var Tpos = (time - this.startTime) / (this.duration);
         if (time >= this.duration + this.startTime) {
@@ -39,18 +39,18 @@ fx.Base.prototype = {
         }
         this.increase();
     },
-    custom: function(from, to) {
+    custom: function (from, to) {
         if (this.timer != null)
             return;
         this.from = from;
         this.to = to;
         this.go();
     },
-    hide: function() {
+    hide: function () {
         this.now = 0;
         this.increase();
     },
-    clearTimer: function() {
+    clearTimer: function () {
         clearInterval(this.timer);
         this.timer = null;
     }
@@ -59,7 +59,7 @@ fx.Base.prototype = {
 //stretchers
 fx.Layout = Class.create();
 fx.Layout.prototype = Object.extend(new fx.Base(), {
-    initialize: function(el, options) {
+    initialize: function (el, options) {
         this.el = $(el);
         this.el.style.overflow = "hidden";
         this.el.iniWidth = this.el.offsetWidth;
@@ -70,10 +70,10 @@ fx.Layout.prototype = Object.extend(new fx.Base(), {
 
 fx.Height = Class.create();
 Object.extend(Object.extend(fx.Height.prototype, fx.Layout.prototype), {
-    increase: function() {
+    increase: function () {
         this.el.style.height = this.now + "px";
     },
-    toggle: function() {
+    toggle: function () {
         if (this.el.offsetHeight > 0)
             this.custom(this.el.offsetHeight, 0);
         else

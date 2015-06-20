@@ -13,7 +13,7 @@
 /**
  * Porter Stemmer
  */
-var Stemmer = function() {
+var Stemmer = function () {
 
     var step2list = {
         ational: 'ate',
@@ -59,7 +59,7 @@ var Stemmer = function() {
     var mgr1 = "^(" + C + ")?" + V + C + V + C;              // [C]VCVC... is m>1
     var s_v = "^(" + C + ")?" + v;                         // vowel in stem
 
-    this.stemWord = function(w) {
+    this.stemWord = function (w) {
         var stem;
         var suffix;
         var firstch;
@@ -231,7 +231,7 @@ var Search = {
     _index: null,
     _queued_query: null,
     _pulse_status: -1,
-    init: function() {
+    init: function () {
         var params = $.getQueryParameters();
         if (params.q) {
             var query = params.q[0];
@@ -239,16 +239,16 @@ var Search = {
             this.performSearch(query);
         }
     },
-    loadIndex: function(url) {
+    loadIndex: function (url) {
         $.ajax({type: "GET", url: url, data: null,
             dataType: "script", cache: true,
-            complete: function(jqxhr, textstatus) {
+            complete: function (jqxhr, textstatus) {
                 if (textstatus != "success") {
                     document.getElementById("searchindexloader").src = url;
                 }
             }});
     },
-    setIndex: function(index) {
+    setIndex: function (index) {
         var q;
         this._index = index;
         if ((q = this._queued_query) !== null) {
@@ -256,16 +256,16 @@ var Search = {
             Search.query(q);
         }
     },
-    hasIndex: function() {
+    hasIndex: function () {
         return this._index !== null;
     },
-    deferQuery: function(query) {
+    deferQuery: function (query) {
         this._queued_query = query;
     },
-    stopPulse: function() {
+    stopPulse: function () {
         this._pulse_status = 0;
     },
-    startPulse: function() {
+    startPulse: function () {
         if (this._pulse_status >= 0)
             return;
         function pulse() {
@@ -283,7 +283,7 @@ var Search = {
     /**
      * perform a search for something (or wait until index is loaded)
      */
-    performSearch: function(query) {
+    performSearch: function (query) {
         // create the required interface elements
         this.out = $('#search-results');
         this.title = $('<h2>' + _('Searching') + '</h2>').appendTo(this.out);
@@ -303,7 +303,7 @@ var Search = {
     /**
      * execute search (requires search index to be loaded)
      */
-    query: function(query) {
+    query: function (query) {
         var i;
         var stopwords = ["a", "and", "are", "as", "at", "be", "but", "by", "for", "if", "in", "into", "is", "it", "near", "no", "not", "of", "on", "or", "such", "that", "the", "their", "then", "there", "these", "they", "this", "to", "was", "will", "with"];
 
@@ -374,7 +374,7 @@ var Search = {
         // now sort the results by score (in opposite order of appearance, since the
         // display function below uses pop() to retrieve items) and then
         // alphabetically
-        results.sort(function(a, b) {
+        results.sort(function (a, b) {
             var left = a[4];
             var right = b[4];
             if (left > right) {
@@ -420,26 +420,26 @@ var Search = {
                 if (item[3]) {
                     listItem.append($('<span> (' + item[3] + ')</span>'));
                     Search.output.append(listItem);
-                    listItem.slideDown(5, function() {
+                    listItem.slideDown(5, function () {
                         displayNextItem();
                     });
                 } else if (DOCUMENTATION_OPTIONS.HAS_SOURCE) {
                     $.ajax({url: DOCUMENTATION_OPTIONS.URL_ROOT + '_sources/' + item[0] + '.txt',
                         dataType: "text",
-                        complete: function(jqxhr, textstatus) {
+                        complete: function (jqxhr, textstatus) {
                             var data = jqxhr.responseText;
                             if (data !== '') {
                                 listItem.append(Search.makeSearchSummary(data, searchterms, hlterms));
                             }
                             Search.output.append(listItem);
-                            listItem.slideDown(5, function() {
+                            listItem.slideDown(5, function () {
                                 displayNextItem();
                             });
                         }});
                 } else {
                     // no source available, just display title
                     Search.output.append(listItem);
-                    listItem.slideDown(5, function() {
+                    listItem.slideDown(5, function () {
                         displayNextItem();
                     });
                 }
@@ -460,7 +460,7 @@ var Search = {
     /**
      * search for object names
      */
-    performObjectSearch: function(object, otherterms) {
+    performObjectSearch: function (object, otherterms) {
         var filenames = this._index.filenames;
         var objects = this._index.objects;
         var objnames = this._index.objnames;
@@ -525,7 +525,7 @@ var Search = {
     /**
      * search for full-text terms in the index
      */
-    performTermsSearch: function(searchterms, excluded, terms, score) {
+    performTermsSearch: function (searchterms, excluded, terms, score) {
         var filenames = this._index.filenames;
         var titles = this._index.titles;
 
@@ -583,10 +583,10 @@ var Search = {
      * words. the first one is used to find the occurance, the
      * latter for highlighting it.
      */
-    makeSearchSummary: function(text, keywords, hlwords) {
+    makeSearchSummary: function (text, keywords, hlwords) {
         var textLower = text.toLowerCase();
         var start = 0;
-        $.each(keywords, function() {
+        $.each(keywords, function () {
             var i = textLower.indexOf(this.toLowerCase());
             if (i > -1)
                 start = i;
@@ -596,13 +596,13 @@ var Search = {
                 $.trim(text.substr(start, 240)) +
                 ((start + 240 - text.length) ? '...' : '');
         var rv = $('<div class="context"></div>').text(excerpt);
-        $.each(hlwords, function() {
+        $.each(hlwords, function () {
             rv = rv.highlightText(this, 'highlighted');
         });
         return rv;
     }
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
     Search.init();
 });

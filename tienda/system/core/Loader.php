@@ -274,7 +274,7 @@ class CI_Loader {
                 continue;
             }
 
-            if ($db_conn !== FALSE AND !class_exists('CI_DB')) {
+            if ($db_conn !== FALSE AND ! class_exists('CI_DB')) {
                 if ($db_conn === TRUE) {
                     $db_conn = '';
                 }

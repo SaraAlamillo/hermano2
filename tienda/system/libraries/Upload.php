@@ -532,7 +532,7 @@ class CI_Upload {
             return TRUE;
         }
 
-        if (count($this->allowed_types) == 0 OR !is_array($this->allowed_types)) {
+        if (count($this->allowed_types) == 0 OR ! is_array($this->allowed_types)) {
             $this->set_error('upload_no_file_types');
             return FALSE;
         }

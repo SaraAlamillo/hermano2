@@ -364,7 +364,7 @@ class CI_Upload {
             $_file = $_FILES;
             for ($i = 0; $i < $c; $i++) {
                 // We can't track numeric iterations, only full field names are accepted
-                if (($field = trim($matches[0][$i], '[]')) === '' OR !isset($_file[$field])) {
+                if (($field = trim($matches[0][$i], '[]')) === '' OR ! isset($_file[$field])) {
                     $_file = NULL;
                     break;
                 }
@@ -800,7 +800,7 @@ class CI_Upload {
             return TRUE;
         }
 
-        if (empty($this->allowed_types) OR !is_array($this->allowed_types)) {
+        if (empty($this->allowed_types) OR ! is_array($this->allowed_types)) {
             $this->set_error('upload_no_file_types');
             return FALSE;
         }

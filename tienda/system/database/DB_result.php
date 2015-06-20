@@ -201,7 +201,7 @@ class CI_DB_result {
             return;
         }
 
-        if ($key != '' AND !is_null($value)) {
+        if ($key != '' AND ! is_null($value)) {
             $this->row_data[$key] = $value;
         }
     }

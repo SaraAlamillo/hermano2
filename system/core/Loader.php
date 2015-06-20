@@ -334,7 +334,7 @@ class CI_Loader {
     public function dbutil($db = NULL, $return = FALSE) {
         $CI = & get_instance();
 
-        if (!is_object($db) OR !($db instanceof CI_DB)) {
+        if (!is_object($db) OR ! ($db instanceof CI_DB)) {
             class_exists('CI_DB', FALSE) OR $this->database();
             $db = & $CI->db;
         }
@@ -362,7 +362,7 @@ class CI_Loader {
      */
     public function dbforge($db = NULL, $return = FALSE) {
         $CI = & get_instance();
-        if (!is_object($db) OR !($db instanceof CI_DB)) {
+        if (!is_object($db) OR ! ($db instanceof CI_DB)) {
             class_exists('CI_DB', FALSE) OR $this->database();
             $db = & $CI->db;
         }

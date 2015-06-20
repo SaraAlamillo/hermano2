@@ -296,7 +296,7 @@ class CI_Session_files_driver extends CI_Session_driver implements SessionHandle
 
         while (($file = readdir($directory)) !== FALSE) {
             // If the filename doesn't match this pattern, it's either not a session file or is not ours
-            if (!preg_match($pattern, $file) OR !is_file($this->_config['save_path'] . DIRECTORY_SEPARATOR . $file) OR ( $mtime = filemtime($this->_config['save_path'] . DIRECTORY_SEPARATOR . $file)) === FALSE OR $mtime > $ts) {
+            if (!preg_match($pattern, $file) OR ! is_file($this->_config['save_path'] . DIRECTORY_SEPARATOR . $file) OR ( $mtime = filemtime($this->_config['save_path'] . DIRECTORY_SEPARATOR . $file)) === FALSE OR $mtime > $ts) {
                 continue;
             }
 

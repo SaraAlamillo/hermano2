@@ -131,7 +131,7 @@ class CI_Lang {
      * @return	string
      */
     function line($line = '') {
-        $value = ($line == '' OR !isset($this->language[$line])) ? FALSE : $this->language[$line];
+        $value = ($line == '' OR ! isset($this->language[$line])) ? FALSE : $this->language[$line];
 
         // Because killer robots like unicorns!
         if ($value === FALSE) {

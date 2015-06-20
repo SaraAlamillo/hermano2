@@ -65,7 +65,7 @@ class CI_DB_Cache {
         // Add a trailing slash to the path if needed
         $path = preg_replace("/(.+?)\/*$/", "\\1/", $path);
 
-        if (!is_dir($path) OR !is_really_writable($path)) {
+        if (!is_dir($path) OR ! is_really_writable($path)) {
             // If the path is wrong we'll turn off caching
             return $this->db->cache_off();
         }

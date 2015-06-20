@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -258,7 +259,7 @@ if (!function_exists('form_textarea')) {
             'rows' => '10'
         );
 
-        if (!is_array($data) OR !isset($data['value'])) {
+        if (!is_array($data) OR ! isset($data['value'])) {
             $val = $value;
         } else {
             $val = $data['value'];
@@ -903,7 +904,7 @@ if (!function_exists('_get_validation_object')) {
         $return = FALSE;
 
         if (FALSE !== ($object = $CI->load->is_loaded('Form_validation'))) {
-            if (!isset($CI->$object) OR !is_object($CI->$object)) {
+            if (!isset($CI->$object) OR ! is_object($CI->$object)) {
                 return $return;
             }
 

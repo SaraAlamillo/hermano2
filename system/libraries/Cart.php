@@ -349,7 +349,7 @@ class CI_Cart {
         $this->_cart_contents['total_items'] = $this->_cart_contents['cart_total'] = 0;
         foreach ($this->_cart_contents as $key => $val) {
             // We make sure the array contains the proper indexes
-            if (!is_array($val) OR !isset($val['price'], $val['qty'])) {
+            if (!is_array($val) OR ! isset($val['price'], $val['qty'])) {
                 continue;
             }
 
@@ -447,7 +447,7 @@ class CI_Cart {
      * @return	array
      */
     public function get_item($row_id) {
-        return (in_array($row_id, array('total_items', 'cart_total'), TRUE) OR !isset($this->_cart_contents[$row_id])) ? FALSE : $this->_cart_contents[$row_id];
+        return (in_array($row_id, array('total_items', 'cart_total'), TRUE) OR ! isset($this->_cart_contents[$row_id])) ? FALSE : $this->_cart_contents[$row_id];
     }
 
     // --------------------------------------------------------------------

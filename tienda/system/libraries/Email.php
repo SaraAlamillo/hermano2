@@ -1209,7 +1209,7 @@ class CI_Email {
             $this->reply_to($this->_headers['From']);
         }
 
-        if ((!isset($this->_recipients) AND !isset($this->_headers['To'])) AND (!isset($this->_bcc_array) AND !isset($this->_headers['Bcc'])) AND (!isset($this->_headers['Cc']))) {
+        if ((!isset($this->_recipients) AND ! isset($this->_headers['To'])) AND ( !isset($this->_bcc_array) AND ! isset($this->_headers['Bcc'])) AND ( !isset($this->_headers['Cc']))) {
             $this->_set_error_message('lang:email_no_recipients');
             return FALSE;
         }

@@ -89,7 +89,7 @@ if (!function_exists('is_really_writable')) {
      */
     function is_really_writable($file) {
         // If we're on a Unix server with safe_mode off we call is_writable
-        if (DIRECTORY_SEPARATOR === '/' && (is_php('5.4') OR !ini_get('safe_mode'))) {
+        if (DIRECTORY_SEPARATOR === '/' && (is_php('5.4') OR ! ini_get('safe_mode'))) {
             return is_writable($file);
         }
 
@@ -240,7 +240,7 @@ if (!function_exists('get_config')) {
             }
 
             // Does the $config array exist in the file?
-            if (!isset($config) OR !is_array($config)) {
+            if (!isset($config) OR ! is_array($config)) {
                 set_status_header(503);
                 echo 'Your config file does not appear to be formatted correctly.';
                 exit(3); // EXIT_CONFIG
@@ -454,7 +454,7 @@ if (!function_exists('set_status_header')) {
             return;
         }
 
-        if (empty($code) OR !is_numeric($code)) {
+        if (empty($code) OR ! is_numeric($code)) {
             show_error('Status codes must be numeric', 500);
         }
 

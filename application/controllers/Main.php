@@ -6,6 +6,7 @@ if (!defined('BASEPATH'))
 class Main extends CI_Controller {
 
     protected $rolActual;
+
     const MaxPorPag = 25;
 
     public function __construct() {
@@ -97,8 +98,8 @@ class Main extends CI_Controller {
 
         return $this->pagination->create_links();
     }
-    
-     public function reglasVivienda() {
+
+    public function reglasVivienda() {
         $this->load->model('Vivienda_model');
 
         $this->form_validation->set_rules('Barriada', 'barriada', 'callback_linea_check');

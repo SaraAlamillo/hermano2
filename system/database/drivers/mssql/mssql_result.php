@@ -169,7 +169,7 @@ class CI_DB_mssql_result extends CI_DB_result {
     protected function _fetch_object($class_name = 'stdClass') {
         $row = mssql_fetch_object($this->result_id);
 
-        if ($class_name === 'stdClass' OR !$row) {
+        if ($class_name === 'stdClass' OR ! $row) {
             return $row;
         }
 

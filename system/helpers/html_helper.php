@@ -227,7 +227,7 @@ if (!function_exists('doctype')) {
                 include(APPPATH . 'config/' . ENVIRONMENT . '/doctypes.php');
             }
 
-            if (empty($_doctypes) OR !is_array($_doctypes)) {
+            if (empty($_doctypes) OR ! is_array($_doctypes)) {
                 $doctypes = array();
                 return FALSE;
             }

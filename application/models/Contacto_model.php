@@ -23,7 +23,7 @@ class Contacto_model extends CI_Model {
             $this->db->limit(Main::MaxPorPag, $limit);
         }
         $consulta = $this->db->get('contacto');
-        
+
         return $consulta->result();
     }
 
@@ -51,16 +51,16 @@ class Contacto_model extends CI_Model {
         $consulta = $this->db->get('tipo_contacto');
         return $consulta->result();
     }
-	
-	public function existeIdTipo($tipo) {
-		$this->db->where('idtipo_contacto', $tipo);
-		
-		if ($this->db->count_all_results('tipo_contacto') != 0) {
-			return TRUE;			
-		} else {
-			return FALSE;
-		}
-	}
+
+    public function existeIdTipo($tipo) {
+        $this->db->where('idtipo_contacto', $tipo);
+
+        if ($this->db->count_all_results('tipo_contacto') != 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 
     public function listarTratamiento() {
         $this->load->helper('Bd');

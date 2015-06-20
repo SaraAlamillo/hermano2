@@ -11,19 +11,19 @@
         <?= crearDesplegable('hermano', $hermanos, set_value('hermano', $seleccionado['hermano']), ['nombre' => 'Hermano', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE, "id='rpHermano' onchange='redirect()'") ?>
         <span>Nombre completo</span>
     </div>
-                        <?= form_error('hermano') ?>
+    <?= form_error('hermano') ?>
     <?php if ($seleccionado['hermano'] != ''): ?>
         <div class="float-input">
             <?= crearDesplegable('anio', $anios, set_value('anio', $seleccionado['anio']), ['anio' => 'Año'], ['desc' => 'anio', 'valor' => 'anio'], TRUE, "id='rpAnio' onchange='redirect()'") ?>
             <span>Año</span>
         </div>
-                        <?= form_error('anio') ?>
+        <?= form_error('anio') ?>
         <?php if ($seleccionado['anio'] != 'Año'): ?>
             <div class="float-input">
                 <?= crearDesplegable('descripcion', $descripciones, set_value('descripcion', $seleccionado['descripcion']), ['descripcion' => 'Remesa', 'idRemesa' => ''], ['desc' => 'descripcion', 'valor' => 'idRemesa'], TRUE, "id='rpDescripcion' onchange='redirect()'") ?>
                 <span>Remesa</span>
             </div>
-                        <?= form_error('descripcion') ?>
+            <?= form_error('descripcion') ?>
             <?php if ($seleccionado['descripcion'] != ''): ?>
                 <fieldset>
                     <legend>Plazos</legend>
