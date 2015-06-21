@@ -99,14 +99,6 @@ class Main extends CI_Controller {
         return $this->pagination->create_links();
     }
 
-   /* public function reglasVivienda() {
-        $this->load->model('Vivienda_model');
-
-        $this->form_validation->set_rules('Barriada', 'barriada', 'callback_barriada_check');
-        $this->form_validation->set_rules('Linea', 'línea', 'callback_numVivienda_check');
-        $this->form_validation->set_rules('Numero', 'número', 'callback_linea_check');
-    }
-
     public function linea_check($input) {
         if ($input == '') {
             return TRUE;
@@ -153,36 +145,6 @@ class Main extends CI_Controller {
 
         $this->form_validation->set_message('barriada_check', 'El campo <b>%s</b> no es válido');
         return FALSE;
-    }
-
-    public function reglasHermano() {
-        $this->load->model('Hermano_model');
-
-        $this->form_validation->set_message('valid_email', 'El campo <b>%s</b> debe tener una dirección de correo electrónico válida');
-
-        $this->form_validation->set_rules('familia', 'familia', 'callback_familia_check');
-        $this->form_validation->set_rules('vivienda', 'vivienda', 'callback_vivienda_check');
-        $this->form_validation->set_rules('tratamiento', 'tratamiento', 'callback_tratamiento_check');
-        $this->form_validation->set_rules('nombre', 'nombre', 'callback_letra_check');
-        $this->form_validation->set_rules('apellido1', 'primer apellido', 'callback_letra_check');
-        $this->form_validation->set_rules('apellido2', 'segundo apellido', 'callback_letra_check');
-        $this->form_validation->set_rules('dni', 'DNI', 'callback_dni_check');
-        $this->form_validation->set_rules('movil', 'teléfono móvil', 'callback_telefono_check');
-        $this->form_validation->set_rules('fijo', 'teléfono fijo', 'callback_telefono_check');
-        $this->form_validation->set_rules('email', 'correo electrónico', 'valid_email');
-        $this->form_validation->set_rules('tipo', 'tipo de pago', 'callback_tipoPago_check');
-        $this->form_validation->set_rules('cuenta_corriente', 'cuenta corriente', 'callback_cc_check');
-        $this->form_validation->set_rules('tipo_via', 'tipo de vía', 'callback_tipoVia_check');
-        $this->form_validation->set_rules('direccion', 'dirección', 'callback_letra_check');
-        $this->form_validation->set_rules('numero', 'número', 'callback_numero_check');
-        $this->form_validation->set_rules('piso', 'piso', 'callback_numero_check');
-        $this->form_validation->set_rules('puerta', 'puerta', 'callback_puerta_check');
-        $this->form_validation->set_rules('codigo_postal', 'código postal', 'callback_cp_check');
-        $this->form_validation->set_rules('poblacion', 'población', 'callback_letra_check');
-        $this->form_validation->set_rules('provincia', 'provincia', 'callback_provincia_check');
-        $this->form_validation->set_rules('twitter', 'Twitter', 'callback_url_check');
-        $this->form_validation->set_rules('facebook', 'Facebook', 'callback_url_check');
-        $this->form_validation->set_rules('instagram', 'Instagram', 'callback_url_check');
     }
 
     public function familia_check($input) {
@@ -354,29 +316,17 @@ class Main extends CI_Controller {
         }
     }
 
-    public function reglasRemesa() {
-        $this->form_validation->set_rules('anio', 'año', 'callback_anio_check');
-    }
-
     public function anio_check($input) {
         if ($input == '') {
             return TRUE;
         }
 
-        if ($this->numero_check( $input) && $input > 0 && ($input <= date('Y') || $input <= date('y'))) {
+        if ($this->numero_check($input) && $input > 0 && ($input <= date('Y') || $input <= date('y'))) {
             return TRUE;
         } else {
             $this->form_validation->set_message('anio_check', 'El campo <b>%s</b> no contiene un año real');
             return FALSE;
         }
-    }
-
-    public function reglasPago() {
-        $this->form_validation->set_rules('cuota1', 'primer plazo', 'callback_fecha_check');
-        $this->form_validation->set_rules('cuota2', 'segundo plazo', 'callback_fecha_check');
-        $this->form_validation->set_rules('hermano', 'número de hermano', 'callback_hermano_check');
-        $this->form_validation->set_rules('anio', 'año', 'callback_anio_check');
-        $this->form_validation->set_rules('descripcion', 'descripción', 'callback_remesa_check');
     }
 
     public function fecha_check($input) {
@@ -418,34 +368,6 @@ class Main extends CI_Controller {
         } else {
             return TRUE;
         }
-    }
-
-    public function reglasContacto() {
-        $this->load->model('Contacto_model');
-
-        $this->form_validation->set_message('valid_email', 'El campo <b>%s</b> debe tener una dirección de correo electrónico válida');
-
-        $this->form_validation->set_rules('tratamiento', 'tratamiento', 'callback_tratamientoC_check');
-        $this->form_validation->set_rules('nombre', 'nombre', 'callback_letra_check');
-        $this->form_validation->set_rules('apellido1', 'primer apellido', 'callback_letra_check');
-        $this->form_validation->set_rules('apellido2', 'segundo apellido', 'callback_letra_check');
-        $this->form_validation->set_rules('movil', 'teléfono móvil', 'callback_telefono_check');
-        $this->form_validation->set_rules('fijo', 'teléfono fijo', 'callback_telefono_check');
-        $this->form_validation->set_rules('email', 'correo electrónico', 'valid_email');
-        $this->form_validation->set_rules('tipo_via', 'tipo de vía', 'callback_tipoViaC_check');
-        $this->form_validation->set_rules('direccion', 'dirección', 'callback_letra_check');
-        $this->form_validation->set_rules('numero', 'número', 'callback_numero_check');
-        $this->form_validation->set_rules('piso', 'piso', 'callback_numero_check');
-        $this->form_validation->set_rules('puerta', 'puerta', 'callback_puerta_check');
-        $this->form_validation->set_rules('codigo_postal', 'código postal', 'callback_cp_check');
-        $this->form_validation->set_rules('poblacion', 'población', 'callback_letra_check');
-        $this->form_validation->set_rules('provincia', 'provincia', 'callback_provincia_check');
-        $this->form_validation->set_rules('twitter', 'Twitter', 'callback_url_check');
-        $this->form_validation->set_rules('facebook', 'Facebook', 'callback_url_check');
-        $this->form_validation->set_rules('instagram', 'Instagram', 'callback_url_check'); 
-       $this->form_validation->set_rules('nombre_empresa', 'empresa', 'callback_letra_check');
-        $this->form_validation->set_rules('cif', 'CIF', 'callback_dni_check');
-        $this->form_validation->set_rules('tipo', 'tipo de contacto', 'callback_tipoContacto_check');
     }
 
     public function tipoContacto_check($input) {
@@ -490,12 +412,12 @@ class Main extends CI_Controller {
         $this->form_validation->set_message('tipoPago_check', 'El campo <b>%s</b> no es válido');
         return FALSE;
     }
-    
+
     public function provincia_check($input) {
         if ($input == '') {
             return TRUE;
         }
-        
+
         $this->load->model('Provincia_model');
         $valoresPosibles = $this->Provincia_model->listar();
 
@@ -508,7 +430,7 @@ class Main extends CI_Controller {
         $this->form_validation->set_message('provincia_check', 'El campo <b>%s</b> no contiene una provincia española');
         return FALSE;
     }
-    
+
     public function cp_check($input) {
         if ($input == '') {
             return TRUE;
@@ -519,6 +441,6 @@ class Main extends CI_Controller {
             $this->form_validation->set_message('cp_check', 'El campo <b>%s</b> no tiene un código postal válido');
             return FALSE;
         }
-    }*/
+    }
 
 }
