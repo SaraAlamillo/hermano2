@@ -30,14 +30,13 @@ class Remesa extends Main {
     public function insertar() {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasRemesa();
-
                 $this->load->helper('Datos');
                 
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('remesa')) {
                     $this->Remesa_model->alta(quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la remesa correctamente', 'tipo' => 'success']);
                     redirect(site_url("Remesa"));
@@ -53,12 +52,11 @@ class Remesa extends Main {
     public function cambiar($id) {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasRemesa();
-
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('remesa')) {
                     $this->Remesa_model->cambio($this->input->post(), $id);
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
                     redirect(site_url("Remesa"));

@@ -47,14 +47,13 @@ class Hermano extends Main {
     public function cambio($idHermano) {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasHermano();
-
                 $this->load->helper('Datos');
 
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('hermano')) {
                     $this->Hermano_model->cambia($idHermano, quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
                     redirect(site_url("Hermano"));
@@ -94,14 +93,13 @@ class Hermano extends Main {
     public function nuevo() {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasHermano();
-
                 $this->load->helper('Datos');
 
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('hermano')) {
                     $this->Hermano_model->agrega(quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido el hermano correctamente', 'tipo' => 'success']);
                     redirect(site_url("Hermano"));

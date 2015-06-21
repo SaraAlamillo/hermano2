@@ -28,12 +28,11 @@ class Pago extends Main {
             $alerta = NULL;
 
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasPago();
-
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('pago')) {
                     $contador = 0;
 
                     if ($this->input->post('cuota1')) {

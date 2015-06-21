@@ -30,12 +30,11 @@ class Vivienda extends Main {
     public function cambio($idVivienda) {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasVivienda();
-
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('vivienda')) {
                     $this->Vivienda_model->cambio($idVivienda, $this->input->post('Observaciones'));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
                     redirect(site_url("Vivienda"));
@@ -55,12 +54,11 @@ class Vivienda extends Main {
     public function nueva() {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasVivienda();
-
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('vivienda')) {
                     $this->Vivienda_model->alta($this->input->post());
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
                     redirect(site_url("Vivienda"));

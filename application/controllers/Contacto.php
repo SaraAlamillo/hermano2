@@ -33,11 +33,9 @@ class Contacto extends Main {
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasContacto();
-
                 $this->load->helper('Datos');
 
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('contacto')) {
                     $this->Contacto_model->cambio($idContacto, quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se han realizado las cambios correctamente', 'tipo' => 'success']);
                     redirect(site_url("Contacto"));
@@ -65,14 +63,13 @@ class Contacto extends Main {
     public function nuevo() {
         if ($this->rolActual == 'Administrador') {
             $this->load->helper('form');
+           
             $this->load->library('Form_validation');
 
             if ($this->input->post()) {
-                $this->reglasContacto();
-
                 $this->load->helper('Datos');
 
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run('contacto')) {
                     $this->Contacto_model->alta(quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
                     redirect(site_url("Contacto"));
