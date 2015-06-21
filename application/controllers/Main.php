@@ -516,7 +516,7 @@ class Main extends CI_Controller {
         if (preg_match('/^0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}$/', $input)) {
             return TRUE;
         } else {
-            $this->form_validation->set_message('cp_check', 'El campo %s no tiene un código postal válido');
+            $this->form_validation->set_message('cp_check', 'El campo <b>%s</b> no tiene un código postal válido');
             return FALSE;
         }
     }

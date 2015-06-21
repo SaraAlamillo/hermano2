@@ -7,26 +7,29 @@
 
 <h1>Registro de pagos</h1>
 <form action="" method="POST" id="contact-form">
+    <?= form_error('hermano') ?>
     <div class="float-input">
         <?= crearDesplegable('hermano', $hermanos, set_value('hermano', $seleccionado['hermano']), ['nombre' => 'Hermano', 'id' => ''], ['desc' => 'nombre', 'valor' => 'id'], FALSE, "id='rpHermano' onchange='redirect()'") ?>
         <span>Nombre completo</span>
     </div>
-    <?= form_error('hermano') ?>
     <?php if ($seleccionado['hermano'] != ''): ?>
+        <?= form_error('anio') ?>
         <div class="float-input">
             <?= crearDesplegable('anio', $anios, set_value('anio', $seleccionado['anio']), ['anio' => 'Año'], ['desc' => 'anio', 'valor' => 'anio'], TRUE, "id='rpAnio' onchange='redirect()'") ?>
             <span>Año</span>
         </div>
-        <?= form_error('anio') ?>
         <?php if ($seleccionado['anio'] != 'Año'): ?>
+            <?= form_error('descripcion') ?>
             <div class="float-input">
                 <?= crearDesplegable('descripcion', $descripciones, set_value('descripcion', $seleccionado['descripcion']), ['descripcion' => 'Remesa', 'idRemesa' => ''], ['desc' => 'descripcion', 'valor' => 'idRemesa'], TRUE, "id='rpDescripcion' onchange='redirect()'") ?>
                 <span>Remesa</span>
             </div>
-            <?= form_error('descripcion') ?>
             <?php if ($seleccionado['descripcion'] != ''): ?>
                 <fieldset>
                     <legend>Plazos</legend>
+                    <?php if ($seleccionado['cuota1'] == NULL) : ?>
+                        <?= form_error('cuota1') ?>
+                    <?php endif; ?>
                     <div class="float-input">
                         <?php if ($seleccionado['cuota1'] == NULL) : ?>
                             <input type="date" name="cuota1" class="danger" value="<?= set_value('cuota1', $seleccionado['cuota1']) ?>" />
@@ -35,8 +38,8 @@
                         <?php endif; ?>
                         <span>Cuota 1</span>
                     </div>
-                    <?php if ($seleccionado['cuota1'] == NULL) : ?>
-                        <?= form_error('cuota1') ?>
+                    <?php if ($seleccionado['cuota2'] == NULL) : ?>
+                        <?= form_error('cuota2') ?>
                     <?php endif; ?>
                     <div class="float-input">
                         <?php if ($seleccionado['cuota2'] == NULL) : ?>
@@ -46,9 +49,6 @@
                         <?php endif; ?>
                         <span>Cuota 2</span>
                     </div>
-                    <?php if ($seleccionado['cuota2'] == NULL) : ?>
-                        <?= form_error('cuota2') ?>
-                    <?php endif; ?>
                 </fieldset>
                 <input type="submit" value="Registrar" />
             <?php endif; ?>
