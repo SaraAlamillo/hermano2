@@ -35,8 +35,10 @@ class Remesa extends Main {
             if ($this->input->post()) {
                 $this->reglasRemesa();
 
+                $this->load->helper('Datos');
+                
                 if ($this->form_validation->run()) {
-                    $this->Remesa_model->alta($this->input->post());
+                    $this->Remesa_model->alta(quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la remesa correctamente', 'tipo' => 'success']);
                     redirect(site_url("Remesa"));
                 }

@@ -73,7 +73,7 @@ class Contacto extends Main {
                 $this->load->helper('Datos');
 
                 if ($this->form_validation->run()) {
-                    $this->contacto_model->alta(quitaDatoVacio($this->input->post()));
+                    $this->Contacto_model->alta(quitaDatoVacio($this->input->post()));
                     $this->session->set_flashdata("alerta", ['mensaje' => 'Se ha añadido la vivienda correctamente', 'tipo' => 'success']);
                     redirect(site_url("Contacto"));
                 }

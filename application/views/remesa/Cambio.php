@@ -6,7 +6,7 @@
     </div>
     <div class="submit-area">
         <div class="float-input">
-            <input type="text" name="anio" value="<?= set_value('descripcion', $remesa->anio) ?>" title="Año" />
+            <input type="text" name="anio" value="<?= set_value('anio', $remesa->anio) ?>" title="Año" />
             <span>Año</span>
         </div>
         <?= form_error('anio') ?>
