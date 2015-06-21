@@ -1,0 +1,70 @@
+.paso {
+    background-color: white;
+    position: absolute;
+    top:50%;
+    left:50%;
+    width:400px;
+    margin-left:-200px;
+    border:1px solid #808080;
+    padding:10px;
+}
+.paso1 {
+    height:180px;
+    margin-top:-90px;
+}
+.paso2 {
+    height:450px;
+    margin-top:-225px;
+}
+.paso2ConAlerta {
+    height:526px;
+    margin-top:-263px;
+}
+.paso4 {
+    height:555px;
+    margin-top:-277.5px;
+}
+.paso4ConAlerta {
+    height:647px;
+    margin-top:-323.5px;
+}
+button {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: 19px;
+    background: #1ab5b3;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+button:hover, .mitadBoton:hover{
+    opacity: 0.8;
+}
+.alert {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.mitadBoton {
+    float: left;
+    width: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    padding: 19px;
+    background: #1ab5b3;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}

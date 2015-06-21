@@ -29,4 +29,13 @@ class Usuario_model extends CI_Model {
         return $resultado->rol;
     }
 
+    public function insertar($nombre, $clave, $rol) {
+        $datos = [
+            'nombre' => $nombre,
+            'clave' => $clave,
+            'rol' => $rol
+        ];
+        $this->db->insert('usuario', $datos);
+    }
+
 }

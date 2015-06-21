@@ -11,6 +11,12 @@ class Main extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        
+        $this->load->helper('instalador');
+        if (necesitaInstalador()) {
+            redirect(site_url('Instalador'));
+        }
+        
         if (empty($this->session->userdata('login')) || $this->session->userdata('login') !== TRUE) {
             $this->login();
         } else {
